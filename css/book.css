@@ -1,0 +1,430 @@
+/* Master stylesheet for the online textbook. Link every chapter to this file. */
+:root {
+  --book-blue: #3367d6;
+  --link-blue: #1f62c7;
+  --ink: #050505;
+  --muted: #555;
+  --rule: #1c1c1c;
+  --page: #fff;
+  --soft-gray: #f6f6f6;
+  --learning-red: #ad4249;
+  --takeaway-green: #4f8373;
+  --exercise-indigo: #50558e;
+  --manager-blue: #2e718d;
+  --ai-purple: #6d5a92;
+  --example-gold: #9a6a22;
+  --case-slate: #5f6f78;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.68;
+}
+
+.book-shell {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 34px 32px 72px;
+}
+
+.book-meta,
+.chapter-nav,
+.source,
+.caption,
+.long-description summary,
+.box-title,
+table,
+code,
+pre,
+.references,
+.definition-list dt {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.book-meta {
+  margin-bottom: 2.2rem;
+  color: #666;
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.book-meta strong {
+  display: block;
+  color: #111;
+}
+
+.chapter-nav {
+  display: flex;
+  gap: 0.65rem;
+  justify-content: center;
+  margin: 2.4rem 0 0;
+  font-size: 0.82rem;
+}
+
+.chapter-nav a {
+  border: 1px solid #c9d1dc;
+  border-radius: 4px;
+  color: var(--link-blue);
+  padding: 0.28rem 0.55rem;
+  text-decoration: none;
+}
+
+.chapter-nav a:hover,
+.chapter-nav a:focus-visible {
+  background: #f3f7ff;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: 1.14;
+}
+
+h1 {
+  margin: 0 0 1.55rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.35rem;
+  color: var(--book-blue);
+  font-size: 2.65rem;
+}
+
+h2 {
+  margin: 2.35rem 0 1rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.65rem;
+  color: var(--book-blue);
+  font-size: 1.62rem;
+}
+
+h3 {
+  margin: 2rem 0 0.7rem;
+  color: var(--book-blue);
+  font-size: 1.28rem;
+}
+
+h4 {
+  margin: 1.5rem 0 0.5rem;
+  color: #111;
+  font-size: 1rem;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+a {
+  color: var(--link-blue);
+}
+
+sup a {
+  text-decoration: none;
+}
+
+.key-term {
+  border-bottom: 2px solid var(--book-blue);
+  color: #111;
+  font-weight: 700;
+}
+
+.definition-list {
+  margin: 1.2rem 0;
+  border-top: 1px solid #d9d9d9;
+}
+
+.definition-list dt {
+  margin-top: 1rem;
+  color: #111;
+  font-weight: 700;
+}
+
+.definition-list dd {
+  margin: 0.2rem 0 0.9rem;
+}
+
+.box {
+  --box-color: var(--case-slate);
+  --box-bg: var(--soft-gray);
+  margin: 1.5rem 0 2rem;
+  background: var(--box-bg);
+}
+
+.box-title {
+  margin: 0;
+  border-bottom: 0;
+  background: var(--box-color);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  padding: 0.58rem 1rem;
+}
+
+.box-body {
+  padding: 1rem 1.45rem 1.35rem;
+}
+
+.box-body > :first-child {
+  margin-top: 0;
+}
+
+.box-body > :last-child {
+  margin-bottom: 0;
+}
+
+.learning-objectives {
+  --box-color: var(--learning-red);
+  --box-bg: #fbf8f8;
+}
+
+.key-takeaways,
+.chapter-summary {
+  --box-color: var(--takeaway-green);
+  --box-bg: #f4f8f6;
+}
+
+.questions-exercises {
+  --box-color: var(--exercise-indigo);
+  --box-bg: #f7f7fb;
+}
+
+.manager-tip {
+  --box-color: var(--manager-blue);
+  --box-bg: #f0f7f9;
+}
+
+.ai-insight {
+  --box-color: var(--ai-purple);
+  --box-bg: #f7f5fb;
+}
+
+.example-box {
+  --box-color: var(--example-gold);
+  --box-bg: #fbf7ef;
+}
+
+.case-study {
+  --box-color: var(--case-slate);
+  --box-bg: #f3f6f7;
+}
+
+ol,
+ul {
+  margin: 0.6rem 0 1rem 1.45rem;
+  padding: 0;
+}
+
+li {
+  margin: 0.55rem 0;
+  padding-left: 0.3rem;
+}
+
+.box li {
+  margin: 0.65rem 0;
+}
+
+.pull-quote {
+  margin: 1.6rem 0 1.8rem;
+  background: #d7e1e6;
+  padding: 1.55rem 1.75rem;
+  font-style: italic;
+}
+
+.pull-quote p {
+  margin: 0;
+}
+
+.pull-quote cite {
+  display: block;
+  margin-top: 0.35rem;
+  font-style: normal;
+}
+
+.book-figure {
+  margin: 2rem 0;
+}
+
+.figure-title {
+  margin: 0 0 0.7rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.book-figure img {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.source,
+.caption {
+  margin: 0.45rem 0 0;
+  color: #111;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.caption {
+  color: var(--muted);
+}
+
+.long-description {
+  margin-top: 0.75rem;
+}
+
+.long-description summary {
+  color: var(--link-blue);
+  cursor: pointer;
+  font-size: 0.9rem;
+  list-style: none;
+}
+
+.long-description summary::-webkit-details-marker {
+  display: none;
+}
+
+.long-description .hide-label {
+  display: none;
+}
+
+.long-description[open] .show-label {
+  display: none;
+}
+
+.long-description[open] .hide-label {
+  display: inline;
+}
+
+.long-description-panel {
+  margin-top: 0.35rem;
+  border: 1px solid #d7d7d7;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem 1.25rem;
+}
+
+.long-description-panel strong {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.table-wrap {
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+caption {
+  caption-side: top;
+  margin-bottom: 0.5rem;
+  color: #111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  text-align: left;
+}
+
+th,
+td {
+  border: 1px solid #cfd8dc;
+  padding: 0.55rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #e9eef1;
+  font-weight: 700;
+}
+
+tbody tr:nth-child(even) {
+  background: #f7f9fa;
+}
+
+code {
+  background: #f2f4f7;
+  border: 1px solid #d8dde6;
+  border-radius: 3px;
+  font-size: 0.9em;
+  padding: 0.05rem 0.25rem;
+}
+
+pre {
+  margin: 1.2rem 0;
+  border-left: 5px solid var(--book-blue);
+  background: #f5f7fb;
+  overflow-x: auto;
+  padding: 0.9rem 1rem;
+  line-height: 1.45;
+}
+
+pre code {
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.references {
+  margin-left: 1.2rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.references li {
+  margin: 0.85rem 0;
+}
+
+.backlink {
+  margin-left: 0.2rem;
+  text-decoration: none;
+}
+
+@media (max-width: 680px) {
+  html {
+    font-size: 17px;
+  }
+
+  .book-shell {
+    padding: 24px 18px 56px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.38rem;
+  }
+
+  .box-title {
+    font-size: 1.25rem;
+  }
+
+  .box-body,
+  .pull-quote {
+    padding: 1rem;
+  }
+}
