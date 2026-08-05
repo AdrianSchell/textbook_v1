@@ -47,6 +47,7 @@ body {
 table,
 code,
 pre,
+.footnotes,
 .references,
 .definition-list dt {
   font-family: Arial, Helvetica, sans-serif;
@@ -258,10 +259,21 @@ li {
   margin: 2rem 0;
 }
 
+.book-video {
+  margin: 2rem 0;
+  background: #f4f4f4;
+  padding: 0 0 1rem;
+}
+
 .figure-title {
   margin: 0 0 0.7rem;
   font-weight: 700;
   line-height: 1.35;
+}
+
+.book-video .figure-title {
+  margin: 0;
+  padding: 0.85rem 1rem;
 }
 
 .book-figure img {
@@ -270,6 +282,72 @@ li {
   max-width: 760px;
   height: auto;
   margin: 0 auto;
+}
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.video-embed iframe,
+.video-embed video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.book-video .caption {
+  margin: 0;
+  padding: 0.9rem 1rem 0;
+  color: #111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.video-transcript {
+  margin: 0.9rem 1rem 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.video-transcript a,
+.video-transcript summary {
+  color: var(--link-blue);
+  cursor: pointer;
+  display: inline;
+  font-weight: 700;
+  list-style: none;
+  text-decoration: none;
+}
+
+.video-transcript summary::-webkit-details-marker {
+  display: none;
+}
+
+.video-transcript summary::after {
+  content: " \25be";
+}
+
+.video-transcript[open] summary::after {
+  content: " \25b4";
+}
+
+.video-transcript a:hover,
+.video-transcript a:focus-visible,
+.video-transcript summary:hover,
+.video-transcript summary:focus-visible {
+  text-decoration: underline;
+}
+
+.video-transcript-panel {
+  margin-top: 0.5rem;
+  color: #222;
 }
 
 .source,
@@ -387,19 +465,69 @@ pre code {
   padding: 0;
 }
 
-.references {
-  margin-left: 1.2rem;
-  font-size: 0.9rem;
-  line-height: 1.5;
+.footnotes-section,
+.references-section {
+  margin: 2.35rem 0 0;
 }
 
+.footnotes-title,
+.references-title {
+  margin: 0 0 0.9rem;
+  border-bottom: 0;
+  padding-bottom: 0;
+  color: #000;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.footnotes,
+.references {
+  margin: 0 0 1rem;
+  padding-left: 1.35rem;
+  color: #000;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.footnotes li,
 .references li {
-  margin: 0.85rem 0;
+  margin: 0 0 1.15rem;
+  padding-left: 0.15rem;
+}
+
+.footnotes a:not(.backlink),
+.references a:not(.backlink) {
+  color: var(--link-blue);
+  text-decoration: none;
+}
+
+.footnotes a:not(.backlink):hover,
+.footnotes a:not(.backlink):focus-visible,
+.references a:not(.backlink):hover,
+.references a:not(.backlink):focus-visible {
+  text-decoration: underline;
 }
 
 .backlink {
   margin-left: 0.2rem;
+  color: var(--link-blue);
   text-decoration: none;
+  white-space: nowrap;
+}
+
+.backlink[aria-label] {
+  font-size: 0;
+}
+
+.backlink[aria-label]::before {
+  content: "\2191";
+  font-size: 0.84rem;
+}
+
+.backlink:hover,
+.backlink:focus-visible {
+  text-decoration: underline;
 }
 
 @media (max-width: 680px) {
