@@ -74,9 +74,13 @@ pre,
 }
 
 .chapter-nav a {
+  align-items: center;
   border: 1px solid #c9d1dc;
   border-radius: 4px;
   color: var(--link-blue);
+  display: inline-flex;
+  justify-content: center;
+  min-width: 5.2rem;
   padding: 0.28rem 0.55rem;
   text-decoration: none;
 }
@@ -279,7 +283,7 @@ li {
 .book-figure img {
   display: block;
   width: 100%;
-  max-width: 760px;
+  max-width: none;
   height: auto;
   margin: 0 auto;
 }
