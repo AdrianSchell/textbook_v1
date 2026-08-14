@@ -3,238 +3,242 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>1.1 Technology and the Modern Enterprise</title>
+  <title>1.1 Technology and the Modern Enterprise | Information Systems</title>
   <link rel="stylesheet" href="../css/book.css">
 </head>
 <body>
   <main class="book-shell">
-    <div class="book-meta"><strong>Information Systems and Digital Transformation in the Age of AI: A Georgia Tech Perspective</strong><br>Chapter 1: Information Systems</div>
-    <h1 id="1-1-technology-and-the-modern-enterprise">1.1 Technology and the Modern Enterprise</h1>
-    <h2 id="how-information-systems-drive-modern-enterprise-strategy">How Information Systems Drive Modern Enterprise Strategy</h2>
-    <h3 id="the-tectonic-shifts-of-modern-enterprise">The Tectonic Shifts of Modern Enterprise</h3>
-    <p>In late December 2022, a brutal winter freeze swept across the United States, bringing extreme cold, heavy snow, and high winds at the peak of the holiday travel season<sup><a href="#fn-1">1</a></sup>. Every commercial airline scrambled to adjust, yet almost all of them managed to recover their footing within a matter of hours<sup><a href="#fn-2">2</a></sup>. United Airlines, for example, canceled approximately 36% of its flights during the worst of the storm but still managed to get 90% of its passengers to their destinations within four hours of their scheduled times<sup><a href="#fn-2">2</a></sup>.</p>
-    <p>At Southwest Airlines, however, the operational situation disintegrated into the costliest scheduling meltdown in the history of commercial aviation<sup><a href="#fn-1">1</a></sup>. Over the course of ten days, Southwest canceled more than 16,900 flights, leaving over two million passengers stranded in airport terminals<sup><a href="#fn-1">1</a></sup>. The financial toll was staggering, ultimately costing the company between $1.1 billion and $1.2 billion in lost revenues, passenger reimbursements, and a record-setting $140 million civil penalty from the U.S. Department of Transportation<sup><a href="#fn-1">1</a></sup>.</p>
-    <p>The root cause of this historic operational failure was not the weather<sup><a href="#fn-1">1</a></sup>. Instead, it was the collapse of Southwest's internal information systems under the weight of decades of accumulated <strong>technical debt</strong><sup><a href="#fn-2">2</a></sup>. While Southwest had grown into the third-largest domestic carrier in the United States, its technological infrastructure had failed to keep pace with its expansion<sup><a href="#fn-1">1</a></sup>. The airline’s crew scheduling system, a legacy software program called SkySolver, was designed to optimize crew reassignments during standard, localized disruptions<sup><a href="#fn-3">3</a></sup>.</p>
-    <p>However, because Southwest operates a point-to-point network rather than a hub-and-spoke system, a single delay cascades across a long, linear chain of flights<sup><a href="#fn-1">1</a></sup>. When the winter storm hit, the scheduling software could not handle the sheer volume of changes<sup><a href="#fn-7">7</a></sup>. The system’s database became entirely decoupled from physical reality—essentially losing track of where pilots and flight attendants were located<sup><a href="#fn-1">1</a></sup>.</p>
-    <p>Because the software lacked real-time, automated updates, the airline was forced to revert to manual phone coordination<sup><a href="#fn-4">4</a></sup>. Schedulers had to comb through spreadsheets and field individual phone calls from thousands of idle pilots and flight attendants<sup><a href="#fn-5">5</a></sup>. The phone lines jammed completely, forcing crew members to wait on hold for up to nine hours just to report their status<sup><a href="#fn-2">2</a></sup>.</p>
-    <p>The physical assets—the aircraft and the crews—were fully available, but the digital brain that coordinated them had fractured<sup><a href="#fn-6">6</a></sup>. This structural failure demonstrates a fundamental rule of the modern business landscape: operational excellence is entirely dependent on the strength, scalability, and design of an organization's information systems<sup><a href="#fn-2">2</a></sup>.</p>
+    <header>
+      <div class="book-meta">
+        <strong>Information Systems and Digital Transformation in the Age of AI: A Georgia Tech Perspective</strong>
+        Chapter 1: Information Systems
+      </div>
+      <h1>1.1 Technology and the Modern Enterprise</h1>
+    </header>
+
+    <h2>How Information Systems Drive Modern Enterprise Strategy</h2>
+    <h3>The Tectonic Shifts of Modern Enterprise</h3>
+    <p>In late December 2022, a brutal winter freeze swept across the United States, bringing extreme cold, heavy snow, and high winds at the peak of the holiday travel season<sup id="ref-1"><a href="#note-1">[1]</a></sup>. Every commercial airline scrambled to adjust, yet almost all of them managed to recover their footing within a matter of hours<sup id="ref-2"><a href="#note-2">[2]</a></sup>. United Airlines, for example, canceled approximately 36% of its flights during the worst of the storm but still managed to get 90% of its passengers to their destinations within four hours of their scheduled times<sup id="ref-2-2"><a href="#note-2">[2]</a></sup>.</p>
+    <p>At Southwest Airlines, however, the operational situation disintegrated into the costliest scheduling meltdown in the history of commercial aviation<sup id="ref-1-2"><a href="#note-1">[1]</a></sup>. Over the course of ten days, Southwest canceled more than 16,900 flights, leaving over two million passengers stranded in airport terminals. The financial toll was staggering, ultimately costing the company between $1.1 billion and $1.2 billion in lost revenues, passenger reimbursements, and a record-setting $140 million civil penalty from the U.S. Department of Transportation.</p>
+    <p>The root cause of this historic operational failure was not the weather<sup id="ref-1-3"><a href="#note-1">[1]</a></sup>. Instead, it was the collapse of Southwest&#x27;s internal information systems under the weight of decades of accumulated <strong>technical debt</strong><sup id="ref-2-3"><a href="#note-2">[2]</a></sup>. While Southwest had grown into the third-largest domestic carrier in the United States, its technological infrastructure had failed to keep pace with its expansion<sup id="ref-1-4"><a href="#note-1">[1]</a></sup>. The airline’s crew scheduling system, a legacy software program called SkySolver, was designed to optimize crew reassignments during standard, localized disruptions<sup id="ref-3"><a href="#note-3">[3]</a></sup>.</p>
+    <p>However, because Southwest operates a point-to-point network rather than a hub-and-spoke system, a single delay cascades across a long, linear chain of flights. When the winter storm hit, the scheduling software could not handle the sheer volume of changes<sup id="ref-7"><a href="#note-7">[7]</a></sup>. The system’s database became entirely decoupled from physical reality—essentially losing track of where pilots and flight attendants were located<sup id="ref-1-5"><a href="#note-1">[1]</a></sup>.</p>
+    <p>Because the software lacked real-time, automated updates, the airline was forced to revert to manual phone coordination<sup id="ref-4"><a href="#note-4">[4]</a></sup>. Schedulers had to comb through spreadsheets and field individual phone calls from thousands of idle pilots and flight attendants<sup id="ref-5"><a href="#note-5">[5]</a></sup>. The phone lines jammed completely, forcing crew members to wait on hold for up to nine hours just to report their status<sup id="ref-2-4"><a href="#note-2">[2]</a></sup>.</p>
+    <p>The physical assets—the aircraft and the crews—were fully available, but the digital brain that coordinated them had fractured<sup id="ref-6"><a href="#note-6">[6]</a></sup>. This structural failure demonstrates a fundamental rule of the modern business landscape: operational excellence is entirely dependent on the strength, scalability, and design of an organization&#x27;s information systems<sup id="ref-2-5"><a href="#note-2">[2]</a></sup>.</p>
     <div class="table-wrap">
-    <table>
-      <caption>Table 1.1a Southwest Airlines Crisis: Operational Metrics and Peer Comparison</caption>
-      <thead>
-        <tr>
-          <th><strong>Operational Metric</strong></th>
-          <th><strong>Southwest Airlines</strong></th>
-          <th><strong>Peer Carriers (Average)</strong></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Cancellations during Crisis</strong></td>
-          <td>Over 16,900 flights (60%+ of schedule on peak days)<sup><a href="#fn-1">1</a></sup></td>
-          <td>Rapid recovery within 24-48 hours of storm passage<sup><a href="#fn-1">1</a></sup></td>
-        </tr>
-        <tr>
-          <td><strong>Primary Failure Mechanism</strong></td>
-          <td>SkySolver database decoupling, manual phone coordination<sup><a href="#fn-1">1</a></sup></td>
-          <td>Automated hub-and-spoke crew recovery systems<sup><a href="#fn-2">2</a></sup></td>
-        </tr>
-        <tr>
-          <td><strong>Crew Status Wait Times</strong></td>
-          <td>Up to 9 hours on hold via analog voice lines<sup><a href="#fn-2">2</a></sup></td>
-          <td>Digital self-service check-in and automated reassignment</td>
-        </tr>
-        <tr>
-          <td><strong>Total Financial Loss</strong></td>
-          <td>$1.1 Billion – $1.2 Billion<sup><a href="#fn-1">1</a></sup></td>
-          <td>Minor seasonal earnings impact</td>
-        </tr>
-        <tr>
-          <td><strong>Regulatory Civil Penalty</strong></td>
-          <td>$140 Million (largest in DOT history)<sup><a href="#fn-1">1</a></sup></td>
-          <td>$0</td>
-        </tr>
-      </tbody>
-    </table>
+      <table>
+        <caption><strong><em>Table 1.1</em></strong><strong><em>a</em></strong><strong><em> Southwest Airlines Crisis: Operational Metrics and Peer Comparison</em></strong></caption>
+        <thead>
+          <tr>
+            <th><strong>Operational Metric</strong></th>
+            <th><strong>Southwest Airlines</strong></th>
+            <th><strong>Peer Carriers (Average)</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cancellations during Crisis</strong></td>
+            <td>Over 16,900 flights (60%+ of schedule on peak days)</td>
+            <td>Rapid recovery within 24-48 hours of storm passage</td>
+          </tr>
+          <tr>
+            <td><strong>Primary Failure Mechanism</strong></td>
+            <td>SkySolver database decoupling, manual phone coordination</td>
+            <td>Automated hub-and-spoke crew recovery systems</td>
+          </tr>
+          <tr>
+            <td><strong>Crew Status Wait Times</strong></td>
+            <td>Up to 9 hours on hold via analog voice lines</td>
+            <td>Digital self-service check-in and automated reassignment</td>
+          </tr>
+          <tr>
+            <td><strong>Total Financial Loss</strong></td>
+            <td>$1.1 Billion – $1.2 Billion</td>
+            <td>Minor seasonal earnings impact</td>
+          </tr>
+          <tr>
+            <td><strong>Regulatory Civil Penalty</strong></td>
+            <td>$140 Million (largest in DOT history)</td>
+            <td>$0</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <p>In sharp contrast to this cautionary tale sits the strategic turnaround of Domino’s Pizza<sup><a href="#fn-8">8</a></sup>. In 2008, Domino’s was facing an existential brand crisis<sup><a href="#fn-9">9</a></sup>. Consumer sentiment had hit an all-time low; focus groups routinely compared the company's product to "cardboard," and employees posted viral videos exposing unsanitary kitchen conditions<sup><a href="#fn-9">9</a></sup>. The company's stock price hovered under $10 per share<sup><a href="#fn-8">8</a></sup>.</p>
-    <p>Under the leadership of Chief Executive Officer Patrick Doyle and Chief Digital Officer Dennis Maloney, Domino’s launched a dual-pronged recovery plan<sup><a href="#fn-8">8</a></sup>. First, the company publicly admitted its culinary failures, completely reformulated its core recipes, and invited the public to watch the transformation in real time<sup><a href="#fn-8">8</a></sup>.</p>
-    <p>Second, and more importantly, Domino's transformed its identity<sup><a href="#fn-9">9</a></sup>. The executive team recognized that in a convenience-driven market, digital interactions were the primary driver of customer loyalty<sup><a href="#fn-9">9</a></sup>. Domino's began operating like a Silicon Valley software house rather than a quick-service restaurant chain, declaring itself "a technology company that delivers pizza"<sup><a href="#fn-10">10</a></sup>.</p>
-    <p>Domino's invested heavily in custom digital platforms, bypassing third-party delivery aggregators to maintain direct ownership of its customer data<sup><a href="#fn-11">11</a></sup>. The company introduced the "Pizza Tracker" to give consumers real-time transparency into kitchen operations and developed the "Anyware" platform<sup><a href="#fn-8">8</a></sup>. Anyware allowed consumers to order food seamlessly from smartwatches, Amazon Alexa, Apple CarPlay, or even by texting a single pizza emoji<sup><a href="#fn-12">12</a></sup>.</p>
-    <p>Behind the scenes, the firm deployed predictive analytics and artificial intelligence to optimize logistics, automate inventory, and refine delivery routes<sup><a href="#fn-9">9</a></sup>.</p>
-    <p>The results were unprecedented. Same-store sales surged, and the brand permanently repositioned itself as a premium technology and quality leader<sup><a href="#fn-8">8</a></sup>. By 2017, Domino's stock price had risen from under $10 to over $400, outperforming tech giants like Apple, Amazon, Google, and the rest of the FAANG cohort over that same ten-year window<sup><a href="#fn-8">8</a></sup>.</p>
-    <p>The lesson is clear: information systems are not merely administrative tools to be managed by an isolated IT department<sup><a href="#fn-10">10</a></sup>. When properly aligned with business strategy, they are the single most powerful driver of competitive advantage, operational agility, and long-term enterprise value<sup><a href="#fn-4">4</a></sup>.</p>
-    <p>The Southwest and Domino's examples show two sides of enterprise technology: systems can become a liability when neglected or a source of advantage when aligned with strategy. The next question is why the market increasingly rewards firms that treat software, data, and platforms as central assets.</p>
-    <h2 id="the-tech-driven-economy-why-the-world-s-biggest-firms-are-now-tech-companies">The Tech-Driven Economy: Why the World's Biggest Firms Are Now Tech Companies</h2>
+
+    <p>In sharp contrast to this cautionary tale sits the strategic turnaround of Domino’s Pizza. In 2008, Domino’s was facing an existential brand crisis<sup id="ref-9"><a href="#note-9">[9]</a></sup>. Consumer sentiment had hit an all-time low; focus groups routinely compared the company&#x27;s product to &quot;cardboard,&quot; and employees posted viral videos exposing unsanitary kitchen conditions<sup id="ref-9-2"><a href="#note-9">[9]</a></sup>. The company&#x27;s stock price hovered under $10 per share<sup id="ref-8"><a href="#note-8">[8]</a></sup>.</p>
+    <p>Under the leadership of Chief Executive Officer Patrick Doyle and Chief Digital Officer Dennis Maloney, Domino’s launched a dual-pronged recovery plan<sup id="ref-8-2"><a href="#note-8">[8]</a></sup>. First, the company publicly admitted its culinary failures, completely reformulated its core recipes, and invited the public to watch the transformation in real time<sup id="ref-8-3"><a href="#note-8">[8]</a></sup>.</p>
+    <p>Second, and more importantly, Domino&#x27;s transformed its identity. The executive team recognized that in a convenience-driven market, digital interactions were the primary driver of customer loyalty<sup id="ref-9-3"><a href="#note-9">[9]</a></sup>. Domino&#x27;s began operating like a Silicon Valley software house rather than a quick-service restaurant chain, declaring itself &quot;a technology company that delivers pizza&quot;<sup id="ref-10"><a href="#note-10">[10]</a></sup>.</p>
+    <p>Domino&#x27;s invested heavily in custom digital platforms, bypassing third-party delivery aggregators to maintain direct ownership of its customer data. The company introduced the &quot;Pizza Tracker&quot; to give consumers real-time transparency into kitchen operations and developed the &quot;Anyware&quot; platform<sup id="ref-8-4"><a href="#note-8">[8]</a></sup>. Anyware allowed consumers to order food seamlessly from smartwatches, Amazon Alexa, Apple CarPlay, or even by texting a single pizza emoji<sup id="ref-11"><a href="#note-11">[11]</a></sup>.</p>
+    <p>Behind the scenes, the firm deployed predictive analytics and artificial intelligence to optimize logistics, automate inventory, and refine delivery routes<sup id="ref-9-4"><a href="#note-9">[9]</a></sup>.</p>
+    <p>The results were unprecedented. Same-store sales surged, and the brand permanently repositioned itself as a premium technology and quality leader. By 2017, Domino&#x27;s stock price had risen from under $10 to over $400, outperforming tech giants like Apple, Amazon, Google, and the rest of the FAANG cohort over that same ten-year window<sup id="ref-8-5"><a href="#note-8">[8]</a></sup>.</p>
+    <p>The lesson is clear: information systems are not merely administrative tools to be managed by an isolated IT department<sup id="ref-10-2"><a href="#note-10">[10]</a></sup>. When properly aligned with business strategy, they are the single most powerful driver of competitive advantage, operational agility, and long-term enterprise value<sup id="ref-4-2"><a href="#note-4">[4]</a></sup>.</p>
+    <p>The Southwest and Domino&#x27;s examples show two sides of enterprise technology: systems can become a liability when neglected or a source of advantage when aligned with strategy. The next question is why the market increasingly rewards firms that treat software, data, and platforms as central assets.</p>
+    <h2>The Tech-Driven Economy: Why the World&#x27;s Biggest Firms Are Now Tech Companies</h2>
     <p>Step inside the cab of a modern John Deere tractor, and you are not just looking at diesel power and heavy steel. You are stepping into a high-performance supercomputer on wheels.</p>
-    <p>Equipped with high-resolution cameras, edge-computing processors, and advanced computer vision algorithms, Deere’s "See &amp; Spray" technology can differentiate between target crops and invasive weeds in milliseconds, precision-spraying herbicide only where needed<sup><a href="#fn-13">13</a></sup>. Deere is no longer just a machinery company; it is an advanced AI and software engineering powerhouse<sup><a href="#fn-13">13</a></sup>. The company has publicly committed to generating 10 percent of its annual revenue from recurring software subscriptions by 2030<sup><a href="#fn-14">14</a></sup>.</p>
-    <p>This transformation illustrates a fundamental shift in modern commerce: technology is no longer a back-office utility designed to automate routine paperwork. Information technology (IT) has become the primary engine of corporate strategy, market valuation, and global economic expansion<sup><a href="#fn-15">15</a></sup>.</p>
-    <figure class="book-figure" id="figure-1-1a">
-      <p class="figure-title">Figure 1.1a The Evolution of Corporate Value</p>
-      <img src="../figures/figure-1-1a.png" alt="Comparison of traditional industrial value drivers with digital platform value drivers">
-      <p class="source">Source: author</p>
-    <details class="long-description">
-      <summary><span class="show-label">Show long description</span><span class="hide-label">Hide long description</span></summary>
-      <div class="long-description-panel">
-        <strong>Long description</strong>
-        <p>The figure is titled “The Evolution of Corporate Value” and is arranged as a two-part comparison on a white background. The top half is labeled “Traditional Industrial Model.” It shows a left-to-right sequence of four rounded boxes connected by arrows: “Heavy Capital Requirements,” “Physical Assets,” “Linear Growth,” and “One-Time Sales.” This top row presents the idea that value in the industrial model depends on large up-front investment in physical resources and tends to grow more slowly and linearly.</p>
-        <p>A downward arrow in the center marks a shift toward a different model. The bottom half is labeled “Digital Platform Model.” It also shows four rounded boxes connected by arrows from left to right: “Software Infrastructure,” “Data Loops,” “Exponential Scale,” and “Recurring Subscriptions.” This bottom row shows that value in the platform model comes from software, data feedback, and the ability to scale quickly while earning recurring revenue.</p>
-        <p>A brief note near the bottom states that digital platforms can create value through software, data feedback loops, and recurring revenue. The overall purpose of the figure is to contrast a traditional asset-heavy business model with a digital platform model driven by feedback and scale.</p>
-      </div>
-    </details>
-    </figure>
-    <h3 id="the-great-economic-realignment">The Great Economic Realignment</h3>
-    <p>To appreciate how thoroughly technology has rewritten the rules of global business, consider how the world’s leaderboard of corporate value has shifted over the past quarter-century<sup><a href="#fn-16">16</a></sup>.</p>
-    <p>At the turn of the millennium, the most valuable public companies measured by <strong>market capitalization</strong>—the total dollar value of a firm’s outstanding shares of stock—were industrial conglomerates, oil producers, and traditional brick-and-mortar retailers<sup><a href="#fn-16">16</a></sup>. General Electric, ExxonMobil, and Walmart set the pace for business scale<sup><a href="#fn-17">17</a></sup>.</p>
+    <p>Equipped with high-resolution cameras, edge-computing processors, and advanced computer vision algorithms, Deere’s &quot;See &amp; Spray&quot; technology can differentiate between target crops and invasive weeds in milliseconds, precision-spraying herbicide only where needed<sup id="ref-12"><a href="#note-12">[12]</a></sup>. Deere is no longer just a machinery company; it is an advanced AI and software engineering powerhouse. The company has publicly committed to generating 10 percent of its annual revenue from recurring software subscriptions by 2030<sup id="ref-13"><a href="#note-13">[13]</a></sup>.</p>
+    <p>This transformation illustrates a fundamental shift in modern commerce: technology is no longer a back-office utility designed to automate routine paperwork. Information technology (IT) has become the primary engine of corporate strategy, market valuation, and global economic expansion<sup id="ref-14"><a href="#note-14">[14]</a></sup>.</p>
+    <h3>The Great Economic Realignment</h3>
+    <p>To appreciate how thoroughly technology has rewritten the rules of global business, consider how the world’s leaderboard of corporate value has shifted over the past quarter-century.</p>
+    <p>At the turn of the millennium, the most valuable public companies measured by <strong>market capitalization</strong>—the total dollar value of a firm’s outstanding shares of stock—were industrial conglomerates, oil producers, and traditional brick-and-mortar retailers<sup id="ref-15"><a href="#note-15">[15]</a></sup>. General Electric, ExxonMobil, and Walmart set the pace for business scale<sup id="ref-16"><a href="#note-16">[16]</a></sup>.</p>
     <div class="table-wrap">
-    <table>
-      <caption>Table 1.1b Corporate Value Has Shifted Toward Technology Platforms</caption>
-      <thead>
-        <tr>
-          <th><strong>Rank</strong></th>
-          <th><strong>Top Companies by Market Cap (Jan 2000)</strong></th>
-          <th><strong>Top Companies by Market Cap (Recent Period)</strong></th>
-          <th><strong>Core Drivers of Modern Valuation</strong></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>1</strong></td>
-          <td>Microsoft ($606B)<sup><a href="#fn-17">17</a></sup></td>
-          <td>Nvidia ($4.5T – $5.0T+)<sup><a href="#fn-18">18</a></sup></td>
-          <td>AI infrastructure, GPU accelerators, parallel computing stack<sup><a href="#fn-16">16</a></sup></td>
-        </tr>
-        <tr>
-          <td><strong>2</strong></td>
-          <td>General Electric ($508B)<sup><a href="#fn-17">17</a></sup></td>
-          <td>Apple ($4.0T – $4.8T)<sup><a href="#fn-18">18</a></sup></td>
-          <td>Integrated hardware platforms, consumer ecosystem, services<sup><a href="#fn-16">16</a></sup></td>
-        </tr>
-        <tr>
-          <td><strong>3</strong></td>
-          <td>NTT Docomo ($367B)<sup><a href="#fn-17">17</a></sup></td>
-          <td>Alphabet / Google ($3.8T – $4.2T)<sup><a href="#fn-18">18</a></sup></td>
-          <td>Search, digital advertising networks, cloud computing, AI platforms<sup><a href="#fn-16">16</a></sup></td>
-        </tr>
-        <tr>
-          <td><strong>4</strong></td>
-          <td>Cisco Systems ($352B)<sup><a href="#fn-17">17</a></sup></td>
-          <td>Microsoft ($2.9T – $3.8T)<sup><a href="#fn-18">18</a></sup></td>
-          <td>Enterprise cloud infrastructure (Azure), SaaS tools, AI models<sup><a href="#fn-16">16</a></sup></td>
-        </tr>
-        <tr>
-          <td><strong>5</strong></td>
-          <td>Walmart ($302B)<sup><a href="#fn-17">17</a></sup></td>
-          <td>Amazon ($2.3T – $2.7T)<sup><a href="#fn-18">18</a></sup></td>
-          <td>E-commerce infrastructure, cloud computing (AWS), platform logistics<sup><a href="#fn-16">16</a></sup></td>
-        </tr>
-      </tbody>
-    </table>
+      <table>
+        <caption><strong><em>Table 1.</em></strong><strong><em>1b</em></strong><strong><em> Corporate Value Has Shifted Toward Technology Platforms</em></strong></caption>
+        <thead>
+          <tr>
+            <th><strong>Rank</strong></th>
+            <th><strong>Top Companies by Market Cap (Jan 2000)</strong></th>
+            <th><strong>Top Companies by Market Cap (Recent Period)</strong></th>
+            <th><strong>Core Drivers of Modern Valuation</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td>Microsoft ($606B)<sup id="ref-16-2"><a href="#note-16">[16]</a></sup></td>
+            <td>Nvidia ($4.5T – $5.0T+)<sup id="ref-17"><a href="#note-17">[17]</a></sup></td>
+            <td>AI infrastructure, GPU accelerators, parallel computing stack<sup id="ref-15-2"><a href="#note-15">[15]</a></sup></td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td>General Electric ($508B)<sup id="ref-16-3"><a href="#note-16">[16]</a></sup></td>
+            <td>Apple ($4.0T – $4.8T)<sup id="ref-17-2"><a href="#note-17">[17]</a></sup></td>
+            <td>Integrated hardware platforms, consumer ecosystem, services<sup id="ref-15-3"><a href="#note-15">[15]</a></sup></td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td>NTT Docomo ($367B)<sup id="ref-16-4"><a href="#note-16">[16]</a></sup></td>
+            <td>Alphabet / Google ($3.8T – $4.2T)<sup id="ref-17-3"><a href="#note-17">[17]</a></sup></td>
+            <td>Search, digital advertising networks, cloud computing, AI platforms<sup id="ref-15-4"><a href="#note-15">[15]</a></sup></td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td>Cisco Systems ($352B)<sup id="ref-16-5"><a href="#note-16">[16]</a></sup></td>
+            <td>Microsoft ($2.9T – $3.8T)<sup id="ref-17-4"><a href="#note-17">[17]</a></sup></td>
+            <td>Enterprise cloud infrastructure (Azure), SaaS tools, AI models<sup id="ref-15-5"><a href="#note-15">[15]</a></sup></td>
+          </tr>
+          <tr>
+            <td><strong>5</strong></td>
+            <td>Walmart ($302B)<sup id="ref-16-6"><a href="#note-16">[16]</a></sup></td>
+            <td>Amazon ($2.3T – $2.7T)<sup id="ref-17-5"><a href="#note-17">[17]</a></sup></td>
+            <td>E-commerce infrastructure, cloud computing (AWS), platform logistics<sup id="ref-15-6"><a href="#note-15">[15]</a></sup></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <p>Today, technology powerhouses dominate the top rankings<sup><a href="#fn-18">18</a></sup>. Hardware manufacturers like Nvidia, cloud providers like Microsoft and Alphabet, consumer ecosystem leaders like Apple, and digital logistics platforms like Amazon routinely command multi-trillion-dollar valuations<sup><a href="#fn-16">16</a></sup>.</p>
-    <h3 id="why-software-models-scale-margins-networks-and-subscriptions">Why Software Models Scale: Margins, Networks, and Subscriptions</h3>
-    <p>Why have financial markets revalued technology enterprises so dramatically over traditional firms? The answer lies in the fundamental economics of digital businesses<sup><a href="#fn-14">14</a></sup>.</p>
-    <p>Traditional manufacturing and brick-and-mortar retail businesses face significant physical friction<sup><a href="#fn-14">14</a></sup>. To double its revenue, a traditional retailer must construct new stores, hire store associates, and stock physical inventory<sup><a href="#fn-14">14</a></sup>. This creates high marginal costs—the cost required to produce one additional unit of a product or service.</p>
-    <p>Software and digital platforms operate under very different economic rules<sup><a href="#fn-14">14</a></sup>:</p>
+
+    <p>Today, technology powerhouses dominate the top rankings<sup id="ref-17-6"><a href="#note-17">[17]</a></sup>. Hardware manufacturers like Nvidia, cloud providers like Microsoft and Alphabet, consumer ecosystem leaders like Apple, and digital logistics platforms like Amazon routinely command multi-trillion-dollar valuations<sup id="ref-15-7"><a href="#note-15">[15]</a></sup>.</p>
+    <figure class="book-figure">
+      <p class="figure-title"><strong>Figure 1.1a The Evolution of Corporate Value</strong></p>
+      <img src="../figures/figure-1-1a.png" alt="The Evolution of Corporate Value">
+      <p class="source">Source: author-created adaptation.</p>
+      <details class="long-description">
+        <summary>
+          <span class="show-label">Show long description</span>
+          <span class="hide-label">Hide long description</span>
+        </summary>
+        <div class="long-description-panel">
+          <strong>Long Description</strong>
+          <p>The figure is titled “The Evolution of Corporate Value” and is arranged as a two-part comparison on a white background. The top half is labeled “Traditional Industrial Model.” It shows a left-to-right sequence of four rounded boxes connected by arrows: “Heavy Capital Requirements,” “Physical Assets,” “Linear Growth,” and “One-Time Sales.” This top row presents the idea that value in the industrial model depends on large up-front investment in physical resources and tends to grow more slowly and linearly.</p>
+          <p>A downward arrow in the center marks a shift toward a different model. The bottom half is labeled “Digital Platform Model.” It also shows four rounded boxes connected by arrows from left to right: “Software Infrastructure,” “Data Loops,” “Exponential Scale,” and “Recurring Subscriptions.” This bottom row shows that value in the platform model comes from software, data feedback, and the ability to scale quickly while earning recurring revenue.</p>
+          <p>A brief note near the bottom states that digital platforms can create value through software, data feedback loops, and recurring revenue. The overall purpose of the figure is to contrast a traditional asset-heavy business model with a digital platform model driven by feedback and scale.</p>
+        </div>
+      </details>
+    </figure>
+
+    <h3>Why Software Models Scale: Margins, Networks, and Subscriptions</h3>
+    <p>Why have financial markets revalued technology enterprises so dramatically over traditional firms? The answer lies in the fundamental economics of digital businesses<sup id="ref-13-2"><a href="#note-13">[13]</a></sup>.</p>
+    <p>Traditional manufacturing and brick-and-mortar retail businesses face significant physical friction<sup id="ref-13-3"><a href="#note-13">[13]</a></sup>. To double its revenue, a traditional retailer must construct new stores, hire store associates, and stock physical inventory<sup id="ref-13-4"><a href="#note-13">[13]</a></sup>. This creates high marginal costs—the cost required to produce one additional unit of a product or service.</p>
+    <p>Software and digital platforms operate under very different economic rules<sup id="ref-13-5"><a href="#note-13">[13]</a></sup>:</p>
     <ul>
-      <li><strong>Near-Zero Marginal Costs</strong>: Once a software application or digital service is built, the cost of serving the ten-thousandth user is virtually identical to serving the first<sup><a href="#fn-14">14</a></sup>.</li>
+      <li><strong>Near-Zero Marginal Costs</strong>: Once a software application or digital service is built, the cost of serving the ten-thousandth user is virtually identical to serving the first<sup id="ref-13-6"><a href="#note-13">[13]</a></sup>.</li>
       <li><strong>High Gross Margins</strong>: Software businesses frequently operate at gross margins of 70 to 80 percent or higher, whereas physical retail and manufacturing margins are often constrained to single digits or low double digits.</li>
-      <li><strong>Predictable Recurring Revenue</strong>: Through <strong>Software-as-a-Service (SaaS)</strong> delivery models, companies replace volatile, one-time sales cycles with stable, predictable subscription revenue streams<sup><a href="#fn-14">14</a></sup>.</li>
-      <li><strong>Network Effects</strong>: Modern tech firms build <strong>platform ecosystems</strong> where a platform becomes exponentially more valuable to users as more people use it and more third-party developers build for it<sup><a href="#fn-13">13</a></sup>.</li>
+      <li><strong>Predictable Recurring Revenue</strong>: Through <strong>Software-as-a-Service (SaaS)</strong> delivery models, companies replace volatile, one-time sales cycles with stable, predictable subscription revenue streams<sup id="ref-13-7"><a href="#note-13">[13]</a></sup>.</li>
+      <li><strong>Network Effects</strong>: Modern tech firms build <strong>platform ecosystems</strong> where a platform becomes exponentially more valuable to users as more people use it and more third-party developers build for it<sup id="ref-12-2"><a href="#note-12">[12]</a></sup>.</li>
     </ul>
-    <p>Through <strong>digital transformation</strong>, non-tech companies are embedding these software mechanics into physical products<sup><a href="#fn-13">13</a></sup>. When John Deere attaches subscription software to a physical tractor, it converts a low-margin hardware transaction into a high-margin, recurring software relationship<sup><a href="#fn-13">13</a></sup>.</p>
-    <h3 id="it-in-the-macroeconomy-measuring-the-digital-gdp-engine">IT in the Macroeconomy: Measuring the Digital GDP Engine</h3>
-    <p>The dominant position of tech companies on Wall Street mirrors their expansion across global GDP<sup><a href="#fn-15">15</a></sup>.</p>
-    <p>Data from the U.S. Bureau of Economic Analysis (BEA) indicates that the digital economy generates over $2.6 trillion in value added, accounting for more than 10 percent of total U.S. Gross Domestic Product<sup><a href="#fn-15">15</a></sup>. Over the past decade, the digital economy has expanded at more than triple the annual compound growth rate of the broader economy<sup><a href="#fn-15">15</a></sup>.</p>
-    <figure class="book-figure" id="figure-1-1b">
-      <p class="figure-title">Figure 1.1b The Dual Motors of Enterprise Value</p>
-      <img src="../figures/figure-1-1b.png" alt="Process diagram linking data sources, platform, analytics and AI, action, governance, and feedback">
-      <p class="source">Source: author</p>
-    <details class="long-description">
-      <summary><span class="show-label">Show long description</span><span class="hide-label">Hide long description</span></summary>
-      <div class="long-description-panel">
-        <strong>Long description</strong>
-        <p><em>The figure is a simple process diagram titled “From Data to Managerial Action.” It shows a left-to-right sequence of four rounded boxes. The first box is labeled “Data Sources” and lists examples such as sales, sensors, tickets, and surveys. An arrow points from this box to the second box, labeled “Platform,” which includes data rules, access, and security. Another arrow leads to the third box, labeled “Analytics + AI,” with examples including classification, prediction, and drafting. A final arrow leads to the fourth box, labeled “Action,” which includes decisions and workflow.</em></p>
-        <p><em>Beneath the main flow is a horizontal governance bar. It highlights governance concerns such as ownership, privacy, quality, and accountability. Dashed curved arrows connect the governance bar back into the main process, showing that governance affects the flow of data and action across the system. At the bottom, a feedback statement explains that feedback improves data, processes, and decisions. The overall message is that organizational value increases when data, platforms, analytics, and managerial action are connected in a governed and repeatable process.</em></p>
-      </div>
-    </details>
-    </figure>
-    <p>To support this digital backbone, enterprise technology expenditures have scaled rapidly<sup><a href="#fn-19">19</a></sup>. According to market forecasts by Gartner, worldwide annual IT spending has surpassed $6.3 trillion<sup><a href="#fn-19">19</a></sup>.</p>
+    <p>Through <strong>digital transformation</strong>, non-tech companies are embedding these software mechanics into physical products<sup id="ref-12-3"><a href="#note-12">[12]</a></sup>. When John Deere attaches subscription software to a physical tractor, it converts a low-margin hardware transaction into a high-margin, recurring software relationship<sup id="ref-12-4"><a href="#note-12">[12]</a></sup>.</p>
+    <h3>IT in the Macroeconomy: Measuring the Digital GDP Engine</h3>
+    <p>The dominant position of tech companies on Wall Street mirrors their expansion across global GDP.</p>
+    <p>Data from the U.S. Bureau of Economic Analysis (BEA) indicates that the digital economy generates over $2.6 trillion in value added, accounting for more than 10 percent of total U.S. Gross Domestic Product. Over the past decade, the digital economy has expanded at more than triple the annual compound growth rate of the broader economy<sup id="ref-14-2"><a href="#note-14">[14]</a></sup>.</p>
+    <p>To support this digital backbone, enterprise technology expenditures have scaled rapidly. According to market forecasts by Gartner, worldwide annual IT spending has surpassed $6.3 trillion<sup id="ref-18"><a href="#note-18">[18]</a></sup>.</p>
     <div class="table-wrap">
-    <table>
-      <caption>Table 1.1c Major Categories of Global IT Spending</caption>
-      <thead>
-        <tr>
-          <th><strong>IT Spending Sector</strong></th>
-          <th><strong>Projected Global Volume</strong></th>
-          <th><strong>Core Operational Investments</strong></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>IT Services</strong></td>
-          <td>~$1.87 Trillion<sup><a href="#fn-19">19</a></sup></td>
-          <td>Cloud integration, managed security, enterprise digital transformation<sup><a href="#fn-19">19</a></sup></td>
-        </tr>
-        <tr>
-          <td><strong>Software</strong></td>
-          <td>~$1.44 Trillion<sup><a href="#fn-19">19</a></sup></td>
-          <td>Enterprise SaaS suites, analytics platforms, AI developer tools<sup><a href="#fn-19">19</a></sup></td>
-        </tr>
-        <tr>
-          <td><strong>Communications Services</strong></td>
-          <td>~$1.36 Trillion<sup><a href="#fn-19">19</a></sup></td>
-          <td>Enterprise networking, 5G connectivity, cloud data backbones<sup><a href="#fn-19">19</a></sup></td>
-        </tr>
-        <tr>
-          <td><strong>Devices</strong></td>
-          <td>~$856 Billion<sup><a href="#fn-19">19</a></sup></td>
-          <td>AI-optimized workstations, enterprise mobility hardware, tablet fleets<sup><a href="#fn-19">19</a></sup></td>
-        </tr>
-        <tr>
-          <td><strong>Data Center Systems</strong></td>
-          <td>~$788+ Billion<sup><a href="#fn-19">19</a></sup></td>
-          <td>Hyperscale cloud builds, specialized AI server racks, advanced high-bandwidth memory<sup><a href="#fn-19">19</a></sup></td>
-        </tr>
-      </tbody>
-    </table>
+      <table>
+        <caption><strong><em>Table 1.</em></strong><strong><em>1c</em></strong><strong><em> Major Categories of Global IT Spending</em></strong></caption>
+        <thead>
+          <tr>
+            <th><strong>IT Spending Sector</strong></th>
+            <th><strong>Projected Global Volume</strong></th>
+            <th><strong>Core Operational Investments</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>IT Services</strong></td>
+            <td>~$1.87 Trillion<sup id="ref-18-2"><a href="#note-18">[18]</a></sup></td>
+            <td>Cloud integration, managed security, enterprise digital transformation<sup id="ref-18-3"><a href="#note-18">[18]</a></sup></td>
+          </tr>
+          <tr>
+            <td><strong>Software</strong></td>
+            <td>~$1.44 Trillion<sup id="ref-18-4"><a href="#note-18">[18]</a></sup></td>
+            <td>Enterprise SaaS suites, analytics platforms, AI developer tools<sup id="ref-18-5"><a href="#note-18">[18]</a></sup></td>
+          </tr>
+          <tr>
+            <td><strong>Communications Services</strong></td>
+            <td>~$1.36 Trillion<sup id="ref-18-6"><a href="#note-18">[18]</a></sup></td>
+            <td>Enterprise networking, 5G connectivity, cloud data backbones<sup id="ref-18-7"><a href="#note-18">[18]</a></sup></td>
+          </tr>
+          <tr>
+            <td><strong>Devices</strong></td>
+            <td>~$856 Billion<sup id="ref-18-8"><a href="#note-18">[18]</a></sup></td>
+            <td>AI-optimized workstations, enterprise mobility hardware, tablet fleets<sup id="ref-18-9"><a href="#note-18">[18]</a></sup></td>
+          </tr>
+          <tr>
+            <td><strong>Data Center Systems</strong></td>
+            <td>~$788+ Billion<sup id="ref-18-10"><a href="#note-18">[18]</a></sup></td>
+            <td>Hyperscale cloud builds, specialized AI server racks, advanced high-bandwidth memory<sup id="ref-18-11"><a href="#note-18">[18]</a></sup></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <p>For managers across any industry, these figures demonstrate that technology decisions directly govern cost structures, operational capabilities, and market competitiveness<sup><a href="#fn-13">13</a></sup>.</p>
-    <h3 id="the-artificial-intelligence-catalyst">The Artificial Intelligence Catalyst</h3>
-    <p>The arrival of <strong>artificial intelligence (AI)</strong> has accelerated the reallocation of enterprise capital toward technology<sup><a href="#fn-19">19</a></sup>. AI represents an infrastructure super-cycle that is reshaping the modern technology stack<sup><a href="#fn-16">16</a></sup>.</p>
-    <p>To run generative AI applications, organizations require massive computational capacity<sup><a href="#fn-19">19</a></sup>. This demand drove Nvidia's ascent into the top ranks of global corporate market capitalization, as enterprise cloud providers raced to secure state-of-the-art AI accelerator chips<sup><a href="#fn-16">16</a></sup>. Gartner reports that global spending on data center systems has experienced historic surge rates over 50 percent year-over-year as technology providers construct dedicated AI infrastructure<sup><a href="#fn-19">19</a></sup>.</p>
-    <figure class="book-figure" id="figure-1-1c">
-      <p class="figure-title">Figure 1.1c The Enterprise AI Tech Stack</p>
-      <img src="../figures/figure-1-1c.jpg" alt="Three-layer enterprise AI tech stack showing application, model platform, and infrastructure layers">
+
+    <p>For managers across any industry, these figures demonstrate that technology decisions directly govern cost structures, operational capabilities, and market competitiveness<sup id="ref-12-5"><a href="#note-12">[12]</a></sup>.</p>
+    <h3>The Artificial Intelligence Catalyst</h3>
+    <p>The arrival of <strong>artificial intelligence (AI)</strong> has accelerated the reallocation of enterprise capital toward technology<sup id="ref-18-12"><a href="#note-18">[18]</a></sup>. AI represents an infrastructure super-cycle that is reshaping the modern technology stack<sup id="ref-15-8"><a href="#note-15">[15]</a></sup>.</p>
+    <p>To run generative AI applications, organizations require massive computational capacity. This demand drove Nvidia&#x27;s ascent into the top ranks of global corporate market capitalization, as enterprise cloud providers raced to secure state-of-the-art AI accelerator chips<sup id="ref-15-9"><a href="#note-15">[15]</a></sup>. Gartner reports that global spending on data center systems has experienced historic surge rates over 50 percent year-over-year as technology providers construct dedicated AI infrastructure<sup id="ref-18-13"><a href="#note-18">[18]</a></sup>.</p>
+    <figure class="book-figure">
+      <p class="figure-title"><strong>Figure 1.1</strong><strong>b</strong><strong> The Enterprise AI Tech Stack</strong></p>
+      <img src="../figures/figure-1-1b.png" alt="The Enterprise AI Tech Stack">
       <p class="source">Source: author</p>
-    <details class="long-description">
-      <summary><span class="show-label">Show long description</span><span class="hide-label">Hide long description</span></summary>
-      <div class="long-description-panel">
-        <strong>Long description</strong>
-        <p><em>The diagram is a vertical three-layer stack titled “THE ENTERPRISE AI TECH STACK.”</em></p>
-        <p><em>From top to bottom the layers are:</em></p>
-        <p><em>Application Layer (light blue) – contains AI Copilots, Autonomous Agents, and Domain-Specific SaaS Tools.</em></p>
-        <p><em>Model Platform Layer (light green) – contains Domain-Specific Language Models (DSLMs) and Fine-Tuned LLMs.</em></p>
-        <p><em>Infrastructure Layer (light orange) – contains GPU Clusters, Hyperscale Data Centers, and High-Bandwidth Memory.</em></p>
-        <p><em>Each layer is a rounded rectangle with a bold header and a short list of components. The layers sit directly above one another, visually representing a technology stack in which the lower layers support the upper layers.</em></p>
-      </div>
-    </details>
+      <details class="long-description">
+        <summary>
+          <span class="show-label">Show long description</span>
+          <span class="hide-label">Hide long description</span>
+        </summary>
+        <div class="long-description-panel">
+          <strong>Long Description</strong>
+          <p><em>The diagram is a vertical three-layer stack titled “THE ENTERPRISE AI TECH STACK.”</em></p>
+          <p><em>From top to bottom the layers are:</em></p>
+          <p><em>Application Layer (light blue) – contains AI Copilots, Autonomous Agents, and Domain-Specific SaaS Tools.</em></p>
+          <p><em>Model Platform Layer (light green) – contains Domain-Specific Language Models (DSLMs) and Fine-Tuned LLMs.</em></p>
+          <p><em>Infrastructure Layer (light orange) – contains GPU Clusters, Hyperscale Data Centers, and High-Bandwidth Memory.</em></p>
+          <p><em>Each layer is a rounded rectangle with a bold header and a short list of components. The layers sit directly above one another, visually representing a technology stack in which the lower layers support the upper layers.</em></p>
+        </div>
+      </details>
     </figure>
+
     <p>As enterprise AI strategies mature, business spending is evolving through two key trends:</p>
     <ul>
-      <li><strong>Rise of Domain-Specific Models</strong>: While massive foundational models laid the groundwork for generative AI, enterprise buyers are increasingly deploying <strong>domain-specific language models (DSLMs)</strong><sup><a href="#fn-20">20</a></sup>. These specialized models are trained on focused industry datasets, offering faster processing times, enhanced data security, lower operating costs, and reduced risk of hallucinations<sup><a href="#fn-20">20</a></sup>. Gartner projects spending on specialized models and DSLMs to grow by over 200 percent annually<sup><a href="#fn-20">20</a></sup>.</li>
-      <li><strong>Focus on ROI and Cost Control</strong>: Chief Information Officers (CIOs) are prioritizing usage efficiency, cost transparency, and measurable business performance over speculative pilot projects<sup><a href="#fn-20">20</a></sup>. Rather than buying disconnected standalone AI applications, companies favor enterprise vendors that embed AI capabilities directly into existing operational software workflows<sup><a href="#fn-20">20</a></sup>.</li>
+      <li><strong>Rise of Domain-Specific Models</strong>: While massive foundational models laid the groundwork for generative AI, enterprise buyers are increasingly deploying <strong>domain-specific language models (DSLMs)</strong><sup id="ref-19"><a href="#note-19">[19]</a></sup>. These specialized models are trained on focused industry datasets, offering faster processing times, enhanced data security, lower operating costs, and reduced risk of hallucinations<sup id="ref-19-2"><a href="#note-19">[19]</a></sup>. Gartner projects spending on specialized models and DSLMs to grow by over 200 percent annually<sup id="ref-19-3"><a href="#note-19">[19]</a></sup>.</li>
+      <li><strong>Focus on ROI and Cost Control</strong>: Chief Information Officers (CIOs) are prioritizing usage efficiency, cost transparency, and measurable business performance over speculative pilot projects<sup id="ref-19-4"><a href="#note-19">[19]</a></sup>. Rather than buying disconnected standalone AI applications, companies favor enterprise vendors that embed AI capabilities directly into existing operational software workflows<sup id="ref-19-5"><a href="#note-19">[19]</a></sup>.</li>
     </ul>
-    <p>Those software economics rest on a deeper technical engine: the long-term decline in the cost of computing. Moore's Law helps explain why capabilities that once seemed experimental become cheap, fast, and widespread enough to reshape competitive expectations.</p>
-    <h2 id="fast-cheap-and-ubiquitous-the-strategic-dynamics-of-moore-s-law">Fast, Cheap, and Ubiquitous: The Strategic Dynamics of Moore’s Law</h2>
-    <h3 id="the-silicon-paradox-why-yesterday-s-magic-is-today-s-commodity">The Silicon Paradox: Why Yesterday’s Magic Is Today’s Commodity</h3>
-    <p>Imagine running a business in which your most important input doubles in power every two years while its price stays roughly flat—or, put the other way around, the equipment you buy today will deliver only half the performance per dollar of the model that arrives 24 months from now.<sup><a href="#fn-22">22</a></sup></p>
+    <p>Those software economics rest on a deeper technical engine: the long-term decline in the cost of computing. Moore&#x27;s Law helps explain why capabilities that once seemed experimental become cheap, fast, and widespread enough to reshape competitive expectations.</p>
+    <h2>Fast, Cheap, and Ubiquitous: The Strategic Dynamics of Moore’s Law</h2>
+    <h3>The Silicon Paradox: Why Yesterday’s Magic Is Today’s Commodity</h3>
+    <p>Imagine running a business in which your most important input doubles in power every two years while its price stays roughly flat—or, put the other way around, the equipment you buy today will deliver only half the performance per dollar of the model that arrives 24 months from now.<sup id="ref-21"><a href="#note-21">[21]</a></sup></p>
     <p>In almost any traditional industry such a pattern would create chaos. Car engines do not double their efficiency on a reliable schedule; steel mills do not halve production costs every two years. Yet in the digital economy this relentless improvement is the normal expectation. It is the reason the phone in your pocket contains millions of times more computing power than the mainframes that guided Apollo astronauts to the Moon, at a tiny fraction of the cost.</p>
-    <p>This phenomenon is known as <strong>Moore’s Law</strong>. For managers it is far more than a technical curiosity. It is a fundamental economic force that shortens product life cycles, disrupts established business models, forces difficult capital-allocation choices, and makes entirely new industries—from cloud computing to generative AI—economically feasible.<sup><a href="#fn-22">22</a></sup></p>
-    <h3 id="what-moore-s-law-actually-says">What Moore’s Law Actually Says</h3>
-    <p>In 1965 Gordon Moore, then at Fairchild Semiconductor and later a co-founder of Intel, observed that the number of components that could be placed on a single microchip was doubling roughly every year while the cost per component fell sharply. In 1975 he revised the forecast to a doubling approximately every two years.<sup><a href="#fn-22">22</a></sup> The prediction became both an empirical observation and a self-fulfilling industry roadmap: chip makers, equipment suppliers, and customers all planned around the two-year cadence.</p>
+    <p>This phenomenon is known as <strong>Moore’s Law</strong>. For managers it is far more than a technical curiosity. It is a fundamental economic force that shortens product life cycles, disrupts established business models, forces difficult capital-allocation choices, and makes entirely new industries—from cloud computing to generative AI—economically feasible.<sup id="ref-21-2"><a href="#note-21">[21]</a></sup></p>
+    <h3>What Moore’s Law Actually Says</h3>
+    <p>In 1965 Gordon Moore, then at Fairchild Semiconductor and later a co-founder of Intel, observed that the number of components that could be placed on a single microchip was doubling roughly every year while the cost per component fell sharply. In 1975 he revised the forecast to a doubling approximately every two years.<sup id="ref-21-3"><a href="#note-21">[21]</a></sup> The prediction became both an empirical observation and a self-fulfilling industry roadmap: chip makers, equipment suppliers, and customers all planned around the two-year cadence.</p>
     <p>Moore’s Law is not a law of physics. It is an engineering and economic trajectory that the semiconductor industry has largely sustained for more than five decades. The practical result for business is simple and powerful: computing capability keeps getting dramatically cheaper and more abundant.</p>
-    <h3 id="why-managers-should-care">Why Managers Should Care</h3>
+    <h3>Why Managers Should Care</h3>
     <p>The consequences for strategy are direct:</p>
     <ul>
       <li><strong>Product life cycles compress.</strong> A capability that is expensive and experimental today can become cheap and ubiquitous in a few product generations. Companies that treat technology as a one-time purchase rather than a continuously improving resource quickly fall behind.</li>
@@ -242,161 +246,261 @@
       <li><strong>Capital allocation must be dynamic.</strong> Investments in systems, data, and talent need to be revisited regularly because the underlying cost/performance curve keeps moving. What looks like over-investment today can look like under-investment two years later.</li>
       <li><strong>New industries become possible.</strong> Cloud computing, large-scale machine learning, real-time logistics optimization, and many other sectors exist only because the cost of the required computation has fallen far enough.</li>
     </ul>
-    <h3 id="related-trends-that-amplify-the-effect">Related Trends That Amplify the Effect</h3>
+    <h3>Related Trends That Amplify the Effect</h3>
     <p>Moore’s Law does not operate in isolation. Two companion observations matter for managers:</p>
     <ul>
-      <li><strong>Kryder’s Law</strong> – storage density has improved even faster than transistor density, driving the cost of storing data toward zero.<sup><a href="#fn-30">30</a></sup></li>
-      <li><strong>Gilder’s Law</strong> – network bandwidth has expanded rapidly, making high-speed communication increasingly inexpensive.<sup><a href="#fn-30">30</a></sup></li>
+      <li><strong>Kryder’s Law</strong> – storage density has improved even faster than transistor density, driving the cost of storing data toward zero.<sup id="ref-29"><a href="#note-29">[29]</a></sup></li>
+      <li><strong>Gilder’s Law</strong> – network bandwidth has expanded rapidly, making high-speed communication increasingly inexpensive.<sup id="ref-29-2"><a href="#note-29">[29]</a></sup></li>
     </ul>
-    <p>Together, cheap processing, cheap storage, and cheap connectivity create the technical foundation for modern digital business models.<sup><a href="#fn-22">22</a></sup></p>
-    <figure class="book-figure" id="figure-1-1d">
-      <p class="figure-title">Figure 1.1d 5MB Hard-drive loaded onto a plane in 1956.</p>
-      <img src="../figures/figure-1-1d.png" alt="Historical photograph of a large 5MB hard drive being loaded into a Pan Am airplane in 1956">
-      <p class="source">Source: <a href="https://www.businessinsider.com/picture-of-ibm-hard-drive-on-airplane-2014-1">https://www.businessinsider.com/picture-of-ibm-hard-drive-on-airplane-2014-1</a></p>
-    <details class="long-description">
-      <summary><span class="show-label">Show long description</span><span class="hide-label">Hide long description</span></summary>
-      <div class="long-description-panel">
-        <strong>Long description</strong>
-        <p>This is a black-and-white historical photograph showing a large, box-shaped electronic computer or data-processing machine being loaded into the cargo door of a Pan American Airways (PAA) propeller aircraft.</p>
-        <p>The machine sits on a raised industrial lift (labeled “CLARK”) in the foreground. It is a tall, rectangular metal cabinet with a transparent or open front section revealing internal components, including a large circular drum or reel and visible wiring. The unit is secured with straps.</p>
-        <p>A uniformed ground crew member wearing a peaked cap stands beside the lift, looking upward at the equipment.</p>
-        <p>In the open cargo doorway of the aircraft, five men stand looking out: three appear to be in work clothing or coveralls, and two wear airline uniforms with peaked caps (likely flight crew). The aircraft fuselage is marked “PAA” near the top of the door.</p>
-        <p>The scene takes place on an outdoor airfield under bright daylight. The overall composition documents the mid-20th-century air transport of early mainframe or specialized computing equipment.</p>
-      </div>
-    </details>
+    <p>Together, cheap processing, cheap storage, and cheap connectivity create the technical foundation for modern digital business models.<sup id="ref-21-4"><a href="#note-21">[21]</a></sup></p>
+    <figure class="book-figure">
+      <p class="figure-title"><strong>Figure 1.1</strong><strong>c</strong><strong> 5MB Hard-drive loaded onto a plane in 1956.</strong></p>
+      <img src="../figures/figure-1-1c.png" alt="5MB Hard-drive loaded onto a plane in 1956.">
+      <p class="source">Source: </p>
+      <details class="long-description">
+        <summary>
+          <span class="show-label">Show long description</span>
+          <span class="hide-label">Hide long description</span>
+        </summary>
+        <div class="long-description-panel">
+          <strong>Long Description</strong>
+          <p>This is a black-and-white historical photograph showing a large, box-shaped electronic computer or data-processing machine being loaded into the cargo door of a Pan American Airways (PAA) propeller aircraft.</p>
+          <p>The machine sits on a raised industrial lift (labeled “CLARK”) in the foreground. It is a tall, rectangular metal cabinet with a transparent or open front section revealing internal components, including a large circular drum or reel and visible wiring. The unit is secured with straps.</p>
+          <p>A uniformed ground crew member wearing a peaked cap stands beside the lift, looking upward at the equipment.</p>
+          <p>In the open cargo doorway of the aircraft, five men stand looking out: three appear to be in work clothing or coveralls, and two wear airline uniforms with peaked caps (likely flight crew). The aircraft fuselage is marked “PAA” near the top of the door.</p>
+          <p>The scene takes place on an outdoor airfield under bright daylight. The overall composition documents the mid-20th-century air transport of early mainframe or specialized computing equipment.<em> </em></p>
+        </div>
+      </details>
     </figure>
-    <h3 id="a-note-on-limits-and-the-ai-era">A Note on Limits and the AI Era</h3>
-    <p>Moore’s Law has faced physical and economic headwinds in recent years (power density, manufacturing complexity, and the enormous capital cost of leading-edge factories). At the same time, demand for computing power from frontier AI models has grown much faster than the historical Moore’s Law cadence.<sup><a href="#fn-29">29</a></sup> The industry has responded with specialized accelerators, advanced packaging, and massive data-center build-outs. The strategic implication remains the same: the cost of useful computation continues to fall, but the path is no longer a smooth, predictable doubling every two years. Managers must watch both the long-term trend and the short-term bottlenecks (chip supply, power, and cooling) that can constrain AI-scale deployments.</p>
+
+    <h3>A Note on Limits and the AI Era</h3>
+    <p>Moore’s Law has faced physical and economic headwinds in recent years (power density, manufacturing complexity, and the enormous capital cost of leading-edge factories). At the same time, demand for computing power from frontier AI models has grown much faster than the historical Moore’s Law cadence.<sup id="ref-28"><a href="#note-28">[28]</a></sup> The industry has responded with specialized accelerators, advanced packaging, and massive data-center build-outs. The strategic implication remains the same: the cost of useful computation continues to fall, but the path is no longer a smooth, predictable doubling every two years. Managers must watch both the long-term trend and the short-term bottlenecks (chip supply, power, and cooling) that can constrain AI-scale deployments.</p>
     <p>In short, Moore’s Law and its relatives turn technology from a scarce resource into an increasingly abundant one. Organizations that understand this dynamic—and that continually redesign products, processes, and business models around it—gain a lasting advantage. Those that treat computing power as static quickly discover that yesterday’s cutting-edge system has become today’s commodity.</p>
     <aside class="box ai-insight" aria-labelledby="ai-insight-title">
       <h2 class="box-title" id="ai-insight-title">AI Insight</h2>
       <div class="box-body">
-        <h3 id="artificial-intelligence-when-moore-s-law-meets-the-ai-wall">Artificial Intelligence: When Moore’s Law Meets the AI Wall</h3>
-        <p>The rise of generative artificial intelligence has fundamentally altered hardware compute dynamics<sup><a href="#fn-29">29</a></sup>. While general-purpose business software requirements grew in line with Moore’s Law (~20-month doubling time), frontier AI model training requirements follow a far steeper trajectory<sup><a href="#fn-29">29</a></sup>.</p>
-        <p>According to long-term research by Epoch AI, training compute demand for leading AI models doubled roughly every 5 to 6 months during the deep learning era<sup><a href="#fn-29">29</a></sup>. Between 2010 and 2025, total training compute used for state-of-the-art AI models expanded by a factor of over 10 billion<sup><a href="#fn-31">31</a></sup>.</p>
-        <p>Because single microchips cannot shrink fast enough to keep up with this exponential demand curve, hardware designers turned to multi-chip clusters, specialized AI accelerators, and <strong>advanced packaging</strong><sup><a href="#fn-24">24</a></sup>.</p>
+      <h3>Artificial Intelligence: When Moore’s Law Meets the AI Wall</h3>
+      <p>The rise of generative artificial intelligence has fundamentally altered hardware compute dynamics. While general-purpose business software requirements grew in line with Moore’s Law (~20-month doubling time), frontier AI model training requirements follow a far steeper trajectory<sup id="ref-28-2"><a href="#note-28">[28]</a></sup>.</p>
+      <p>According to long-term research by Epoch AI, training compute demand for leading AI models doubled roughly every 5 to 6 months during the deep learning era<sup id="ref-28-3"><a href="#note-28">[28]</a></sup>. Between 2010 and 2025, total training compute used for state-of-the-art AI models expanded by a factor of over 10 billion<sup id="ref-30"><a href="#note-30">[30]</a></sup>.</p>
+      <p>Because single microchips cannot shrink fast enough to keep up with this exponential demand curve, hardware designers turned to multi-chip clusters, specialized AI accelerators, and <strong>advanced packaging</strong><sup id="ref-23"><a href="#note-23">[23]</a></sup>.</p>
       </div>
     </aside>
+
     <div class="table-wrap">
-    <table>
-      <caption>Table 1.1d From General Computing to Frontier AI Workloads</caption>
-      <thead>
-        <tr>
-          <th><strong>Metric / Dimension</strong></th>
-          <th><strong>Traditional General Computing Era</strong></th>
-          <th><strong>Frontier Artificial Intelligence Era</strong></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Primary Workload</strong></td>
-          <td>Sequential logic, databases, web applications<sup><a href="#fn-22">22</a></sup>.</td>
-          <td>Large-scale parallel matrix multiplication and tensor operations<sup><a href="#fn-27">27</a></sup>.</td>
-        </tr>
-        <tr>
-          <td><strong>Compute Doubling Cadence</strong></td>
-          <td>~20 to 24 months (Moore's Law baseline)<sup><a href="#fn-22">22</a></sup>.</td>
-          <td>~5 to 6 months (Frontier AI training compute)<sup><a href="#fn-29">29</a></sup>.</td>
-        </tr>
-        <tr>
-          <td><strong>Dominant Hardware Unit</strong></td>
-          <td>Central Processing Unit (CPU)<sup><a href="#fn-28">28</a></sup>.</td>
-          <td>Graphics Processing Unit (GPU) and Tensor Accelerators<sup><a href="#fn-27">27</a></sup>.</td>
-        </tr>
-        <tr>
-          <td><strong>Manufacturing Bottleneck</strong></td>
-          <td>Raw lithographic transistor density<sup><a href="#fn-22">22</a></sup>.</td>
-          <td><strong>Advanced Packaging</strong> capacity (e.g., TSMC CoWoS) and HBM memory<sup><a href="#fn-27">27</a></sup>.</td>
-        </tr>
-        <tr>
-          <td><strong>Primary System Limit</strong></td>
-          <td>Clock speed and thermal heat dissipation<sup><a href="#fn-23">23</a></sup>.</td>
-          <td>"Memory wall" bandwidth, grid electrical power, data center cooling<sup><a href="#fn-26">26</a></sup>.</td>
-        </tr>
-      </tbody>
-    </table>
+      <table>
+        <caption><strong><em>Table 1.</em></strong><strong><em>1d</em></strong><strong><em> From General Computing to Frontier AI Workloads</em></strong></caption>
+        <thead>
+          <tr>
+            <th><strong>Metric / Dimension</strong></th>
+            <th><strong>Traditional General Computing Era</strong></th>
+            <th><strong>Frontier Artificial Intelligence Era</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary Workload</strong></td>
+            <td>Sequential logic, databases, web applications<sup id="ref-21-5"><a href="#note-21">[21]</a></sup>.</td>
+            <td>Large-scale parallel matrix multiplication and tensor operations<sup id="ref-26"><a href="#note-26">[26]</a></sup>.</td>
+          </tr>
+          <tr>
+            <td><strong>Compute Doubling Cadence</strong></td>
+            <td>~20 to 24 months (Moore&#x27;s Law baseline)<sup id="ref-21-6"><a href="#note-21">[21]</a></sup>.</td>
+            <td>~5 to 6 months (Frontier AI training compute)<sup id="ref-28-4"><a href="#note-28">[28]</a></sup>.</td>
+          </tr>
+          <tr>
+            <td><strong>Dominant Hardware Unit</strong></td>
+            <td>Central Processing Unit (CPU)<sup id="ref-27"><a href="#note-27">[27]</a></sup>.</td>
+            <td>Graphics Processing Unit (GPU) and Tensor Accelerators<sup id="ref-26-2"><a href="#note-26">[26]</a></sup>.</td>
+          </tr>
+          <tr>
+            <td><strong>Manufacturing Bottleneck</strong></td>
+            <td>Raw lithographic transistor density<sup id="ref-21-7"><a href="#note-21">[21]</a></sup>.</td>
+            <td><strong>Advanced Packaging</strong> capacity (e.g., TSMC CoWoS) and HBM memory<sup id="ref-26-3"><a href="#note-26">[26]</a></sup>.</td>
+          </tr>
+          <tr>
+            <td><strong>Primary System Limit</strong></td>
+            <td>Clock speed and thermal heat dissipation<sup id="ref-22"><a href="#note-22">[22]</a></sup>.</td>
+            <td>&quot;Memory wall&quot; bandwidth, grid electrical power, data center cooling<sup id="ref-25"><a href="#note-25">[25]</a></sup>.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
     <section class="box key-takeaways" aria-labelledby="key-takeaways-title">
       <h2 class="box-title" id="key-takeaways-title">Key Takeaways</h2>
       <div class="box-body">
-        <p>The dominant positions held by technology giants demonstrate that competitive advantage in the modern economy belongs to software-driven business models60.</p>
-        <p>Whether leading a hospital network, managing a supply chain, or manufacturing industrial equipment, future business leaders must learn to leverage data assets, deploy cloud platforms, and integrate AI capabilities into everyday operations60. Technology is no longer merely a tool for supporting business strategy—technology is business strategy60.</p>
-        <p>Across the full section, the common thread is managerial: modern enterprises compete through the quality of their digital systems, the economics of software platforms, and the hardware advances that make new information-intensive business models possible.</p>
+      <p>The dominant positions held by technology giants demonstrate that competitive advantage in the modern economy belongs to software-driven business models<sup id="ref-12-6"><a href="#note-12">[12]</a></sup>.</p>
+      <p>Whether leading a hospital network, managing a supply chain, or manufacturing industrial equipment, future business leaders must learn to leverage data assets, deploy cloud platforms, and integrate AI capabilities into everyday operations<sup id="ref-12-7"><a href="#note-12">[12]</a></sup>. Technology is no longer merely a tool for supporting business strategy—<strong>technology is business strategy</strong>.</p>
+      <p>Across the full section, the common thread is managerial: modern enterprises compete through the quality of their digital systems, the economics of software platforms, and the hardware advances that make new information-intensive business models possible.</p>
       </div>
     </section>
-    <h3 id="key-terms-and-definitions">Key Terms and Definitions</h3>
+
+    <h2>Key Terms and Definitions</h2>
     <dl class="definition-list">
       <dt><strong>Technical Debt</strong></dt>
-      <dd>A trade-off in which an organization accepts a less-than-ideal software or system solution now in order to move faster, knowing that the shortcut will create extra work, cost, or complexity later.</dd>
+      <dd>Technical debt is when you borrow against the future by choosing the fastest solution or less-than-ideal today, then keep paying interest in the form of extra work, risk, and slower progress until you finally refinance (rebuild) it. For example: a small company quickly builds its core order and inventory system in a messy Excel spreadsheet that works at first, but as the business grows the fragile formulas break, conflicting versions multiply, and data becomes unreliable—because Excel simply wasn’t built to handle multi-user, high-volume operational data at scale.</dd>
       <dt><strong>Digital Transformation</strong></dt>
-      <dd>The integration of digital technology across all business domains, fundamentally changing how an enterprise operates, creates value, and competes<sup><a href="#fn-13">13</a></sup>.</dd>
+      <dd>The integration of digital technology across all business domains, fundamentally changing how an enterprise operates, creates value, and competes<sup id="ref-12-8"><a href="#note-12">[12]</a></sup>.</dd>
       <dt><strong>Software-as-a-Service (SaaS)</strong></dt>
-      <dd>A cloud software distribution model where applications are hosted centrally and accessed via recurring subscriptions, providing high gross margins and predictable cash flows<sup><a href="#fn-14">14</a></sup>.</dd>
+      <dd>A cloud software distribution model where applications are hosted centrally and accessed via recurring subscriptions, providing high gross margins and predictable cash flows<sup id="ref-13-8"><a href="#note-13">[13]</a></sup>.</dd>
       <dt><strong>Platform Ecosystem</strong></dt>
-      <dd>A multi-sided business model that creates value by facilitating interactions between independent user groups, leveraging network effects to build strategic entry barriers<sup><a href="#fn-13">13</a></sup>.</dd>
+      <dd>A multi-sided business model that creates value by facilitating interactions between independent user groups, leveraging network effects to build strategic entry barriers<sup id="ref-12-9"><a href="#note-12">[12]</a></sup>.</dd>
       <dt><strong>Domain-Specific Language Model (DSLM)</strong></dt>
-      <dd>An AI language model fine-tuned on targeted domain data, offering improved accuracy, reduced latency, and lower compute costs for specific business tasks<sup><a href="#fn-20">20</a></sup>.</dd>
+      <dd>An AI language model fine-tuned on targeted domain data, offering improved accuracy, reduced latency, and lower compute costs for specific business tasks<sup id="ref-19-6"><a href="#note-19">[19]</a></sup>.</dd>
       <dt><strong>Technology Business Management (TBM)</strong></dt>
-      <dd>A business management framework that categorizes technology investments into digital product portfolios, enabling accurate total-cost-of-ownership (TCO) tracking and governance<sup><a href="#fn-21">21</a></sup>.</dd>
+      <dd>A business management framework that categorizes technology investments into digital product portfolios, enabling accurate total-cost-of-ownership (TCO) tracking and governance<sup id="ref-20"><a href="#note-20">[20]</a></sup>.</dd>
       <dt><strong>Moore’s Law</strong></dt>
-      <dd>The empirical observation that the number of transistors on a microchip doubles roughly every two years, driving exponential gains in computing performance at falling relative costs<sup><a href="#fn-22">22</a></sup>.</dd>
+      <dd>The empirical observation that the number of transistors on a microchip doubles roughly every two years, driving exponential gains in computing performance at falling relative costs<sup id="ref-21-8"><a href="#note-21">[21]</a></sup>.</dd>
       <dt><strong>Transistor</strong></dt>
-      <dd>A microscopic semiconductor switch etched onto silicon that regulates electric current, serving as the foundational logic unit of digital computing<sup><a href="#fn-22">22</a></sup>.</dd>
+      <dd>A microscopic semiconductor switch etched onto silicon that regulates electric current, serving as the foundational logic unit of digital computing<sup id="ref-21-9"><a href="#note-21">[21]</a></sup>.</dd>
       <dt><strong>Semiconductor</strong></dt>
-      <dd>A material (typically silicon) whose electrical conductivity can be controlled, enabling the creation of integrated circuits<sup><a href="#fn-22">22</a></sup>.</dd>
+      <dd>A material (typically silicon) whose electrical conductivity can be controlled, enabling the creation of integrated circuits<sup id="ref-21-10"><a href="#note-21">[21]</a></sup>.</dd>
       <dt><strong>Integrated Circuit (IC)</strong></dt>
-      <dd>A thin chip of semiconductive material containing millions or billions of interconnected transistors, resistors, and electronic components<sup><a href="#fn-22">22</a></sup>.</dd>
+      <dd>A thin chip of semiconductive material containing millions or billions of interconnected transistors, resistors, and electronic components<sup id="ref-21-11"><a href="#note-21">[21]</a></sup>.</dd>
       <dt><strong>Dennard Scaling</strong></dt>
-      <dd>The historical principle stating that as transistors grow smaller, power density remains constant, allowing clock speeds to increase without overheating; broke down in the mid-2000s<sup><a href="#fn-22">22</a></sup>.</dd>
+      <dd>The historical principle stating that as transistors grow smaller, power density remains constant, allowing clock speeds to increase without overheating; broke down in the mid-2000s<sup id="ref-21-12"><a href="#note-21">[21]</a></sup>.</dd>
       <dt><strong>Rock’s Law (Moore’s Second Law)</strong></dt>
-      <dd>The economic observation that the capital expenditure required to build a leading-edge semiconductor fabrication plant doubles roughly every four years<sup><a href="#fn-23">23</a></sup>.</dd>
+      <dd>The economic observation that the capital expenditure required to build a leading-edge semiconductor fabrication plant doubles roughly every four years<sup id="ref-22-2"><a href="#note-22">[22]</a></sup>.</dd>
       <dt><strong>Fab (Fabrication Facility)</strong></dt>
-      <dd>An ultra-clean, capital-intensive manufacturing factory where integrated circuits are etched onto silicon wafers<sup><a href="#fn-23">23</a></sup>.</dd>
-      <dt><strong>Fabless / Foundry Model</strong></dt>
-      <dd>An industry structure separating chip architecture/design (fabless firms) from physical wafer manufacturing (pure-play foundries)<sup><a href="#fn-25">25</a></sup>.</dd>
+      <dd>An ultra-clean, capital-intensive manufacturing factory where integrated circuits are etched onto silicon wafers<sup id="ref-22-3"><a href="#note-22">[22]</a></sup>.</dd>
+      <dt><strong>Fabless</strong><strong> / Foundry Model</strong></dt>
+      <dd>An industry structure separating chip architecture/design (fabless firms) from physical wafer manufacturing (pure-play foundries)<sup id="ref-24"><a href="#note-24">[24]</a></sup>.</dd>
       <dt><strong>System-on-Chip (SoC)</strong></dt>
-      <dd>An integrated circuit architecture that combines all core computing units—CPU, GPU, memory controller, and AI engines—onto a single package<sup><a href="#fn-28">28</a></sup>.</dd>
+      <dd>An integrated circuit architecture that combines all core computing units—CPU, GPU, memory controller, and AI engines—onto a single package<sup id="ref-27-2"><a href="#note-27">[27]</a></sup>.</dd>
       <dt><strong>Advanced Packaging (CoWoS)</strong></dt>
-      <dd>Manufacturing methodologies (such as TSMC's Chip-on-Wafer-on-Substrate) that connect and stack multiple logic and memory dies using silicon interposers<sup><a href="#fn-27">27</a></sup>.</dd>
+      <dd>Manufacturing methodologies (such as TSMC&#x27;s Chip-on-Wafer-on-Substrate) that connect and stack multiple logic and memory dies using silicon interposers<sup id="ref-26-4"><a href="#note-26">[26]</a></sup>.</dd>
     </dl>
+
     <nav class="chapter-nav" aria-label="Chapter navigation">
-      <a class="chapter-nav-link" style="display: inline-flex; justify-content: center; min-width: 8rem;" href="#">Previous</a>
-      <a class="chapter-nav-link" style="display: inline-flex; justify-content: center; min-width: 8rem;" href="https://adrianschell.github.io/textbook_v1/chapters/1.2-data-information-and-information-systems.html">Next</a>
+      <a href="#">&lt; Previous</a>
+      <a href="#">Next &gt;</a>
     </nav>
-    <h2 id="footnotes">Footnotes</h2>
-    <ol class="references">
-      <li id="fn-1">2022 Southwest Airlines scheduling crisis - Wikipedia, <a href="https://en.wikipedia.org/wiki/2022_Southwest_Airlines_scheduling_crisis">https://en.wikipedia.org/wiki/2022_Southwest_Airlines_scheduling_crisis</a></li>
-      <li id="fn-2">The Southwest Airlines Winter Meltdown Case studies on risk, technical debt, operations, passengers, regulators, revenue, and brand - ERIC, <a href="https://files.eric.ed.gov/fulltext/EJ1448977.pdf">https://files.eric.ed.gov/fulltext/EJ1448977.pdf</a></li>
-      <li id="fn-3">Lessons from the Runway: How Southwest's System Crash Illuminates Healthcare's Technical Debt Problem | UCSF Synapse, <a href="https://synapse.ucsf.edu/articles/2025/02/18/lessons-runway-how-southwests-system-crash-illuminates-healthcares-technical">https://synapse.ucsf.edu/articles/2025/02/18/lessons-runway-how-southwests-system-crash-illuminates-healthcares-technical</a></li>
-      <li id="fn-4">Factors Influencing Southwest Airlines' Operational Failures (2022-23): Lessons from Corporate Strategy and Frontline Employees, <a href="https://commons.erau.edu/cgi/viewcontent.cgi?article=1595&amp;context=db-srs">https://commons.erau.edu/cgi/viewcontent.cgi?article=1595&amp;context=db-srs</a></li>
-      <li id="fn-5">Report 2357 - AI Incident Database, <a href="https://incidentdatabase.ai/reports/2357/">https://incidentdatabase.ai/reports/2357/</a></li>
-      <li id="fn-6">Southwest Airlines Lost Track of Its Own Pilots. That's When I Knew Chatbots Wouldn't Save Logistics. - Medium, <a href="https://medium.com/@ashutosh_veriprajna/southwest-airlines-lost-track-of-its-own-pilots-4fb4669a12a0">https://medium.com/@ashutosh_veriprajna/southwest-airlines-lost-track-of-its-own-pilots-4fb4669a12a0</a></li>
-      <li id="fn-7">TIL: During the Christmas/NYE holiday season of 2022, a winter storm caused Southwest Airlines' (ancient) crew scheduling software to break down, stranding crew members and cancelling 50% of flights between 21-30 December. Losses were reportedly between $1.1 billion to over $1.2 billion. : r/todayilearned - Reddit, <a href="https://www.reddit.com/r/todayilearned/comments/1n992qx/til_during_the_christmasnye_holiday_season_of/">https://www.reddit.com/r/todayilearned/comments/1n992qx/til_during_the_christmasnye_holiday_season_of/</a></li>
-      <li id="fn-8">How Domino's “Pizza Turnaround” Became a Masterclass in Food PR - Everything-PR, <a href="https://everything-pr.com/how-dominos-pizza-turnaround-became-a-masterclass-in-food-pr">https://everything-pr.com/how-dominos-pizza-turnaround-became-a-masterclass-in-food-pr</a></li>
-      <li id="fn-9">How Domino's Reinvented Itself from a Pizza Punchline to a Tech-Driven Delivery Leader, <a href="https://www.chiefreinventionofficer.com/blog-page/how-dominos-reinvented-itself-from-a-pizza-punchline-to-a-tech-driven-delivery-leader">https://www.chiefreinventionofficer.com/blog-page/how-dominos-reinvented-itself-from-a-pizza-punchline-to-a-tech-driven-delivery-leader</a></li>
-      <li id="fn-10">Digital Ecosystem and its opportunities ADDRESS by Venkateshawaran, <a href="https://sidtm.edu.in/wp-content/uploads/2025/05/June-23-to-May-24Workshop-2.pdf">https://sidtm.edu.in/wp-content/uploads/2025/05/June-23-to-May-24Workshop-2.pdf</a></li>
-      <li id="fn-11">How Domino's Became a 'Technology Company' - Words from Shirley Wu, <a href="https://shirleywu.home.blog/2019/03/02/how-dominos-became-a-technology-company/">https://shirleywu.home.blog/2019/03/02/how-dominos-became-a-technology-company/</a></li>
-      <li id="fn-12">Inside the 'AnyWare' digital strategy at Domino's Pizza - InnoLead - Innovation Leader, <a href="https://www.innovationleader.com/food-and-beverage/inside-the-anyware-digital-strategy-at-dominos-pizza/">https://www.innovationleader.com/food-and-beverage/inside-the-anyware-digital-strategy-at-dominos-pizza/</a></li>
-      <li id="fn-13">The strategic transformation of John Deere: Precision Agriculture, AI, and the Internet of Things - HBR Store, <a href="https://store.hbr.org/product/the-strategic-transformation-of-john-deere-precision-agriculture-ai-and-the-internet-of-things/TB0702">https://store.hbr.org/product/the-strategic-transformation-of-john-deere-precision-agriculture-ai-and-the-internet-of-things/TB0702</a></li>
-      <li id="fn-14">How SaaS &amp; Subscriptions are Transforming Farming with John Deere's Justin Rose, <a href="https://robbiekellmanbaxter.com/blog/how-saas-subscriptions-are-transforming-farming-with-john-deeres-justin-rose/">https://robbiekellmanbaxter.com/blog/how-saas-subscriptions-are-transforming-farming-with-john-deeres-justin-rose/</a></li>
-      <li id="fn-15">New and Revised Statistics of the U.S. Digital Economy, 2005–2021 - Bureau of Economic Analysis, <a href="https://www.bea.gov/sites/default/files/2022-11/new-and-revised-statistics-of-the-us-digital-economy-2005-2021.pdf">https://www.bea.gov/sites/default/files/2022-11/new-and-revised-statistics-of-the-us-digital-economy-2005-2021.pdf</a></li>
-      <li id="fn-16">The Magnificent Seven: U.S. Big Tech Market Cap Boom (2000–Q3 2025) - Voronoi, <a href="https://www.voronoiapp.com/markets/-The-Magnificent-Seven-US-Big-Tech-Market-Cap-Boom-2000Q3-2025-1612">https://www.voronoiapp.com/markets/-The-Magnificent-Seven-US-Big-Tech-Market-Cap-Boom-2000Q3-2025-1612</a></li>
-      <li id="fn-17">Animation: The Largest Public Companies by Market Cap (2000–2022) - Visual Capitalist, <a href="https://www.visualcapitalist.com/cp/largest-companies-from-2000-to-2022/">https://www.visualcapitalist.com/cp/largest-companies-from-2000-to-2022/</a></li>
-      <li id="fn-18">Largest Companies by Market Cap in 2026 - AlphaSense, <a href="https://www.alpha-sense.com/largest-companies-by-market-cap/">https://www.alpha-sense.com/largest-companies-by-market-cap/</a></li>
-      <li id="fn-19">Gartner Forecasts Worldwide IT Spending to Grow 13.5% in 2026, Totaling $6.31 Trillion, <a href="https://www.gartner.com/en/newsroom/press-releases/2026-04-22-gartner-forecasts-worldwide-it-spending-to-grow-13-point-5-percent-in-2026-totaling-6-point-31-trillion-dollars">https://www.gartner.com/en/newsroom/press-releases/2026-04-22-gartner-forecasts-worldwide-it-spending-to-grow-13-point-5-percent-in-2026-totaling-6-point-31-trillion-dollars</a></li>
-      <li id="fn-20">Gartner predicts AI models and platforms spend to hit US$64B, <a href="https://www.arnnet.com.au/article/4199047/gartner-predicts-ai-models-and-platforms-spend-to-hit-us64b.html">https://www.arnnet.com.au/article/4199047/gartner-predicts-ai-models-and-platforms-spend-to-hit-us64b.html</a></li>
-      <li id="fn-21">How TBM &amp; Product Costing Helped John Deere Accelerate their Agile Transformation, <a href="https://www.tbmcouncil.org/case-studies/how-tbm-product-costing-helped-john-deere-accelerate-their-agile-transformation/">https://www.tbmcouncil.org/case-studies/how-tbm-product-costing-helped-john-deere-accelerate-their-agile-transformation/</a></li>
-      <li id="fn-22">Moore's law - Wikipedia, <a href="https://en.wikipedia.org/wiki/Moore%27s_law">https://en.wikipedia.org/wiki/Moore%27s_law</a></li>
-      <li id="fn-23">Moore's law - Grokipedia, <a href="https://grokipedia.com/page/Moore&#x27;s_law">https://grokipedia.com/page/Moore's_law</a></li>
-      <li id="fn-24">After Silicon: The Technologies That Will Power the Next Era of Computing | by Talal Ahmad, <a href="https://medium.com/@talalahm2d/after-silicon-the-technologies-that-will-power-the-next-era-of-computing-11a67b1802bc">https://medium.com/@talalahm2d/after-silicon-the-technologies-that-will-power-the-next-era-of-computing-11a67b1802bc</a></li>
-      <li id="fn-25">(PDF) From Moore's Law to Market Rivalry: The Economic Forces That Shape the Semiconductor Manufacturing Industry - ResearchGate, <a href="https://www.researchgate.net/publication/397590357_From_Moore&#x27;s_Law_to_Market_Rivalry_The_Economic_Forces_That_Shape_the_Semiconductor_Manufacturing_Industry">https://www.researchgate.net/publication/397590357_From_Moore's_Law_to_Market_Rivalry_The_Economic_Forces_That_Shape_the_Semiconductor_Manufacturing_Industry</a></li>
-      <li id="fn-26">Nvidia's 4-Die Rubin Ultra Reportedly Axed; Packaging Bottleneck Threatens AI Dominance, <a href="https://finance.biggo.com/news/b9bad30f-22c0-430a-bf2a-4704afd64f68">https://finance.biggo.com/news/b9bad30f-22c0-430a-bf2a-4704afd64f68</a></li>
-      <li id="fn-27">The Rubin Era: NVIDIA's Strategic Stranglehold on Advanced Packaging Redefines the AI Arms Race - Markets &amp; Stocks, <a href="https://markets.chroniclejournal.com/chroniclejournal/article/tokenring-2026-1-27-the-rubin-era-nvidias-strategic-stranglehold-on-advanced-packaging-redefines-the-ai-arms-race">https://markets.chroniclejournal.com/chroniclejournal/article/tokenring-2026-1-27-the-rubin-era-nvidias-strategic-stranglehold-on-advanced-packaging-redefines-the-ai-arms-race</a></li>
-      <li id="fn-28">Apple silicon - Wikipedia, <a href="https://en.wikipedia.org/wiki/Apple_silicon">https://en.wikipedia.org/wiki/Apple_silicon</a></li>
-      <li id="fn-29">The AI Compute Pyramid: Why Capital Gates Access, <a href="https://axecompute.com/ai-compute-pyramid/">https://axecompute.com/ai-compute-pyramid/</a></li>
-      <li id="fn-30">Re-Thinking Crisis in the Digital Economy: A Contemporary Case Study of the Phonographic Industries in Ireland - DORAS | DCU Research Repository, <a href="https://doras.dcu.ie/15700/1/J._Rogers_-__PhD_Thesis.pdf">https://doras.dcu.ie/15700/1/J._Rogers_-__PhD_Thesis.pdf</a></li>
-      <li id="fn-31">Compute trends across three eras of machine learning - Epoch AI, <a href="https://epoch.ai/publications/compute-trends">https://epoch.ai/publications/compute-trends</a></li>
-    </ol>
+
+    <section class="footnotes-section" aria-labelledby="footnotes-title">
+      <h2 class="footnotes-title" id="footnotes-title">Footnotes</h2>
+      <ol class="footnotes">
+        <li id="note-1">
+          2022 Southwest Airlines scheduling crisis - Wikipedia, <a href="https://en.wikipedia.org/wiki/2022_Southwest_Airlines_scheduling_crisis">https://en.wikipedia.org/wiki/2022_Southwest_Airlines_scheduling_crisis</a>
+          <a class="backlink" href="#ref-1" aria-label="Back to footnote reference 1">Back to text</a>
+        </li>
+        <li id="note-2">
+          The Southwest Airlines Winter Meltdown Case studies on risk, technical debt, operations, passengers, regulators, revenue, and brand - ERIC, <a href="https://files.eric.ed.gov/fulltext/EJ1448977.pdf">https://files.eric.ed.gov/fulltext/EJ1448977.pdf</a>
+          <a class="backlink" href="#ref-2" aria-label="Back to footnote reference 2">Back to text</a>
+        </li>
+        <li id="note-3">
+          Lessons from the Runway: How Southwest&#x27;s System Crash Illuminates Healthcare&#x27;s Technical Debt Problem | UCSF Synapse, <a href="https://synapse.ucsf.edu/articles/2025/02/18/lessons-runway-how-southwests-system-crash-illuminates-healthcares-technical">https://synapse.ucsf.edu/articles/2025/02/18/lessons-runway-how-southwests-system-crash-illuminates-healthcares-technical</a>
+          <a class="backlink" href="#ref-3" aria-label="Back to footnote reference 3">Back to text</a>
+        </li>
+        <li id="note-4">
+          Factors Influencing Southwest Airlines&#x27; Operational Failures (2022-23): Lessons from Corporate Strategy and Frontline Employees, <a href="https://commons.erau.edu/cgi/viewcontent.cgi?article=1595&amp;context=db-srs">https://commons.erau.edu/cgi/viewcontent.cgi?article=1595&amp;context=db-srs</a>
+          <a class="backlink" href="#ref-4" aria-label="Back to footnote reference 4">Back to text</a>
+        </li>
+        <li id="note-5">
+          Report 2357 - AI Incident Database, <a href="https://incidentdatabase.ai/reports/2357/">https://incidentdatabase.ai/reports/2357/</a>
+          <a class="backlink" href="#ref-5" aria-label="Back to footnote reference 5">Back to text</a>
+        </li>
+        <li id="note-6">
+          Southwest Airlines Lost Track of Its Own Pilots. That&#x27;s When I Knew Chatbots Wouldn&#x27;t Save Logistics. - Medium, <a href="https://medium.com/@ashutosh_veriprajna/southwest-airlines-lost-track-of-its-own-pilots-4fb4669a12a0">https://medium.com/@ashutosh_veriprajna/southwest-airlines-lost-track-of-its-own-pilots-4fb4669a12a0</a>
+          <a class="backlink" href="#ref-6" aria-label="Back to footnote reference 6">Back to text</a>
+        </li>
+        <li id="note-7">
+          TIL: During the Christmas/NYE holiday season of 2022, a winter storm caused Southwest Airlines&#x27; (ancient) crew scheduling software to break down, stranding crew members and cancelling 50% of flights between 21-30 December. Losses were reportedly between $1.1 billion to over $1.2 billion. : r/todayilearned - Reddit, <a href="https://www.reddit.com/r/todayilearned/comments/1n992qx/til_during_the_christmasnye_holiday_season_of/">https://www.reddit.com/r/todayilearned/comments/1n992qx/til_during_the_christmasnye_holiday_season_of/</a>
+          <a class="backlink" href="#ref-7" aria-label="Back to footnote reference 7">Back to text</a>
+        </li>
+        <li id="note-8">
+          How Domino&#x27;s “Pizza Turnaround” Became a Masterclass in Food PR - Everything-PR, <a href="https://everything-pr.com/how-dominos-pizza-turnaround-became-a-masterclass-in-food-pr">https://everything-pr.com/how-dominos-pizza-turnaround-became-a-masterclass-in-food-pr</a>
+          <a class="backlink" href="#ref-8" aria-label="Back to footnote reference 8">Back to text</a>
+        </li>
+        <li id="note-9">
+          How Domino&#x27;s Reinvented Itself from a Pizza Punchline to a Tech-Driven Delivery Leader, <a href="https://www.chiefreinventionofficer.com/blog-page/how-dominos-reinvented-itself-from-a-pizza-punchline-to-a-tech-driven-delivery-leader">https://www.chiefreinventionofficer.com/blog-page/how-dominos-reinvented-itself-from-a-pizza-punchline-to-a-tech-driven-delivery-leader</a>
+          <a class="backlink" href="#ref-9" aria-label="Back to footnote reference 9">Back to text</a>
+        </li>
+        <li id="note-10">
+          Digital Ecosystem and its opportunities ADDRESS by Venkateshawaran, <a href="https://sidtm.edu.in/wp-content/uploads/2025/05/June-23-to-May-24Workshop-2.pdf">https://sidtm.edu.in/wp-content/uploads/2025/05/June-23-to-May-24Workshop-2.pdf</a>
+          <a class="backlink" href="#ref-10" aria-label="Back to footnote reference 10">Back to text</a>
+        </li>
+        <li id="note-11">
+          Inside the &#x27;AnyWare&#x27; digital strategy at Domino&#x27;s Pizza - InnoLead - Innovation Leader, <a href="https://www.innovationleader.com/food-and-beverage/inside-the-anyware-digital-strategy-at-dominos-pizza/">https://www.innovationleader.com/food-and-beverage/inside-the-anyware-digital-strategy-at-dominos-pizza/</a>
+          <a class="backlink" href="#ref-11" aria-label="Back to footnote reference 11">Back to text</a>
+        </li>
+        <li id="note-12">
+          The strategic transformation of John Deere: Precision Agriculture, AI, and the Internet of Things - HBR Store, <a href="https://store.hbr.org/product/the-strategic-transformation-of-john-deere-precision-agriculture-ai-and-the-internet-of-things/TB0702">https://store.hbr.org/product/the-strategic-transformation-of-john-deere-precision-agriculture-ai-and-the-internet-of-things/TB0702</a>
+          <a class="backlink" href="#ref-12" aria-label="Back to footnote reference 12">Back to text</a>
+        </li>
+        <li id="note-13">
+          How SaaS &amp; Subscriptions are Transforming Farming with John Deere&#x27;s Justin Rose, <a href="https://robbiekellmanbaxter.com/blog/how-saas-subscriptions-are-transforming-farming-with-john-deeres-justin-rose/">https://robbiekellmanbaxter.com/blog/how-saas-subscriptions-are-transforming-farming-with-john-deeres-justin-rose/</a>
+          <a class="backlink" href="#ref-13" aria-label="Back to footnote reference 13">Back to text</a>
+        </li>
+        <li id="note-14">
+          New and Revised Statistics of the U.S. Digital Economy, 2005–2021 - Bureau of Economic Analysis, <a href="https://www.bea.gov/sites/default/files/2022-11/new-and-revised-statistics-of-the-us-digital-economy-2005-2021.pdf">https://www.bea.gov/sites/default/files/2022-11/new-and-revised-statistics-of-the-us-digital-economy-2005-2021.pdf</a>
+          <a class="backlink" href="#ref-14" aria-label="Back to footnote reference 14">Back to text</a>
+        </li>
+        <li id="note-15">
+          The Magnificent Seven: U.S. Big Tech Market Cap Boom (2000–Q3 2025) - Voronoi, <a href="https://www.voronoiapp.com/markets/-The-Magnificent-Seven-US-Big-Tech-Market-Cap-Boom-2000Q3-2025-1612">https://www.voronoiapp.com/markets/-The-Magnificent-Seven-US-Big-Tech-Market-Cap-Boom-2000Q3-2025-1612</a>
+          <a class="backlink" href="#ref-15" aria-label="Back to footnote reference 15">Back to text</a>
+        </li>
+        <li id="note-16">
+          Animation: The Largest Public Companies by Market Cap (2000–2022) - Visual Capitalist, <a href="https://www.visualcapitalist.com/cp/largest-companies-from-2000-to-2022/">https://www.visualcapitalist.com/cp/largest-companies-from-2000-to-2022/</a>
+          <a class="backlink" href="#ref-16" aria-label="Back to footnote reference 16">Back to text</a>
+        </li>
+        <li id="note-17">
+          Largest Companies by Market Cap in 2026 - AlphaSense, <a href="https://www.alpha-sense.com/largest-companies-by-market-cap/">https://www.alpha-sense.com/largest-companies-by-market-cap/</a>
+          <a class="backlink" href="#ref-17" aria-label="Back to footnote reference 17">Back to text</a>
+        </li>
+        <li id="note-18">
+          Gartner Forecasts Worldwide IT Spending to Grow 13.5% in 2026, Totaling $6.31 Trillion, <a href="https://www.gartner.com/en/newsroom/press-releases/2026-04-22-gartner-forecasts-worldwide-it-spending-to-grow-13-point-5-percent-in-2026-totaling-6-point-31-trillion-dollars">https://www.gartner.com/en/newsroom/press-releases/2026-04-22-gartner-forecasts-worldwide-it-spending-to-grow-13-point-5-percent-in-2026-totaling-6-point-31-trillion-dollars</a>
+          <a class="backlink" href="#ref-18" aria-label="Back to footnote reference 18">Back to text</a>
+        </li>
+        <li id="note-19">
+          Gartner predicts AI models and platforms spend to hit US$64B, <a href="https://www.arnnet.com.au/article/4199047/gartner-predicts-ai-models-and-platforms-spend-to-hit-us64b.html">https://www.arnnet.com.au/article/4199047/gartner-predicts-ai-models-and-platforms-spend-to-hit-us64b.html</a>
+          <a class="backlink" href="#ref-19" aria-label="Back to footnote reference 19">Back to text</a>
+        </li>
+        <li id="note-20">
+          How TBM &amp; Product Costing Helped John Deere Accelerate their Agile Transformation, <a href="https://www.tbmcouncil.org/case-studies/how-tbm-product-costing-helped-john-deere-accelerate-their-agile-transformation/">https://www.tbmcouncil.org/case-studies/how-tbm-product-costing-helped-john-deere-accelerate-their-agile-transformation/</a>
+          <a class="backlink" href="#ref-20" aria-label="Back to footnote reference 20">Back to text</a>
+        </li>
+        <li id="note-21">
+          Moore&#x27;s law - Wikipedia, <a href="https://en.wikipedia.org/wiki/Moore%27s_law">https://en.wikipedia.org/wiki/Moore%27s_law</a>
+          <a class="backlink" href="#ref-21" aria-label="Back to footnote reference 21">Back to text</a>
+        </li>
+        <li id="note-22">
+          Moore&#x27;s law - Grokipedia, <a href="https://grokipedia.com/page/Moore&#x27;s_law">https://grokipedia.com/page/Moore&#x27;s_law</a>
+          <a class="backlink" href="#ref-22" aria-label="Back to footnote reference 22">Back to text</a>
+        </li>
+        <li id="note-23">
+          After Silicon: The Technologies That Will Power the Next Era of Computing | by Talal Ahmad, <a href="https://medium.com/@talalahm2d/after-silicon-the-technologies-that-will-power-the-next-era-of-computing-11a67b1802bc">https://medium.com/@talalahm2d/after-silicon-the-technologies-that-will-power-the-next-era-of-computing-11a67b1802bc</a>
+          <a class="backlink" href="#ref-23" aria-label="Back to footnote reference 23">Back to text</a>
+        </li>
+        <li id="note-24">
+          (PDF) From Moore&#x27;s Law to Market Rivalry: The Economic Forces That Shape the Semiconductor Manufacturing Industry - ResearchGate, <a href="https://www.researchgate.net/publication/397590357_From_Moore&#x27;s_Law_to_Market_Rivalry_The_Economic_Forces_That_Shape_the_Semiconductor_Manufacturing_Industry">https://www.researchgate.net/publication/397590357_From_Moore&#x27;s_Law_to_Market_Rivalry_The_Economic_Forces_That_Shape_the_Semiconductor_Manufacturing_Industry</a>
+          <a class="backlink" href="#ref-24" aria-label="Back to footnote reference 24">Back to text</a>
+        </li>
+        <li id="note-25">
+          Nvidia&#x27;s 4-Die Rubin Ultra Reportedly Axed; Packaging Bottleneck Threatens AI Dominance, <a href="https://finance.biggo.com/news/b9bad30f-22c0-430a-bf2a-4704afd64f68">https://finance.biggo.com/news/b9bad30f-22c0-430a-bf2a-4704afd64f68</a>
+          <a class="backlink" href="#ref-25" aria-label="Back to footnote reference 25">Back to text</a>
+        </li>
+        <li id="note-26">
+          The Rubin Era: NVIDIA&#x27;s Strategic Stranglehold on Advanced Packaging Redefines the AI Arms Race - Markets &amp; Stocks, <a href="https://markets.chroniclejournal.com/chroniclejournal/article/tokenring-2026-1-27-the-rubin-era-nvidias-strategic-stranglehold-on-advanced-packaging-redefines-the-ai-arms-race">https://markets.chroniclejournal.com/chroniclejournal/article/tokenring-2026-1-27-the-rubin-era-nvidias-strategic-stranglehold-on-advanced-packaging-redefines-the-ai-arms-race</a>
+          <a class="backlink" href="#ref-26" aria-label="Back to footnote reference 26">Back to text</a>
+        </li>
+        <li id="note-27">
+          Apple silicon - Wikipedia, <a href="https://en.wikipedia.org/wiki/Apple_silicon">https://en.wikipedia.org/wiki/Apple_silicon</a>
+          <a class="backlink" href="#ref-27" aria-label="Back to footnote reference 27">Back to text</a>
+        </li>
+        <li id="note-28">
+          The AI Compute Pyramid: Why Capital Gates Access, <a href="https://axecompute.com/ai-compute-pyramid/">https://axecompute.com/ai-compute-pyramid/</a>
+          <a class="backlink" href="#ref-28" aria-label="Back to footnote reference 28">Back to text</a>
+        </li>
+        <li id="note-29">
+          Re-Thinking Crisis in the Digital Economy: A Contemporary Case Study of the Phonographic Industries in Ireland - DORAS | DCU Research Repository, <a href="https://doras.dcu.ie/15700/1/J._Rogers_-__PhD_Thesis.pdf">https://doras.dcu.ie/15700/1/J._Rogers_-__PhD_Thesis.pdf</a>
+          <a class="backlink" href="#ref-29" aria-label="Back to footnote reference 29">Back to text</a>
+        </li>
+        <li id="note-30">
+          Compute trends across three eras of machine learning - Epoch AI, <a href="https://epoch.ai/publications/compute-trends">https://epoch.ai/publications/compute-trends</a>
+          <a class="backlink" href="#ref-30" aria-label="Back to footnote reference 30">Back to text</a>
+        </li>
+      </ol>
+    </section>
   </main>
 </body>
 </html>
