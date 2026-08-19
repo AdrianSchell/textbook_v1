@@ -565,6 +565,7 @@ pre code {
    ========================================== */
 @media print {
   @page {
+    size: letter;          /* force consistent paper size */
     margin: 0.5in;
   }
 
@@ -588,11 +589,12 @@ pre code {
     print-color-adjust: exact;
   }
 
+  /* CRITICAL: fixed physical width so line length stays consistent */
   .book-shell {
-    width: 100% !important;
-    max-width: none !important;
+    width: 7.0in !important;       /* ~7 in content area inside 0.5 in margins */
+    max-width: 7.0in !important;
     margin: 0 auto !important;
-    padding: 0.2in 0.5in !important;
+    padding: 0 !important;         /* no extra padding that could change measure */
   }
 
   h1 {
