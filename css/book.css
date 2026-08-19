@@ -562,8 +562,7 @@ pre code {
    ========================================== */
 @media print {
   @page {
-    size: letter;
-    margin: 0.6in;
+    margin: 0.5in;
   }
 
   *,
@@ -575,31 +574,20 @@ pre code {
 
   html,
   body {
-    width: auto !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
     background: #fff !important;
     color: #000 !important;
-  }
-
-  html {
-    font-size: 11pt !important;
-  }
-
-  body {
-    font-size: 11pt !important;
-    line-height: 1.45 !important;
+    width: 100% !important;
+    overflow: visible !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
   .book-shell {
-    width: auto !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0.2in 0.5in !important;
   }
 
   h1 {
@@ -685,22 +673,8 @@ pre code {
   img,
   .book-figure img {
     display: block !important;
-    width: auto !important;
+    width: 65% !important;
     height: auto !important;
-    max-height: 4.75in !important;
     margin: 12pt auto !important;
-  }
-
-  .book-figure,
-  .book-video,
-  .box,
-  .pull-quote,
-  .long-description {
-    break-inside: avoid-page;
-    page-break-inside: avoid;
-  }
-
-  .chapter-nav {
-    display: none !important;
   }
 }
