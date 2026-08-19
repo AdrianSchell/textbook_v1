@@ -561,7 +561,12 @@ pre code {
    Add Print Styles Here
    ========================================== */
 @media print {
-  /* 1. Reset layout wrappers to full printable area */
+  /* 1. Force 0.75-inch physical paper margins */
+  @page {
+    margin: 0.75in;
+  }
+
+  /* 2. Base document reset */
   html, body {
     font-size: 11pt !important;
     line-height: 1.5 !important;
@@ -576,7 +581,7 @@ pre code {
     padding: 0 !important;
   }
 
-  /* 2. Lock consistent heading & paragraph font sizes across all chapters */
+  /* 3. Typography hierarchy */
   h1 { 
     font-size: 22pt !important; 
     margin: 0 0 12pt 0 !important; 
@@ -598,14 +603,14 @@ pre code {
     font-size: 9pt !important; 
   }
 
-  /* 3. Keep image scaling consistent */
+  /* 4. Balanced image sizing */
   img,
   .book-figure img {
     display: block !important;
     width: 65% !important;
     max-width: 65% !important;
     height: auto !important;
-    margin: 0 auto !important;
+    margin: 12pt auto !important;
   }
 }
 }
