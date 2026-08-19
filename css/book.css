@@ -564,8 +564,8 @@ pre code {
   img,
   .book-figure img {
     display: block !important;
-    width: 75% !important;
-    max-width: 75% !important;
+    width: 55% !important; /* Noticeably scaled down while keeping diagram text readable */
+    max-width: 55% !important;
     height: auto !important;
     margin: 0 auto !important;
   }
