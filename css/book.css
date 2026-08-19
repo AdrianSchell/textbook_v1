@@ -558,7 +558,7 @@ pre code {
 }
 
 /* ==========================================
-   Add Print Styles Here
+   Print Stylesheet Adjustments
    ========================================== */
 @media print {
   @page {
@@ -576,11 +576,27 @@ pre code {
     max-width: 100% !important;
     width: 100% !important;
     margin: 0 auto !important;
-    padding: 0.2in 0.5in !important; /* Enforces 0.5in left/right side margins inside the container */
+    padding: 0.2in 0.5in !important;
     box-sizing: border-box !important;
   }
 
-  /* Consistent document typography */
+  /* Prevent wide tables and code blocks from triggering shrink-to-fit auto-scale */
+  table {
+    width: 100% !important;
+    table-layout: fixed !important;
+  }
+
+  th, td {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  pre, code {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+  }
+
+  /* Standardized Typography Across All Chapters */
   h1 { 
     font-size: 20pt !important; 
     margin: 0 0 12pt 0 !important; 
@@ -602,7 +618,7 @@ pre code {
     font-size: 9pt !important; 
   }
 
-  /* Balanced image sizing */
+  /* Balanced Image Sizing */
   img,
   .book-figure img {
     display: block !important;
@@ -611,5 +627,4 @@ pre code {
     height: auto !important;
     margin: 12pt auto !important;
   }
-}
 }
