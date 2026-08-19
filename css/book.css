@@ -561,12 +561,10 @@ pre code {
    Add Print Styles Here
    ========================================== */
 @media print {
-  /* 1. Force 0.75-inch physical paper margins */
   @page {
-    margin: 0.75in;
+    margin: 0.5in;
   }
 
-  /* 2. Base document reset */
   html, body {
     font-size: 11pt !important;
     line-height: 1.5 !important;
@@ -577,17 +575,18 @@ pre code {
   .book-shell {
     max-width: 100% !important;
     width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0 auto !important;
+    padding: 0.2in 0.5in !important; /* Enforces 0.5in left/right side margins inside the container */
+    box-sizing: border-box !important;
   }
 
-  /* 3. Typography hierarchy */
+  /* Consistent document typography */
   h1 { 
-    font-size: 22pt !important; 
+    font-size: 20pt !important; 
     margin: 0 0 12pt 0 !important; 
   }
   h2 { 
-    font-size: 15pt !important; 
+    font-size: 14pt !important; 
     margin: 16pt 0 8pt 0 !important; 
   }
   h3 { 
@@ -596,14 +595,14 @@ pre code {
   h4 { 
     font-size: 11pt !important; 
   }
-  p, li, dt, dd { 
+  p, li, dt, dd, td, th { 
     font-size: 10.5pt !important; 
   }
   .book-meta { 
     font-size: 9pt !important; 
   }
 
-  /* 4. Balanced image sizing */
+  /* Balanced image sizing */
   img,
   .book-figure img {
     display: block !important;
