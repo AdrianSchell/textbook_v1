@@ -561,10 +561,8 @@ pre code {
    Add Print Styles Here
    ========================================== */
 @media print {
-  /* Fix oversized images for printing */
-  img, 
-  .book-figure img {
-    max-width: 100% !important;
+  .image-container, img {
+    max-width: 300px !important; /* Adjust to match target layout size */
     height: auto !important;
   }
 }
