@@ -565,7 +565,7 @@ pre code {
    ========================================== */
 @media print {
   @page {
-    size: letter;          /* force consistent paper size */
+    size: letter;
     margin: 0.5in;
   }
 
@@ -589,12 +589,12 @@ pre code {
     print-color-adjust: exact;
   }
 
-  /* CRITICAL: fixed physical width so line length stays consistent */
+  /* Fixed physical content width – the single most important rule */
   .book-shell {
-    width: 7.0in !important;       /* ~7 in content area inside 0.5 in margins */
-    max-width: 7.0in !important;
+    width: 6.9in !important;          /* slightly under 7 in for safety */
+    max-width: 6.9in !important;
     margin: 0 auto !important;
-    padding: 0 !important;         /* no extra padding that could change measure */
+    padding: 0 !important;
   }
 
   h1 {
@@ -647,6 +647,17 @@ pre code {
     font-size: 9pt !important;
   }
 
+  /* Force long URLs and unbroken strings to wrap */
+  a,
+  .footnotes a,
+  .references a,
+  td,
+  th {
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    hyphens: auto !important;
+  }
+
   .table-wrap {
     width: 100% !important;
     max-width: 100% !important;
@@ -658,20 +669,22 @@ pre code {
     max-width: 100% !important;
     table-layout: fixed !important;
     border-collapse: collapse !important;
+    font-size: 9.5pt !important;   /* slightly smaller so 5-col tables fit */
   }
 
   th,
   td {
     overflow-wrap: anywhere !important;
-    word-break: normal !important;
+    word-break: break-word !important;
     hyphens: auto !important;
+    padding: 0.35rem 0.4rem !important;
   }
 
   pre,
   code {
     white-space: pre-wrap !important;
     overflow-wrap: anywhere !important;
-    word-break: normal !important;
+    word-break: break-word !important;
   }
 
   img,
@@ -689,5 +702,10 @@ pre code {
     width: 65% !important;
     height: auto !important;
     margin: 12pt auto !important;
+  }
+
+  /* Prevent any residual header/footer or nav from affecting measure */
+  .chapter-nav {
+    display: none !important;
   }
 }
