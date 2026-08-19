@@ -530,7 +530,10 @@ pre code {
   text-decoration: underline;
 }
 
-@media (max-width: 680px) {
+/* ==========================================
+   Mobile / Responsive (screen only)
+   ========================================== */
+@media screen and (max-width: 680px) {
   html {
     font-size: 17px;
   }
@@ -579,6 +582,7 @@ pre code {
     background: #fff !important;
     color: #000 !important;
     width: 100% !important;
+    max-width: none !important;
     overflow: visible !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -586,6 +590,7 @@ pre code {
 
   .book-shell {
     width: 100% !important;
+    max-width: none !important;
     margin: 0 auto !important;
     padding: 0.2in 0.5in !important;
   }
@@ -622,7 +627,9 @@ pre code {
   th,
   caption,
   .caption,
-  .source {
+  .source,
+  .pull-quote,
+  .definition-list {
     font-size: 10.5pt !important;
     line-height: 1.45 !important;
   }
@@ -630,7 +637,11 @@ pre code {
   .book-meta,
   sup,
   .footnotes,
-  .footnotes li {
+  .footnotes li,
+  .references,
+  .references li,
+  .footnotes-title,
+  .references-title {
     font-size: 9pt !important;
   }
 
