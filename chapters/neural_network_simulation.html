@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neural Network Grid Lab</title>
+<style>
+:root{--ink:#172b42;--muted:#5d6d7e;--blue:#3478c4;--red:#d95656;--teal:#20866d;--line:#d9e2ec;--paper:#f6f9fc;--panel:#fff;--gold:#f3bd58}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}header{background:#173b62;color:#fff;padding:26px max(20px,calc((100vw - 1180px)/2)) 24px}header h1{margin:0 0 6px;font-size:clamp(26px,4vw,37px);letter-spacing:-.03em}header p{margin:0;max-width:850px;color:#e1edf8}.wrap{max-width:1180px;margin:24px auto;padding:0 18px 36px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}.step{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px;text-align:left;cursor:pointer;color:var(--ink);font:inherit;transition:.15s}.step strong{display:block;font-size:15px}.step span{display:block;color:var(--muted);font-size:13px;margin-top:3px}.step[aria-selected="true"]{border-color:#3478c4;box-shadow:0 0 0 2px #3478c41a;background:#f0f7ff}.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.9fr);gap:18px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 3px 12px #173b6208}.panel-head{padding:16px 18px;border-bottom:1px solid var(--line)}.panel-head h2{font-size:19px;margin:0 0 4px}.panel-head p{margin:0;color:var(--muted);font-size:14px}.canvas-wrap{padding:10px 12px 4px}canvas{display:block;width:100%;height:auto;aspect-ratio:1.55;background:#fbfdff;border-radius:10px}.legend{display:flex;gap:15px;flex-wrap:wrap;padding:8px 18px 15px;color:var(--muted);font-size:13px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.explain{border-top:1px solid var(--line);padding:14px 18px 17px;background:#fbfdff;font-size:14px;color:#344c63}.controls{padding:16px 18px 18px}.controls h3{font-size:16px;margin:0 0 12px}.group{padding:12px 0;border-top:1px solid #edf1f5}.group:first-of-type{border-top:0;padding-top:0}.group-title{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#687c90;font-weight:700;margin-bottom:8px}.group-title .param-key{color:#176b59;font-weight:850}.control{margin:10px 0 13px}.control-top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px}.control-top label{font-weight:600}.value{font-variant-numeric:tabular-nums;color:#295c8b;font-weight:700}.control input[type=range]{width:100%;accent-color:var(--blue);margin:8px 0 0}.formula{background:#f0f6fc;border:1px solid #dbe8f5;border-radius:10px;padding:12px;margin-top:12px;font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.formula .caption{font-family:system-ui,sans-serif;color:#526b82;font-size:12px;font-weight:600;margin-bottom:4px}.pill{display:inline-block;background:#e4effb;color:#215885;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:6px}.note{font-size:13px;color:var(--muted);margin-top:10px}.select-label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}select{font:inherit;width:100%;padding:9px 10px;border:1px solid #c8d5e3;border-radius:9px;background:white;color:var(--ink)}.button-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}button.secondary{border:1px solid #c9d6e3;background:#fff;color:#244665;padding:8px 12px;border-radius:8px;font:600 13px system-ui;cursor:pointer}button.secondary:hover{background:#f0f6fc}.reminder[hidden]{display:none!important}.reminder{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}.reminder h2{font-size:19px;margin:0 0 8px}.reminder-lead{margin:0 0 8px;color:#244d72}.reminder ul{margin:8px 0 10px;padding-left:22px;color:#354d64}.reminder li{margin:5px 0}.reminder-bottom{border-top:1px solid var(--line);padding-top:10px;margin:10px 0 0;color:#354d64}.idea{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}.idea h2{font-size:19px;margin:0 0 7px}.idea p{margin:0;color:#354d64}.limitation{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:13px;color:#65778a}.mapping-points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.mini{border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px;color:#41576b}.mini strong{display:block;color:var(--ink);margin-bottom:3px}.boundary-key{font-size:13px;color:var(--muted);margin-top:10px}.challenge{margin-top:12px;border:1px dashed #a9bfd4;border-radius:10px;padding:12px;font-size:14px;color:#3b556e;background:#fbfdff}.status{font-size:13px;color:var(--teal);font-weight:700;margin-top:8px}.model-panel{padding:18px;background:#fff}.model-panel[hidden],.canvas-wrap[hidden],.legend[hidden]{display:none!important}.model-intro{font-size:14px;color:#344c63;margin:0 0 12px}.model-diagram{display:block;width:100%;height:auto;max-height:390px;background:#fbfdff;border:1px solid #e1e9f0;border-radius:12px}.model-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.model-notes>div{border:1px solid var(--line);border-radius:9px;padding:10px}.model-notes strong,.model-notes span{display:block}.model-notes strong{font-size:13px;margin-bottom:3px}.model-notes span{font-size:12px;color:#526b82;line-height:1.4}.model-footnote{font-size:12px;line-height:1.5;color:#65778a;margin:12px 0 0}.primary-action{border:0;background:#176b59;color:#fff;padding:10px 14px;border-radius:9px;font:700 14px system-ui;cursor:pointer}.primary-action:hover{background:#125745}@media(max-width:650px){.model-notes{grid-template-columns:1fr}.model-diagram{min-width:600px}.model-panel{overflow-x:auto}}.snapshot-panel{padding:13px 16px 15px;border-top:1px solid var(--line);background:#f7fbff}.snapshot-panel[hidden]{display:none}.snapshot-heading{font-size:14px;font-weight:750;margin-bottom:3px}.snapshot-copy{font-size:12px;color:var(--muted);margin-bottom:8px}.snapshot-content{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}.snapshot-content canvas{width:min(100%,390px);height:auto;aspect-ratio:1.6;border:1px solid #d9e2ec;border-radius:8px;background:white}.snapshot-params{font-size:12px;line-height:1.55;color:#344c63;flex:1;min-width:170px}.snapshot-params strong{color:var(--ink)}.score-panel{padding:10px 18px;border-top:1px solid var(--line);font-size:13px;color:#344c63;background:#fff}.score-line{display:flex;justify-content:space-between;gap:12px;align-items:center}.score-line #scoreLabel{font-size:19px;font-weight:850;color:#176b59;letter-spacing:-.02em}.score-number{font-size:16px;font-weight:800;color:#173b62;font-variant-numeric:tabular-nums}.score-track{height:7px;border-radius:99px;background:#e7edf3;overflow:hidden;margin-top:7px}.score-fill{height:100%;width:0;background:#20866d;border-radius:99px;transition:width .15s}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.step{padding:11px}.mapping-points{grid-template-columns:1fr}.wrap{margin-top:15px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><h1>Neural Network Grid Lab</h1><p>Inspect a simple neural-network layer, transform a coordinate grid with weights and biases, then see how an activation function changes the representation.</p></header>
+<main class="wrap">
+<nav class="steps" aria-label="Lab steps">
+<button class="step" data-step="0" aria-selected="true"><strong>1. Inspect the model</strong><span>Identify inputs, weights, biases, and activation</span></button>
+<button class="step" data-step="1" aria-selected="false"><strong>2. Transform the grid</strong><span>Explore weights and biases</span></button>
+<button class="step" data-step="2" aria-selected="false"><strong>3. Apply an activation</strong><span>Compare the nonlinear transformation</span></button>
+</nav>
+<div class="layout">
+<section class="panel">
+<div class="panel-head"><h2 id="stageTitle">Step 1 — Inspect the model</h2><p id="stageSubtitle">First, see how the two inputs are combined into two outputs.</p></div>
+<div class="model-panel" id="modelPanel">
+  <div class="model-intro">This simulation uses a very simple neural network with <strong>2 inputs and 2 neurons in the hidden layer (therefore 4 weights and 2 biases)</strong>, followed by an optional activation function.</div>
+  <svg class="model-diagram" viewBox="0 0 760 330" role="img" aria-labelledby="modelSvgTitle modelSvgDesc" xmlns="http://www.w3.org/2000/svg">
+    <title id="modelSvgTitle">Two-input, two-output neural network layer</title>
+    <desc id="modelSvgDesc">Each of two inputs connects to both weighted-sum units. Each weighted sum includes its own bias. The activation function is then applied separately to each result.</desc>
+    <defs><marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#7a91a7"/></marker></defs>
+    <rect x="14" y="36" width="112" height="258" rx="13" fill="#f4f8fc" stroke="#d3dfeb"/>
+    <rect x="153" y="36" width="239" height="258" rx="13" fill="#f4f8fc" stroke="#d3dfeb"/>
+    <rect x="418" y="36" width="143" height="258" rx="13" fill="#f2f8f5" stroke="#c9e1d5"/>
+    <rect x="587" y="36" width="158" height="258" rx="13" fill="#f4f8fc" stroke="#d3dfeb"/>
+    <g fill="#334d65" font-size="13" font-weight="700" text-anchor="middle"><text x="70" y="22">INPUTS</text><text x="272" y="22">WEIGHTED SUM + BIAS</text><text x="489" y="22">ACTIVATION</text><text x="666" y="22">OUTPUTS</text></g>
+    <g stroke="#7a91a7" stroke-width="2" fill="none" marker-end="url(#arrowhead)">
+      <path d="M102 112 L190 112"/><path d="M102 112 L190 220"/><path d="M102 220 L190 112"/><path d="M102 220 L190 220"/>
+      <path d="M358 112 L443 112"/><path d="M358 220 L443 220"/><path d="M533 112 L610 112"/><path d="M533 220 L610 220"/>
+    </g>
+    <g fill="#e8f2ff" stroke="#3478c4" stroke-width="2"><circle cx="72" cy="112" r="25"/><circle cx="72" cy="220" r="25"/></g>
+    <g fill="#173b62" font-size="15" font-weight="700" text-anchor="middle"><text x="72" y="117">x₁</text><text x="72" y="225">x₂</text></g>
+    <g fill="#fff" stroke="#3478c4" stroke-width="1.7"><rect x="190" y="79" width="168" height="66" rx="9"/><rect x="190" y="187" width="168" height="66" rx="9"/></g>
+    <g fill="#173b62" font-size="12" font-weight="700" text-anchor="middle"><text x="274" y="101">Neuron 1</text><text x="274" y="119">z₁ = w₁₁x₁ + w₁₂x₂ + b₁</text><text x="274" y="209">Neuron 2</text><text x="274" y="227">z₂ = w₂₁x₁ + w₂₂x₂ + b₂</text></g>
+    <g fill="#e4effb" stroke="#a8c8e9" stroke-width="1"><rect x="122" y="91" width="47" height="20" rx="7"/><rect x="112" y="151" width="47" height="20" rx="7"/><rect x="160" y="151" width="47" height="20" rx="7"/><rect x="122" y="222" width="47" height="20" rx="7"/></g>
+    <g fill="#245783" font-size="10.5" font-weight="700" text-anchor="middle"><text x="145.5" y="104.5">w₁₁</text><text x="135.5" y="164.5">w₂₁</text><text x="183.5" y="164.5">w₁₂</text><text x="145.5" y="235.5">w₂₂</text></g>
+    <g fill="#e5f5ee" stroke="#20866d" stroke-width="1.7"><rect x="443" y="83" width="90" height="58" rx="10"/><rect x="443" y="191" width="90" height="58" rx="10"/></g>
+    <g fill="#176b59" font-size="13" font-weight="700" text-anchor="middle"><text x="488" y="108">f(·)</text><text x="488" y="126" font-size="11">on z₁</text><text x="488" y="216">f(·)</text><text x="488" y="234" font-size="11">on z₂</text></g>
+    <g fill="#e8f2ff" stroke="#3478c4" stroke-width="2"><circle cx="666" cy="112" r="25"/><circle cx="666" cy="220" r="25"/></g>
+    <g fill="#173b62" font-size="15" font-weight="700" text-anchor="middle"><text x="666" y="117">h₁</text><text x="666" y="225">h₂</text></g>
+    <text x="70" y="270" fill="#5d6d7e" font-size="11" text-anchor="middle">2 values</text>
+    <text x="272" y="273" fill="#5d6d7e" font-size="11" text-anchor="middle">4 weights + 2 biases</text>
+    <text x="489" y="273" fill="#5d6d7e" font-size="11" text-anchor="middle">Same function</text>
+    <text x="666" y="270" fill="#5d6d7e" font-size="11" text-anchor="middle">2 values</text>
+  </svg>
+  <div class="model-notes"><div><strong>Weights</strong><span>Set how the inputs are combined.</span></div><div><strong>Biases</strong><span>Add an offset to each weighted sum.</span></div><div><strong>Activation</strong><span>Applies a nonlinear function to each result.</span></div></div>
+  <p class="model-footnote">In this lab, scale, shear, and rotation are convenient controls for the weight matrix; students do not adjust the four weights independently or train them with backpropagation.</p>
+  <p class="model-footnote">The decision boundary is included to give you a concrete objective for the exercise. It is a teaching aid, not a realistic boundary intended to represent a real-world classification problem.</p>
+  <div class="button-row"><button type="button" class="primary-action" id="startLab">Start the exercise: transform the grid →</button></div>
+</div>
+<div class="canvas-wrap" id="plotWrap" hidden><canvas id="plot" width="800" height="510" aria-label="Interactive coordinate grid visualization"></canvas></div>
+<div class="snapshot-panel" id="snapshotPanel" hidden><div class="snapshot-heading">Your grid before activation</div><div class="snapshot-copy">Saved when you moved on from Transform the grid. This reference stays fixed while you experiment with the activation stage.</div><div class="snapshot-content"><canvas id="snapshotCanvas" width="480" height="300" aria-label="Saved Step 1 grid and class examples"></canvas><div class="snapshot-params" id="snapshotParams"></div></div></div>
+<div class="legend" id="legend"><span><i class="dot" style="background:#3478c4"></i>Class A examples</span><span><i class="dot" style="background:#d95656"></i>Class B examples</span><span><i class="dot" style="background:#20866d"></i>Decision boundary</span></div>
+<div class="score-panel" id="scorePanel"><div class="score-line"><span id="scoreLabel">Separation score</span><span class="score-number" id="scoreNumber">6 / 8 correct</span></div><div class="score-track"><div class="score-fill" id="scoreFill"></div></div><div id="scoreHelp" class="note">Target: blue examples below the green line; red examples above it.</div></div>
+<div class="explain" id="stageExplain">The weight matrix combines and scales the input coordinates. The bias vector shifts the result. This is an affine transformation—not nonlinear bending.</div>
+</section>
+<aside class="panel"><div class="panel-head"><h2 id="controlsTitle">Mapping parameters</h2><p id="controlsSubtitle">These controls directly determine the displayed matrix and offset.</p></div><div class="controls" id="controls"></div></aside>
+</div>
+<section class="reminder" id="reminderPanel" aria-labelledby="reminderTitle" hidden>
+  <h2 id="reminderTitle">Keep in mind</h2>
+  <p class="reminder-lead"><strong>Weights and biases shape the grid; activation functions make the overall mapping nonlinear.</strong></p>
+  <ul>
+    <li><strong>Weights</strong> change the grid’s scale, orientation and shape through linear transformations.</li>
+    <li><strong>Biases</strong> shift the grid.</li>
+    <li><strong>Activation functions</strong> introduce nonlinearity: equal changes in the input do not necessarily produce equal changes in the output.</li>
+  </ul>
+  <p class="reminder-bottom">The key idea is the <strong>interaction</strong>: weights and biases determine the signal entering the activation function; the activation function transforms that signal nonlinearly.</p>
+</section>
+</main>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const canvas = $('plot'), ctx = canvas.getContext('2d');
+const state = {step:0,sx:1.0,sy:1.0,shear:0.0,rot:0,bx:0,by:0,activation:'tanh',strength:1.4};
+let step1Snapshot = null;
+const labPts=[[-1.3,-.9,0],[-1.05,-.4,0],[-.6,-1.1,0],[.5,.75,1],[.95,1.15,1],[1.3,.6,1],[-.2,.15,0],[.25,-.3,1]];
+const stageCopy = {
+0:{title:'Step 1 — Inspect the model',subtitle:'See how the two inputs are combined into two outputs before experimenting.',explain:'Follow the flow from left to right: inputs are combined using weights, each weighted sum includes a bias, and the activation function transforms each result.',key:'A neural-network layer combines inputs using weights, adds biases, and applies an activation function. This lab lets you explore those operations one step at a time.'},
+1:{title:'Step 2 — Transform the grid',subtitle:'Adjust weights and biases to change the coordinate representation.',explain:'Weights determine how the input coordinates are combined; biases shift the result. This is an affine transformation: straight grid lines remain straight, although their orientation and spacing can change.',key:'Weights and biases shape the representation. They can scale, rotate, shear, and shift the grid, but an affine transformation alone does not bend straight grid lines into curves.'},
+2:{title:'Step 3 — Apply a nonlinear activation',subtitle:'The weighted sum and bias come first; the activation is then applied separately to each coordinate.',explain:'Each pre-activation coordinate is passed through the selected function. Equal changes before activation need not produce equal changes afterwards, so grid lines can curve or compress.',key:'The activation function applies a specific nonlinear rule to the coordinates produced by the weights and biases. The interaction between these operations allows neural networks to build useful representations.'}
+};
+function affine(x,y){
+ const r=state.rot*Math.PI/180;
+ // W = R * [[sx, shear],[0,sy]], followed by bias b.
+ const t1=state.sx*x+state.shear*y, t2=state.sy*y;
+ return [Math.cos(r)*t1-Math.sin(r)*t2+state.bx, Math.sin(r)*t1+Math.cos(r)*t2+state.by];
+}
+function activation(z){
+ const k=state.strength;
+ if(state.activation==='tanh') return Math.tanh(k*z);
+ if(state.activation==='sigmoid') return 1/(1+Math.exp(-k*z));
+ return Math.max(0,k*z); // ReLU(kz)
+}
+function transform(x,y){let [u,v]=affine(x,y); if(state.step===2)return [activation(u),activation(v)]; return [u,v];}
+function getView(){if(state.step===2){if(state.activation==='sigmoid')return {xmin:-.15,xmax:1.15,ymin:-.15,ymax:1.15};if(state.activation==='relu')return {xmin:-.25,xmax:Math.max(3.4,state.strength*3.5),ymin:-.25,ymax:Math.max(3.4,state.strength*3.5)};return {xmin:-1.25,xmax:1.25,ymin:-1.25,ymax:1.25};}return {xmin:-2.8,xmax:2.8,ymin:-2.5,ymax:2.5};}
+function xyToPx(x,y,v){const m={l:48,r:22,t:22,b:40},w=canvas.width-m.l-m.r,h=canvas.height-m.t-m.b;return [m.l+(x-v.xmin)/(v.xmax-v.xmin)*w,m.t+(v.ymax-y)/(v.ymax-v.ymin)*h];}
+function drawGrid(v, mapper, bounds={min:-2,max:2,step:.5}){
+ ctx.save();
+ const vals=[];for(let a=bounds.min;a<=bounds.max+.001;a+=bounds.step) vals.push(Number(a.toFixed(5)));
+ function drawLine(fixed, vertical){const major=Math.abs(fixed-Math.round(fixed))<.001;ctx.strokeStyle=major?'#9db2c6':'#c6d4e1';ctx.lineWidth=major?1.6:1.15;let started=false;ctx.beginPath();const n=150;for(let i=0;i<=n;i++){const q=bounds.min+(bounds.max-bounds.min)*i/n;const p=vertical?mapper(fixed,q):mapper(q,fixed);if(!p||!isFinite(p[0])||!isFinite(p[1])){started=false;continue;}const [px,py]=xyToPx(p[0],p[1],v);if(px < -1000 || px>canvas.width+1000 || py< -1000 || py>canvas.height+1000){started=false;continue;}if(!started){ctx.moveTo(px,py);started=true;}else ctx.lineTo(px,py);}ctx.stroke();}
+ vals.forEach(a=>{drawLine(a,true);drawLine(a,false);});ctx.restore();
+}
+function dot(p,color,r=5){if(!p||!p.every(Number.isFinite))return;const v=getView();const [x,y]=xyToPx(p[0],p[1],v);if(x<0||x>canvas.width||y<0||y>canvas.height)return;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();ctx.lineWidth=1.5;ctx.strokeStyle='#fff';ctx.stroke();}
+function drawAxes(v){ctx.save();ctx.strokeStyle='#8da3b8';ctx.lineWidth=1.4;const p1=xyToPx(0,v.ymin,v),p2=xyToPx(0,v.ymax,v),p3=xyToPx(v.xmin,0,v),p4=xyToPx(v.xmax,0,v);ctx.beginPath();if(0>=v.xmin&&0<=v.xmax){ctx.moveTo(p1[0],p1[1]);ctx.lineTo(p2[0],p2[1]);}if(0>=v.ymin&&0<=v.ymax){ctx.moveTo(p3[0],p3[1]);ctx.lineTo(p4[0],p4[1]);}ctx.stroke();ctx.fillStyle='#566d82';ctx.font='12px system-ui';ctx.fillText("x′",canvas.width-27,Math.max(18,xyToPx(v.xmax,0,v)[1]-8));ctx.fillText("y′",Math.min(canvas.width-24,xyToPx(0, v.ymax,v)[0]+7),17);ctx.restore();}
+function decisionY(){return state.step===2 && state.activation==='sigmoid' ? 0.5 : 0;}
+function snapshotAffine(s,x,y){const r=s.rot*Math.PI/180,t1=s.sx*x+s.shear*y,t2=s.sy*y;return [Math.cos(r)*t1-Math.sin(r)*t2+s.bx,Math.sin(r)*t1+Math.cos(r)*t2+s.by];}
+function scoreCurrent(){
+ let correct=0;const boundary=decisionY();
+ labPts.forEach(p=>{const q=transform(p[0],p[1]);if(p[2]===0?q[1]<=boundary+1e-8:q[1]>boundary+1e-8)correct++;});
+ $('scoreNumber').textContent=correct+' / '+labPts.length+' correct';$('scoreFill').style.width=(100*correct/labPts.length)+'%';
+ $('scoreHelp').textContent=correct===labPts.length?'All eight examples are on the intended side of the boundary. Explain which changes made the separation possible.':'Target: blue examples below the green boundary; red examples above it. Adjust weights and biases, then compare the score.';
+}
+function captureStep1Snapshot(){
+ step1Snapshot={sx:state.sx,sy:state.sy,shear:state.shear,rot:state.rot,bx:state.bx,by:state.by};
+ const r=step1Snapshot.rot*Math.PI/180,a=Math.cos(r)*step1Snapshot.sx,b=Math.cos(r)*step1Snapshot.shear-Math.sin(r)*step1Snapshot.sy,c=Math.sin(r)*step1Snapshot.sx,d=Math.sin(r)*step1Snapshot.shear+Math.cos(r)*step1Snapshot.sy;
+ $('snapshotParams').innerHTML='<strong>Your transformation choices</strong><br>Scale X: '+fmt(step1Snapshot.sx)+' · Scale Y: '+fmt(step1Snapshot.sy)+'<br>Shear: '+fmt(step1Snapshot.shear)+' · Rotation: '+step1Snapshot.rot+'°<br>Bias: ['+fmt(step1Snapshot.bx)+', '+fmt(step1Snapshot.by)+']<br><br><strong>Resulting mapping</strong><br>W = [['+fmt(a)+', '+fmt(b)+'], ['+fmt(c)+', '+fmt(d)+']]';
+ drawSnapshot();
+}
+function drawSnapshot(){
+ if(!step1Snapshot)return;const cv=$('snapshotCanvas'),c=cv.getContext('2d'),v={xmin:-2.8,xmax:2.8,ymin:-2.5,ymax:2.5};
+ const px=(x,y)=>[18+(x-v.xmin)/(v.xmax-v.xmin)*(cv.width-34),16+(v.ymax-y)/(v.ymax-v.ymin)*(cv.height-32)];
+ c.clearRect(0,0,cv.width,cv.height);c.fillStyle='#fbfdff';c.fillRect(0,0,cv.width,cv.height);
+ for(let k=-2;k<=2.001;k+=.5){for(const vert of [true,false]){c.beginPath();c.strokeStyle=Math.abs(k-Math.round(k))<.001?'#9db2c6':'#d1dce6';c.lineWidth=Math.abs(k-Math.round(k))<.001?1.3:1;for(let i=0;i<=100;i++){const q=-2+i*4/100,inp=vert?[k,q]:[q,k],out=snapshotAffine(step1Snapshot,inp[0],inp[1]),z=px(out[0],out[1]);if(i===0)c.moveTo(z[0],z[1]);else c.lineTo(z[0],z[1]);}c.stroke();}}
+ labPts.forEach(p=>{const q=snapshotAffine(step1Snapshot,p[0],p[1]),z=px(q[0],q[1]);if(z[0]<0||z[0]>cv.width||z[1]<0||z[1]>cv.height)return;c.beginPath();c.arc(z[0],z[1],5,0,Math.PI*2);c.fillStyle=p[2]===0?'#3478c4':'#d95656';c.fill();c.strokeStyle='#fff';c.lineWidth=1.5;c.stroke();});
+ const y=px(0,0)[1];c.beginPath();c.moveTo(18,y);c.lineTo(cv.width-16,y);c.strokeStyle='#20866d';c.lineWidth=2;c.stroke();
+}
+function draw(){const v=getView();ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#fbfdff';ctx.fillRect(0,0,canvas.width,canvas.height);
+ if(state.step===0)return;
+ $('scorePanel').style.display='block';
+ const mapper=(x,y)=>transform(x,y);drawGrid(v,mapper,{min:-2,max:2,step:.5});drawAxes(v);
+ // The green line is the target decision boundary in output space.
+ const boundary=decisionY();if(boundary>=v.ymin&&boundary<=v.ymax){const q1=xyToPx(v.xmin,boundary,v),q2=xyToPx(v.xmax,boundary,v);ctx.beginPath();ctx.moveTo(q1[0],q1[1]);ctx.lineTo(q2[0],q2[1]);ctx.strokeStyle='#20866d';ctx.lineWidth=2.6;ctx.stroke();ctx.fillStyle='#20866d';ctx.font='600 12px system-ui';ctx.fillText('Decision boundary',q1[0]+8,q1[1]-7);}
+ // Track the same eight examples through the mapping.
+ labPts.forEach(p=>dot(mapper(p[0],p[1]),p[2]===0?'#3478c4':'#d95656',6));
+ scoreCurrent();
+ ctx.fillStyle='#48657f';ctx.font='600 13px system-ui';ctx.fillText(state.step===1?'Output coordinates after W x + b':'Output coordinates after activation',52,canvas.height-12);
+}
+function fmt(x){return (Math.abs(x)<.0005?0:x).toFixed(2)}
+function buildControls(){const c=$('controls');c.innerHTML='';
+ if(state.step===0){
+  c.innerHTML='<div class="group"><div class="group-title">What to notice</div><p style="font-size:14px;color:#344c63;margin:5px 0 10px">This small network has two input values and two output neurons. Every input connects to both neurons, so the layer has four weights. Each output neuron also has its own bias.</p><div class="formula"><div class="caption">The computation</div>z = W x + b<br>h = f(z)<div class="caption" style="margin-top:8px">W contains 4 weights; b contains 2 biases.</div></div><p class="note">The same activation function is applied independently to both coordinates.</p></div><div class="button-row"><button type="button" class="primary-action" id="startFromControls">Start: Transform the grid →</button></div>';
+  c.querySelector('#startFromControls').addEventListener('click',()=>setStep(1));return;
+ }
+ const g=document.createElement('div');g.className='group';g.innerHTML='<div class="group-title"><span class="param-key">Weights</span> — transformation matrix</div>';c.appendChild(g);
+ addSlider(g,'Scale X','sx',.35,1.8,.05);addSlider(g,'Scale Y','sy',.35,1.8,.05);addSlider(g,'Shear','shear',-1,1,.05);addSlider(g,'Rotation (degrees)','rot',-45,45,1);
+ const b=document.createElement('div');b.className='group';b.innerHTML='<div class="group-title"><span class="param-key">Biases</span> — offset vector</div>';c.appendChild(b);addSlider(b,'Bias X','bx',-1.5,1.5,.1);addSlider(b,'Bias Y','by',-1.5,1.5,.1);
+ const formula=document.createElement('div');formula.className='formula';formula.id='matrixFormula';c.appendChild(formula);
+ if(state.step===2){const ag=document.createElement('div');ag.className='group';ag.innerHTML='<div class="group-title">Nonlinear activation</div><label class="select-label" for="actSelect">Activation function</label><select id="actSelect"><option value="tanh">tanh</option><option value="sigmoid">Sigmoid</option><option value="relu">ReLU</option></select>';c.appendChild(ag);$('actSelect').value=state.activation;$('actSelect').addEventListener('change',e=>{state.activation=e.target.value;sync();});addSlider(ag,'Activation strength','strength',.5,2.5,.1);const n=document.createElement('p');n.className='note';n.textContent=state.activation==='sigmoid'?'Sigmoid maps each coordinate to the interval (0, 1).':state.activation==='relu'?'ReLU maps each coordinate to max(0, z), so negative values collapse to zero.':'tanh maps each coordinate to the interval (−1, 1), compressing both extremes.';ag.appendChild(n);}
+ const row=document.createElement('div');row.className='button-row';row.innerHTML='<button type="button" class="secondary" id="reset">Reset parameters</button>';c.appendChild(row);$('reset').addEventListener('click',()=>{Object.assign(state,{sx:1,sy:1,shear:0,rot:0,bx:0,by:0,strength:1.4,activation:'tanh'});buildControls();sync();});updateFormula();
+}
+function addSlider(parent,label,key,min,max,step){const wrap=document.createElement('div');wrap.className='control';const id='s_'+key;wrap.innerHTML=`<div class="control-top"><label for="${id}">${label}</label><span class="value" id="v_${key}">${fmt(state[key])}</span></div><input id="${id}" type="range" min="${min}" max="${max}" step="${step}" value="${state[key]}">`;parent.appendChild(wrap);wrap.querySelector('input').addEventListener('input',e=>{state[key]=Number(e.target.value);$('v_'+key).textContent=key==='rot'?String(state[key])+'°':fmt(state[key]);sync();});}
+function updateFormula(){const el=$('matrixFormula');if(!el)return;const r=state.rot*Math.PI/180, a=Math.cos(r)*state.sx,b=Math.cos(r)*state.shear-Math.sin(r)*state.sy,c=Math.sin(r)*state.sx,d=Math.sin(r)*state.shear+Math.cos(r)*state.sy;el.innerHTML=`<div class="caption">The mapping parameters (live values)</div><span class="pill">z = W x + b</span><br>W = [[${fmt(a)}, ${fmt(b)}],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[${fmt(c)}, ${fmt(d)}]]<br>b = [${fmt(state.bx)}, ${fmt(state.by)}]<div class="caption" style="margin-top:8px">Weights W set scale / shear / rotation; bias b shifts the output.</div>`;}
+function sync(){if(state.step===2){const n=$('controls').querySelector('.note');if(n)n.textContent=state.activation==='sigmoid'?'Sigmoid maps each coordinate to the interval (0, 1).':state.activation==='relu'?'ReLU maps each coordinate to max(0, z), so negative values collapse to zero.':'tanh maps each coordinate to the interval (−1, 1), compressing both extremes.';}updateFormula();draw();}
+function setStep(n){
+ if(n===2 && state.step===1){captureStep1Snapshot();}else if(n===2 && !step1Snapshot){captureStep1Snapshot();}
+ state.step=n;
+ $('modelPanel').hidden=(n!==0);$('plotWrap').hidden=(n===0);$('snapshotPanel').hidden=(n!==2);$('legend').hidden=(n===0);$('reminderPanel').hidden=(n===0);$('scorePanel').style.display=n===0?'none':'block';
+ document.querySelectorAll('.step').forEach(b=>b.setAttribute('aria-selected',String(Number(b.dataset.step)===n)));
+ const copy=stageCopy[n];$('stageTitle').textContent=copy.title;$('stageSubtitle').textContent=copy.subtitle;$('stageExplain').textContent=copy.explain;
+ $('controlsTitle').textContent=n===0?'Model overview':'Mapping parameters';$('controlsSubtitle').textContent=n===0?'A quick guide to the components in this simulation.':n===2?'Explore the activation after adjusting the affine transformation.':'These controls determine the weights and biases shown in the mapping.';
+ $('legend').innerHTML='<span><i class="dot" style="background:#3478c4"></i>Class A examples</span><span><i class="dot" style="background:#d95656"></i>Class B examples</span><span><i class="dot" style="background:#20866d"></i>Decision boundary</span>';
+ buildControls();draw();
+}
+document.querySelectorAll('.step').forEach(b=>b.addEventListener('click',()=>setStep(Number(b.dataset.step))));
+$('startLab').addEventListener('click',()=>setStep(1));
+setStep(0);
+})();
+</script>
+</body>
+</html>
