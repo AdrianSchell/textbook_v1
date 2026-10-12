@@ -54,7 +54,7 @@
   <div class="model-notes"><div><strong>Weights</strong><span>Set how the inputs are combined.</span></div><div><strong>Biases</strong><span>Add an offset to each weighted sum.</span></div><div><strong>Activation</strong><span>Applies a nonlinear function to each result.</span></div></div>
   <p class="model-footnote">In this lab, scale, shear, and rotation are convenient controls for the weight matrix; students do not adjust the four weights independently or train them with backpropagation.</p>
   <p class="model-footnote">The decision boundary is included to give you a concrete objective for the exercise. It is a teaching aid, not a realistic boundary intended to represent a real-world classification problem.</p>
-  <div class="button-row"><button type="button" class="primary-action" id="startLab">Start the exercise: transform the grid →</button></div>
+  <div class="button-row"><button type="button" class="primary-action" id="startLab">Start: Transform the Grid →</button></div>
 </div>
 <div class="canvas-wrap" id="plotWrap" hidden><canvas id="plot" width="800" height="510" aria-label="Interactive coordinate grid visualization"></canvas></div>
 <div class="snapshot-panel" id="snapshotPanel" hidden><div class="snapshot-heading">Your grid before activation</div><div class="snapshot-copy">Saved when you moved on from Transform the grid. This reference stays fixed while you experiment with the activation stage.</div><div class="snapshot-content"><canvas id="snapshotCanvas" width="480" height="300" aria-label="Saved Step 1 grid and class examples"></canvas><div class="snapshot-params" id="snapshotParams"></div></div></div>
@@ -147,8 +147,8 @@ function draw(){const v=getView();ctx.clearRect(0,0,canvas.width,canvas.height);
 function fmt(x){return (Math.abs(x)<.0005?0:x).toFixed(2)}
 function buildControls(){const c=$('controls');c.innerHTML='';
  if(state.step===0){
-  c.innerHTML='<div class="group"><div class="group-title">What to notice</div><p style="font-size:14px;color:#344c63;margin:5px 0 10px">This small network has two input values and two output neurons. Every input connects to both neurons, so the layer has four weights. Each output neuron also has its own bias.</p><div class="formula"><div class="caption">The computation</div>z = W x + b<br>h = f(z)<div class="caption" style="margin-top:8px">W contains 4 weights; b contains 2 biases.</div></div><p class="note">The same activation function is applied independently to both coordinates.</p></div><div class="button-row"><button type="button" class="primary-action" id="startFromControls">Start: Transform the grid →</button></div>';
-  c.querySelector('#startFromControls').addEventListener('click',()=>setStep(1));return;
+  c.innerHTML='<div class="group"><div class="group-title">What to notice</div><p style="font-size:14px;color:#344c63;margin:5px 0 10px">This small network has two input values and two output neurons. Every input connects to both neurons, so the layer has four weights. Each output neuron also has its own bias.</p><div class="formula"><div class="caption">The computation</div>z = W x + b<br>h = f(z)<div class="caption" style="margin-top:8px">W contains 4 weights; b contains 2 biases.</div></div><p class="note">The same activation function is applied independently to both coordinates.</p></div>';
+  return;
  }
  const g=document.createElement('div');g.className='group';g.innerHTML='<div class="group-title"><span class="param-key">Weights</span> — transformation matrix</div>';c.appendChild(g);
  addSlider(g,'Scale X','sx',.35,1.8,.05);addSlider(g,'Scale Y','sy',.35,1.8,.05);addSlider(g,'Shear','shear',-1,1,.05);addSlider(g,'Rotation (degrees)','rot',-45,45,1);
