@@ -276,6 +276,8 @@ let savedStep2Parameters = null;
 let step3Reached8 = false;
 let step3HintTimeout = null;
 let step3PulseCleanupTimeout = null;
+let step3PulseAnimationEndHandler = null;
+let step3PulseButton = null;
 let step3HintTimerStarted = false;
 const labPts=[[-1.3,-.9,0],[-1.05,-.4,0],[-.6,-1.1,0],[.5,.75,1],[.95,1.15,1],[1.3,.6,1],[-.2,.15,0],[.20,-.3,1]];
 // The blue and red classes occupy alternating corners of the input square.
@@ -420,31 +422,58 @@ function clearStep3SolutionHint() {
     clearTimeout(step3PulseCleanupTimeout);
     step3PulseCleanupTimeout = null;
   }
+  const button = step3PulseButton || $('revealSolution');
+  if (button) {
+    if (step3PulseAnimationEndHandler) {
+      button.removeEventListener('animationend', step3PulseAnimationEndHandler);
+    }
+    button.classList.remove('solution-pulse');
+  }
+  step3PulseAnimationEndHandler = null;
+  step3PulseButton = null;
+}
+function pulseStep3SolutionButton() {
+  if (state.step !== 3 || step3Reached8) return;
   const button = $('revealSolution');
-  if (button) button.classList.remove('solution-pulse');
+  if (!button) return;
+  step3PulseButton = button;
+  button.classList.remove('solution-pulse');
+  // Restart the CSS animation for each reminder pulse.
+  void button.offsetWidth;
+  button.classList.add('solution-pulse');
+  const stopPulse = () => {
+    if (step3PulseCleanupTimeout !== null) {
+      clearTimeout(step3PulseCleanupTimeout);
+      step3PulseCleanupTimeout = null;
+    }
+    if (step3PulseAnimationEndHandler) {
+      button.removeEventListener('animationend', step3PulseAnimationEndHandler);
+      step3PulseAnimationEndHandler = null;
+    }
+    button.classList.remove('solution-pulse');
+    if (step3PulseButton === button) step3PulseButton = null;
+
+    // After each pulse ends, wait 15 seconds and pulse again while Step 3
+    // remains incomplete. Reset, leaving Step 3, or reaching 8/8 cancels this.
+    if (state.step === 3 && !step3Reached8 && $('revealSolution')) {
+      step3HintTimeout = setTimeout(() => {
+        step3HintTimeout = null;
+        pulseStep3SolutionButton();
+      }, 15000);
+    }
+  };
+  step3PulseAnimationEndHandler = stopPulse;
+  button.addEventListener('animationend', stopPulse, {once:true});
+  // Fallback when reduced-motion settings suppress animation events.
+  step3PulseCleanupTimeout = setTimeout(stopPulse, 3300);
 }
 function scheduleStep3SolutionHint() {
   clearStep3SolutionHint();
   if (state.step !== 3 || step3Reached8 || !$('revealSolution')) return;
+  // Start the first pulse 20 seconds after the student's first slider move.
   step3HintTimeout = setTimeout(() => {
     step3HintTimeout = null;
-    if (state.step !== 3 || step3Reached8) return;
-    const button = $('revealSolution');
-    if (!button) return;
-    button.classList.remove('solution-pulse');
-    // Restart the CSS animation if this hint is triggered again after Reset.
-    void button.offsetWidth;
-    button.classList.add('solution-pulse');
-    const stopPulse = () => {
-      button.classList.remove('solution-pulse');
-      if (step3PulseCleanupTimeout !== null) {
-        clearTimeout(step3PulseCleanupTimeout);
-        step3PulseCleanupTimeout = null;
-      }
-    };
-    button.addEventListener('animationend', stopPulse, {once:true});
-    // Also clean up when reduced-motion settings suppress CSS animation events.
-    step3PulseCleanupTimeout = setTimeout(stopPulse, 3300);
+    pulseStep3SolutionButton();
   }, 20000);
 }
 
@@ -629,7 +658,7 @@ function setStep(n){
     $('afterActivationBlock').querySelector('h3').textContent='After activation';
     $('taskViewBadge').hidden=false;
     document.querySelector('.activation-intro').textContent='The activation function transforms each hidden coordinate nonlinearly.';
-    $('boundaryKey').textContent='The dashed green line is a separate linear output-layer boundary. Its weights and bias are controlled in the Mapping parameters panel.';
+    $('boundaryKey').textContent='The position and angle of the dashed green boundary are controlled in the sliders in the Output layer panel.';
     $('boundaryLegendItem').innerHTML='<i class="dot" style="background:#20866d"></i>Output-layer boundary';
     $('stageExplain').textContent='';$('stageExplain').hidden=true;
     $('controlsTitle').textContent='Mapping parameters & output layer';
