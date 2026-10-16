@@ -6,18 +6,139 @@
 <title>Neural Network Grid Lab</title>
 <style>
 :root{--ink:#172b42;--muted:#5d6d7e;--blue:#3478c4;--red:#d95656;--teal:#20866d;--line:#d9e2ec;--paper:#f6f9fc;--panel:#fff;--gold:#f3bd58}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}header{background:#173b62;color:#fff;padding:26px max(20px,calc((100vw - 1180px)/2)) 24px}header h1{margin:0 0 6px;font-size:clamp(26px,4vw,37px);letter-spacing:-.03em}header p{margin:0;max-width:850px;color:#e1edf8}.wrap{max-width:1180px;margin:24px auto;padding:0 18px 36px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}.step{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px;text-align:left;cursor:pointer;color:var(--ink);font:inherit;transition:.15s}.step strong{display:block;font-size:15px}.step span{display:block;color:var(--muted);font-size:13px;margin-top:3px}.step[aria-selected="true"]{border-color:#3478c4;box-shadow:0 0 0 2px #3478c41a;background:#f0f7ff}.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.9fr);gap:18px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 3px 12px #173b6208}.panel-head{padding:16px 18px;border-bottom:1px solid var(--line)}.panel-head h2{font-size:19px;margin:0 0 4px}.panel-head p{margin:0;color:var(--muted);font-size:14px}.canvas-wrap{padding:10px 12px 4px}canvas{display:block;width:100%;height:auto;aspect-ratio:1.55;background:#fbfdff;border-radius:10px}.legend{display:flex;gap:15px;flex-wrap:wrap;padding:8px 18px 15px;color:var(--muted);font-size:13px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.explain{border-top:1px solid var(--line);padding:14px 18px 17px;background:#fbfdff;font-size:14px;color:#344c63}.controls{padding:16px 18px 18px}.controls h3{font-size:16px;margin:0 0 12px}.group{padding:12px 0;border-top:1px solid #edf1f5}.group:first-of-type{border-top:0;padding-top:0}.group-title{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#687c90;font-weight:700;margin-bottom:8px}.group-title .param-key{color:#176b59;font-weight:850}.control{margin:10px 0 13px}.control-top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px}.control-top label{font-weight:600}.value{font-variant-numeric:tabular-nums;color:#295c8b;font-weight:700}.control input[type=range]{width:100%;accent-color:var(--blue);margin:8px 0 0}.formula{background:#f0f6fc;border:1px solid #dbe8f5;border-radius:10px;padding:12px;margin-top:12px;font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.formula .caption{font-family:system-ui,sans-serif;color:#526b82;font-size:12px;font-weight:600;margin-bottom:4px}.pill{display:inline-block;background:#e4effb;color:#215885;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:6px}.note{font-size:13px;color:var(--muted);margin-top:10px}.select-label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}select{font:inherit;width:100%;padding:9px 10px;border:1px solid #c8d5e3;border-radius:9px;background:white;color:var(--ink)}.button-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}button.secondary{border:1px solid #c9d6e3;background:#fff;color:#244665;padding:8px 12px;border-radius:8px;font:600 13px system-ui;cursor:pointer}button.secondary:hover{background:#f0f6fc}.reminder[hidden]{display:none!important}.reminder{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}.reminder h2{font-size:19px;margin:0 0 8px}.reminder-lead{margin:0 0 8px;color:#244d72}.reminder ul{margin:8px 0 10px;padding-left:22px;color:#354d64}.reminder li{margin:5px 0}.reminder-bottom{border-top:1px solid var(--line);padding-top:10px;margin:10px 0 0;color:#354d64}.idea{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}.idea h2{font-size:19px;margin:0 0 7px}.idea p{margin:0;color:#354d64}.limitation{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:13px;color:#65778a}.mapping-points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.mini{border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px;color:#41576b}.mini strong{display:block;color:var(--ink);margin-bottom:3px}.boundary-key{font-size:13px;color:var(--muted);margin-top:10px}.challenge{margin-top:12px;border:1px dashed #a9bfd4;border-radius:10px;padding:12px;font-size:14px;color:#3b556e;background:#fbfdff}.status{font-size:13px;color:var(--teal);font-weight:700;margin-top:8px}.model-panel{padding:20px 24px;background:#fff}.model-panel[hidden],.layout[hidden]{display:none!important}.canvas-wrap[hidden],.legend[hidden]{display:none!important}.model-intro{font-size:15px;color:#344c63;margin:0 0 16px;max-width:1000px}.model-diagram{display:block;width:100%;height:auto;max-height:none;max-width:1120px;margin:0 auto;background:#fbfdff;border:1px solid #e1e9f0;border-radius:12px}.model-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.model-notes>div{border:1px solid var(--line);border-radius:9px;padding:10px}.model-notes strong,.model-notes span{display:block}.model-notes strong{font-size:13px;margin-bottom:3px}.model-notes span{font-size:12px;color:#526b82;line-height:1.4}.model-footnote{font-size:12px;line-height:1.5;color:#65778a;margin:12px 0 0}.primary-action{border:0;background:#176b59;color:#fff;padding:10px 14px;border-radius:9px;font:700 14px system-ui;cursor:pointer}.primary-action:hover{background:#125745}.coordinate-explanation{margin-top:16px;padding:16px 18px;border:1px solid #b8d8ca;border-left:6px solid #20866d;border-radius:10px;background:#eff8f3;color:#173b31;font-size:18px;font-weight:650;line-height:1.55}.coordinate-explanation strong{color:#176b59}.coordinate-explanation p{margin:0 0 10px}.coordinate-explanation p:last-child{margin-bottom:0}@media(max-width:650px){.model-notes{grid-template-columns:1fr}.model-diagram{min-width:680px}.model-panel{overflow-x:auto;padding:16px}}.snapshot-panel{padding:13px 16px 15px;border-top:1px solid var(--line);background:#f7fbff}.snapshot-panel[hidden]{display:none}.snapshot-heading{font-size:14px;font-weight:750;margin-bottom:3px}.snapshot-copy{font-size:12px;color:var(--muted);margin-bottom:8px}.snapshot-content{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}.snapshot-content canvas{width:min(100%,390px);height:auto;aspect-ratio:1.6;border:1px solid #d9e2ec;border-radius:8px;background:white}.snapshot-params{font-size:12px;line-height:1.55;color:#344c63;flex:1;min-width:170px}.snapshot-params strong{color:var(--ink)}.task-prompt{margin:12px 18px 4px;padding:11px 14px;border:1px solid #b8d8ca;border-left:5px solid #20866d;border-radius:10px;background:#eff8f3;color:#173b31;font-size:16px;font-weight:800;line-height:1.35}.task-prompt strong{color:#176b59}.task-prompt .red-word{color:#c63f45}.task-prompt .blue-word{color:#2868b2}.task-prompt[hidden]{display:none!important}.score-panel{padding:10px 18px;border-top:1px solid var(--line);font-size:13px;color:#344c63;background:#fff}.score-line{display:flex;justify-content:space-between;gap:12px;align-items:center}.score-line #scoreLabel{font-size:19px;font-weight:850;color:#176b59;letter-spacing:-.02em}.score-number{font-size:16px;font-weight:800;color:#173b62;font-variant-numeric:tabular-nums}.score-track{height:7px;border-radius:99px;background:#e7edf3;overflow:hidden;margin-top:7px}.score-fill{height:100%;width:0;background:#20866d;border-radius:99px;transition:width .15s}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}header{background:#173b62;color:#fff;padding:10px max(20px,calc((100vw - 1180px)/2)) 11px}header h1{margin:0 0 2px;font-size:clamp(23px,3vw,30px);letter-spacing:-.03em}header p{margin:0;max-width:850px;color:#e1edf8;font-size:14px;line-height:1.4}.wrap{max-width:1180px;margin:24px auto;padding:0 18px 36px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}.step{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px;text-align:left;cursor:pointer;color:var(--ink);font:inherit;transition:.15s}.step strong{display:block;font-size:15px}.step span{display:block;color:var(--muted);font-size:13px;margin-top:3px}.step[aria-selected="true"]{border-color:#3478c4;box-shadow:0 0 0 2px #3478c41a;background:#f0f7ff}.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.9fr);gap:18px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 3px 12px #173b6208}.panel-head{padding:16px 18px;border-bottom:1px solid var(--line)}.panel-head h2{font-size:19px;margin:0 0 4px}.panel-head p{margin:0;color:var(--muted);font-size:14px}.canvas-wrap{padding:10px 12px 4px}canvas{display:block;width:100%;height:auto;aspect-ratio:1.55;background:#fbfdff;border-radius:10px}.legend{display:flex;gap:15px;flex-wrap:wrap;padding:8px 18px 15px;color:var(--muted);font-size:13px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.explain{border-top:1px solid var(--line);padding:14px 18px 17px;background:#fbfdff;font-size:14px;color:#344c63}.controls{padding:16px 18px 18px}.controls h3{font-size:16px;margin:0 0 12px}.group{padding:12px 0;border-top:1px solid #edf1f5}.group:first-of-type{border-top:0;padding-top:0}.group-title{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#687c90;font-weight:700;margin-bottom:8px}.group-title .param-key{color:#176b59;font-weight:850}.control{margin:10px 0 13px}.control-top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px}.control-top label{font-weight:600}.value{font-variant-numeric:tabular-nums;color:#295c8b;font-weight:700}.control input[type=range]{width:100%;accent-color:var(--blue);margin:8px 0 0}.formula{background:#f0f6fc;border:1px solid #dbe8f5;border-radius:10px;padding:12px;margin-top:12px;font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.formula .caption{font-family:system-ui,sans-serif;color:#526b82;font-size:12px;font-weight:600;margin-bottom:4px}.pill{display:inline-block;background:#e4effb;color:#215885;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:6px}.note{font-size:13px;color:var(--muted);margin-top:10px}.select-label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}select{font:inherit;width:100%;padding:9px 10px;border:1px solid #c8d5e3;border-radius:9px;background:white;color:var(--ink)}.button-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}button.secondary{border:1px solid #c9d6e3;background:#fff;color:#244665;padding:8px 12px;border-radius:8px;font:600 13px system-ui;cursor:pointer}button.secondary:hover{background:#f0f6fc}.reminder[hidden]{display:none!important}.reminder{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}.reminder h2{font-size:19px;margin:0 0 8px}.reminder-lead{margin:0 0 8px;color:#244d72}.reminder ul{margin:8px 0 10px;padding-left:22px;color:#354d64}.reminder li{margin:5px 0}.reminder-bottom{border-top:1px solid var(--line);padding-top:10px;margin:10px 0 0;color:#354d64}.idea{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}.idea h2{font-size:19px;margin:0 0 7px}.idea p{margin:0;color:#354d64}.limitation{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:13px;color:#65778a}.mapping-points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.mini{border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px;color:#41576b}.mini strong{display:block;color:var(--ink);margin-bottom:3px}.boundary-key{font-size:13px;color:var(--muted);margin-top:10px}.challenge{margin-top:12px;border:1px dashed #a9bfd4;border-radius:10px;padding:12px;font-size:14px;color:#3b556e;background:#fbfdff}.status{font-size:13px;color:var(--teal);font-weight:700;margin-top:8px}.model-panel{padding:20px 24px;background:#fff}.model-panel[hidden],.layout[hidden]{display:none!important}.canvas-wrap[hidden],.legend[hidden]{display:none!important}.model-intro{font-size:15px;color:#344c63;margin:0 0 16px;max-width:1000px}.model-diagram{display:block;width:100%;height:auto;max-height:none;max-width:1120px;margin:0 auto;background:#fbfdff;border:1px solid #e1e9f0;border-radius:12px}.model-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.model-notes>div{border:1px solid var(--line);border-radius:9px;padding:10px}.model-notes strong,.model-notes span{display:block}.model-notes strong{font-size:13px;margin-bottom:3px}.model-notes span{font-size:12px;color:#526b82;line-height:1.4}.model-footnote{font-size:12px;line-height:1.5;color:#65778a;margin:12px 0 0}.primary-action{border:0;background:#176b59;color:#fff;padding:10px 14px;border-radius:9px;font:700 14px system-ui;cursor:pointer}.primary-action:hover{background:#125745}.coordinate-explanation{margin-top:16px;padding:16px 18px;border:1px solid #b8d8ca;border-left:6px solid #20866d;border-radius:10px;background:#eff8f3;color:#173b31;font-size:18px;font-weight:650;line-height:1.55}.coordinate-explanation strong{color:#176b59}.coordinate-explanation p{margin:0 0 10px}.coordinate-explanation p:last-child{margin-bottom:0}.coordinate-explanation.plain-explanation{margin-top:16px;padding:16px 18px;border:1px solid #b8d8ca;border-left:6px solid #20866d;border-radius:10px;background:#eff8f3;color:#111;font-size:16px;font-weight:400;line-height:1.6}.coordinate-explanation.plain-explanation strong{color:#111}.coordinate-explanation.plain-explanation p{margin:0 0 10px}.coordinate-explanation.plain-explanation ul{margin:8px 0 10px;padding-left:28px}.coordinate-explanation.plain-explanation li{margin:6px 0}.coordinate-explanation.plain-explanation p:last-child{margin-top:14px;font-weight:700}@media(max-width:650px){.model-notes{grid-template-columns:1fr}.model-diagram{min-width:680px}.model-panel{overflow-x:auto;padding:16px}}.snapshot-panel{padding:13px 16px 15px;border-top:1px solid var(--line);background:#f7fbff}.snapshot-panel[hidden]{display:none}.snapshot-heading{font-size:14px;font-weight:750;margin-bottom:3px}.snapshot-copy{font-size:12px;color:var(--muted);margin-bottom:8px}.snapshot-content{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}.snapshot-content canvas{width:min(100%,390px);height:auto;aspect-ratio:1.6;border:1px solid #d9e2ec;border-radius:8px;background:white}.snapshot-params{font-size:12px;line-height:1.55;color:#344c63;flex:1;min-width:170px}.snapshot-params strong{color:var(--ink)}.task-prompt{margin:12px 18px 4px;padding:11px 14px;border:1px solid #b8d8ca;border-left:5px solid #20866d;border-radius:10px;background:#eff8f3;color:#173b31;font-size:16px;font-weight:800;line-height:1.35}.task-prompt strong{color:#176b59}.task-prompt .red-word{color:#c63f45}.task-prompt .blue-word{color:#2868b2}.task-prompt[hidden]{display:none!important}.score-panel{padding:10px 18px;border-top:1px solid var(--line);font-size:13px;color:#344c63;background:#fff}.score-line{display:flex;justify-content:space-between;gap:12px;align-items:center}.score-line #scoreLabel{font-size:19px;font-weight:850;color:#176b59;letter-spacing:-.02em}.score-number{font-size:16px;font-weight:800;color:#173b62;font-variant-numeric:tabular-nums}.score-track{height:7px;border-radius:99px;background:#e7edf3;overflow:hidden;margin-top:7px}.score-fill{height:100%;width:0;background:#20866d;border-radius:99px;transition:width .15s}
 .celebration[hidden]{display:none!important}.celebration{position:relative;isolation:isolate;overflow:hidden;margin:14px 18px 16px;padding:22px 18px 20px;border:2px solid #d8ad43;border-radius:14px;background:linear-gradient(135deg,#fff9df,#ffffff 58%,#e8f7ef);text-align:center;box-shadow:0 5px 18px #173b6214}.celebration h3{margin:0 0 5px;color:#145b49;font-size:clamp(24px,3vw,34px);line-height:1.2;letter-spacing:-.025em}.celebration p{margin:0;color:#344c63;font-size:15px}.celebration .celebration-icon{display:block;font-size:32px;line-height:1.2;margin-bottom:6px}.ticker-tape{position:absolute;inset:0 0 auto;height:100%;overflow:hidden;pointer-events:none;z-index:-1}.tape-piece{position:absolute;top:-22px;width:9px;height:17px;border-radius:2px;opacity:0;transform:rotate(0deg);animation:ticker-fall 2.8s linear infinite}.tape-piece:nth-child(4n+1){background:#e7ad31}.tape-piece:nth-child(4n+2){background:#20866d}.tape-piece:nth-child(4n+3){background:#3478c4}.tape-piece:nth-child(4n){background:#d95656}@keyframes ticker-fall{0%{opacity:0;transform:translateY(-12px) rotate(0deg)}10%{opacity:1}100%{opacity:.85;transform:translateY(220px) rotate(640deg)}}@media(prefers-reduced-motion:reduce){.tape-piece{animation:none;display:none}.celebration{scroll-margin-top:1rem}}.parameter-pulse{display:inline-block;border-radius:4px;padding:0 2px;animation:parameter-highlight .75s ease-out}@keyframes parameter-highlight{0%{background:#ffe08a;color:#173b62;box-shadow:0 0 0 3px #ffe08a88;transform:scale(1.08)}45%{background:#fff0bf;color:#176b59}100%{background:transparent;color:inherit;box-shadow:none;transform:scale(1)}}@media(prefers-reduced-motion:reduce){.parameter-pulse{animation:none;background:#fff0bf;color:#173b62;box-shadow:0 0 0 2px #ffe08a88}}
 @media(max-width:850px){.layout{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.step{padding:11px}.mapping-points{grid-template-columns:1fr}.wrap{margin-top:15px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.solution-status{padding:9px 11px;border:1px solid #b8d8ca;border-radius:8px;background:#eff8f3;color:#176b59;font-size:12px;line-height:1.45}
+
+.steps{grid-template-columns:minmax(0,1fr) minmax(0,1.7fr)}
+.step[hidden]{display:none!important}
+.step-advanced{background:#fff5d9;border-color:#e5b64b;color:#684b0b}
+.step-advanced:hover{background:#ffefbd}
+/* Once Step 3 is unlocked, draw attention to it after a short pause. */
+.step-advanced:not([hidden]){animation:advanced-tab-attention .72s ease-in-out 3s 7}
+@keyframes advanced-tab-attention{
+  0%,100%{background:#fff5d9;box-shadow:0 0 0 0 #e5b64b00;transform:scale(1)}
+  35%,70%{background:#ffe08a;box-shadow:0 0 0 5px #e5b64b99,0 5px 16px #c68a124d;transform:translateY(-2px) scale(1.015)}
+}
+.step-advanced[aria-selected="true"]{background:#ffe8a3;border-color:#c68a12;box-shadow:0 0 0 2px #e5b64b55}
+@media(prefers-reduced-motion:reduce){.step-advanced:not([hidden]){animation:none!important}}
+.steps.advanced-unlocked{grid-template-columns:minmax(0,.8fr) minmax(0,1.45fr) minmax(265px,1.25fr)}
+.why-panel[hidden]{display:none!important}
+.why-panel{background:#fff;margin-top:0}
+.why-intro{margin:14px 16px;padding:12px 14px;border:1px solid #c8ddd6;border-left:5px solid #20866d;border-radius:9px;background:#f0f8f5;color:#244d42;font-size:14px}
+.why-intro strong{color:#145b49}
+.why-score{margin:12px 16px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
+.why-score .score-track{margin-bottom:8px}
+.why-views{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 16px 14px}
+.why-view{min-width:0;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+.why-view h3{font-size:16px;margin:0 0 3px}
+.why-view p{font-size:13px;color:var(--muted);margin:0 0 8px;min-height:38px}
+.why-view canvas{display:block;width:100%;height:auto;aspect-ratio:1.24;background:#fbfdff;border:1px solid #e1e9f0;border-radius:8px}
+.why-controls{margin:0 16px 16px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#f8fbfe}
+.why-controls h3{font-size:16px;margin:0 0 8px}
+.why-controls-grid{display:grid;grid-template-columns:minmax(220px,1fr) minmax(220px,1fr);gap:18px;align-items:center}
+.why-control-label{display:block;font-size:14px;font-weight:700;margin-bottom:5px}
+.why-controls input[type=range]{width:100%;accent-color:var(--blue)}
+.why-formula{padding:9px 11px;margin-top:10px;border-radius:8px;background:#eef5fc;color:#244665;font:13px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace}
+.why-feedback{font-size:13px;color:#354d64;margin:8px 0 0}
+.why-celebration{margin:0 16px 16px}
+@media(max-width:850px){.steps,.steps.advanced-unlocked{grid-template-columns:1fr}.why-views,.why-controls-grid{grid-template-columns:1fr}.why-view p{min-height:0}}
+.visual-block{padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+.visual-block:last-of-type{border-bottom:0}
+.visual-block h3{font-size:16px;margin:0 0 3px;color:var(--ink)}.activation-intro{font-size:13px;line-height:1.4;color:var(--muted);margin:0 0 8px}
+.visual-block p{font-size:13px;color:var(--muted);margin:0 0 8px}
+#afterActivationBlock{padding-top:7px;padding-bottom:5px}
+#afterActivationBlock h3{margin:0}
+.visual-block canvas{width:100%;height:auto;display:block;background:#fbfdff;border:1px solid #e1e9f0;border-radius:10px}
+#plot{aspect-ratio:1.55}
+#activatedPlot{aspect-ratio:1.55}
+.exercise-task{margin:12px 16px 6px;padding:11px 14px;border:1px solid #b8d8ca;border-left:5px solid #20866d;border-radius:10px;background:#eff8f3;color:#173b31;font-size:15px;font-weight:750}
+.exercise-task[hidden]{display:none!important}
+.challenge-status{padding:10px 16px 12px;border-top:1px solid var(--line);font-size:13px;color:#354d64;background:#fff}
+.challenge-status strong{color:#176b59}
+.scoring-note{margin-top:9px;padding:8px 10px;border-left:4px solid #3478c4;border-radius:7px;background:#eef5fc;color:#244665;font-size:13px;line-height:1.45}.scoring-note strong{color:#173b62}
+@media(max-width:850px){.steps,.steps.advanced-unlocked{grid-template-columns:1fr}.visual-block{padding:12px}}
+
+
+/* Step 3 instructions span the page and read in a clear sequence. */
+.step3-wide-instructions[hidden]{display:none!important}
+.step3-wide-instructions{margin:0 0 16px;padding:13px 18px;display:flex;flex-direction:column;gap:11px;align-items:stretch;background:#f4faf7;border:1px solid #b8d8ca;border-left:5px solid #20866d;border-radius:12px;box-shadow:0 2px 8px #173b6208}
+.step3-wide-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-bottom:9px;border-bottom:1px solid #d7e9e0}
+.step3-wide-heading h2{font-size:18px;line-height:1.25;margin:0;color:#145b49}
+.step3-required-tag{display:inline-block;white-space:nowrap;padding:3px 8px;border-radius:999px;background:#dcefe6;color:#176b59;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.step3-context-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.step3-context-card{padding:10px 12px;border:1px solid #d7e9e0;border-radius:9px;background:#fff;min-width:0}
+.step3-context-card .context-label{display:block;margin-bottom:4px;font-size:11px;line-height:1.3;font-weight:800;text-transform:uppercase;letter-spacing:.055em;color:#477466}
+.step3-wide-instructions p{font-size:14px;line-height:1.45;color:#244d42;margin:0}
+.step3-task-instructions{padding:11px 13px;border:1px solid #b8d8ca;border-radius:9px;background:#eaf6f0}
+.step3-task-instructions p+p{margin-top:7px}
+#exerciseLayout.step3-focus > section > .panel-head,#exerciseLayout.step3-focus #exerciseTask{display:none!important}
+@media(max-width:850px){.step3-wide-instructions{gap:9px;padding:12px 14px}.step3-context-row{grid-template-columns:1fr;gap:8px}.step3-task-instructions{padding:10px 11px}}
+
+/* Step 3: visually identify the activated representation as the task view. */
+#exerciseLayout.step3-focus #beforeActivationBlock{margin:0 10px 10px;padding:10px 12px 12px;border:1px solid #e1e8ee;border-radius:10px;background:#fafcfd}
+#exerciseLayout.step3-focus #beforeActivationBlock h3{font-size:14px;color:#65778a}
+#exerciseLayout.step3-focus #beforeActivationBlock p{font-size:12px}
+#exerciseLayout.step3-focus #beforeActivationBlock canvas{border-color:#e3e9ee}
+#exerciseLayout.step3-focus #afterActivationBlock{margin:0 10px 12px;padding:13px 13px 12px;border:2px solid #20866d;border-radius:13px;background:linear-gradient(180deg,#eff8f3 0%,#ffffff 170px);box-shadow:0 4px 14px #20866d17}
+#exerciseLayout.step3-focus #afterActivationBlock .view-heading-row{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+#exerciseLayout.step3-focus #afterActivationBlock h3{color:#145b49;font-size:18px}
+#taskViewBadge{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;background:#20866d;color:#fff;font-size:11px;font-weight:850;letter-spacing:.045em;white-space:nowrap}
+#taskViewBadge[hidden]{display:none!important}
+#exerciseLayout.step3-focus #afterActivationBlock .activation-intro{color:#315e50}
+#exerciseLayout.step3-focus #afterActivationBlock canvas{border:2px solid #b8d8ca;box-shadow:0 2px 8px #173b6208}
+#afterActivationBlock .score-panel{margin:10px 0 8px;padding:10px 12px;border:1px solid #b8d8ca;border-radius:10px;background:#f3faf6}
+#exerciseLayout.step3-focus #afterActivationBlock .score-panel{border:1px solid #8fc8b2;background:#eff8f3}
+#afterActivationBlock .score-line #scoreLabel{font-size:16px}
+#afterActivationBlock .score-number{font-size:17px}
+#afterActivationBlock .score-track{height:9px}
+#exerciseLayout.step3-focus #afterActivationBlock .boundary-key{color:#315e50;font-weight:600}
+
+.fixed-control{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 13px;font-size:14px;padding:9px 0 6px;border-bottom:1px dashed #d9e2ec}.fixed-control>span{font-weight:600}.fixed-control strong{font-variant-numeric:tabular-nums;color:#295c8b}.fixed-tag{font-size:11px;font-weight:600;color:#687c90;background:#edf2f7;border-radius:5px;padding:2px 5px;margin-left:4px}.button-row[hidden]{display:none!important}
+
+/* Clearly visible gold pulse for Reveal a solution after sustained difficulty. */
+@keyframes revealSolutionPulse {
+  0%,100% {
+    transform:scale(1);
+    background:#176b59;
+    color:#fff;
+    outline:2px solid transparent;
+    outline-offset:3px;
+    box-shadow:0 0 0 0 rgba(243,189,88,0);
+    filter:brightness(1);
+  }
+  35%,65% {
+    transform:scale(1.055);
+    background:#f3bd58;
+    color:#173b62;
+    outline:3px solid #d99a12;
+    outline-offset:3px;
+    box-shadow:0 0 0 6px rgba(243,189,88,.72), 0 0 24px 10px rgba(243,189,88,.82);
+    filter:brightness(1.08);
+  }
+}
+#revealSolution.solution-pulse { animation:revealSolutionPulse .72s ease-in-out 4; transform-origin:center; position:relative; z-index:3; }
+@media(prefers-reduced-motion:reduce) {
+  #revealSolution.solution-pulse {
+    animation:none;
+    background:#f3bd58;
+    color:#173b62;
+    outline:3px solid #d99a12;
+    outline-offset:3px;
+    box-shadow:0 0 0 6px rgba(243,189,88,.72), 0 0 24px 10px rgba(243,189,88,.82);
+  }
+}
+
 </style>
 </head>
 <body>
-<header><h1>Neural Network Grid Lab</h1><p>Experiment with weights and biases to transform a coordinate grid, then see how an activation function changes the representation.</p></header>
+<header><h1>Neural Network Grid Lab</h1></header>
 <main class="wrap">
 <nav class="steps" aria-label="Lab steps">
 <button class="step" data-step="1" aria-selected="true"><strong>1. Inspect the model</strong><span>See how inputs become a representation</span></button>
-<button class="step" data-step="2" aria-selected="false"><strong>2. Transform the grid</strong><span>Explore weights and biases</span></button>
-<button class="step" data-step="3" aria-selected="false"><strong>3. Apply an activation</strong><span>Compare the nonlinear transformation</span></button>
+<button class="step" data-step="2" aria-selected="false"><strong>2. Find a useful representation</strong><span>Adjust weights and biases to organize the data</span></button>
+<button class="step step-advanced" id="advancedTab" data-step="3" aria-selected="false" hidden><strong>3. When Does Activation Matter?</strong><span>Explore how nonlinearity changes the representation and helps classification</span></button>
 </nav>
 <section class="panel model-panel" id="modelPanel" aria-labelledby="modelStageTitle">
   <div class="panel-head" style="padding:0 0 14px;border-bottom:0"><h2 id="modelStageTitle">Step 1 — Inspect the model</h2></div>
@@ -69,165 +190,462 @@
     <div><strong style="color:#176b59">Biases</strong><span>Shift the values produced by the two hidden-layer neurons.</span></div>
     <div><strong style="color:#176b59">Activation</strong><span>Applies a nonlinear function to each value; it can be switched off for comparison.</span></div>
   </div>
-  <p class="model-footnote">In this lab, scale, shear, and rotation are convenient controls for the weight matrix; students do not adjust the four weights independently or train them with backpropagation.</p>
+  
   <p class="model-footnote">The decision boundary is included to give you a concrete objective for the exercise. It is a teaching aid, not a realistic boundary intended to represent a real-world classification problem.</p>
-  <div class="coordinate-explanation">
-    <p><strong>Weights and biases transform the coordinate space:</strong></p>
+  <div class="coordinate-explanation plain-explanation">
+    <p><strong>Neural networks: Weights and biases transform the coordinate space</strong></p>
     <ul>
       <li><strong>Weights</strong> can stretch, rotate, or shear the grid.</li>
       <li><strong>Biases</strong> shift the grid.</li>
-      <li>These transformations change the relative positions of data points, potentially making classes easier to separate.</li>
+      <li>These transformations change the positions of data points relative to one another, potentially making classes easier to separate.</li>
     </ul>
-    <p><strong>Activation function introduces nonlinearity by breaking proportionality:</strong></p>
+    <p><strong>Activation functions introduce nonlinearity</strong></p>
     <ul>
-      <li>It transforms values nonlinearly, so changes in input no longer produce proportional changes in output.</li>
-      <li>This allows the coordinate grid to bend or distort, going beyond stretching, rotating, shearing, and shifting.</li>
+      <li>They transform values nonlinearly, so proportional changes in input do not necessarily produce proportional changes in output.</li>
+      <li>This allows the coordinate grid to bend or distort, going beyond the stretching, rotation, shearing, and shifting produced by weights and biases.</li>
     </ul>
     <p><strong>Play the game and you'll see all these changes happen right in front of you!</strong></p>
   </div>
   <div class="button-row"><button type="button" class="primary-action" id="startTransform">Start: Transform the Grid →</button></div>
 </section>
+<section class="panel step3-wide-instructions" id="step3WideInstructions" hidden aria-labelledby="step3WideTitle">
+  <div class="step3-wide-heading">
+    <h2 id="step3WideTitle">Step 3 — When Does Activation Matter?</h2>
+    <span class="step3-required-tag">Required challenge</span>
+  </div>
+  <div class="step3-context-row" aria-label="Why this challenge matters">
+    <div class="step3-context-card">
+      <span class="context-label">Previous stage</span>
+      <p>In the previous stage, the activation did not necessarily make the classes easier to separate.</p>
+    </div>
+    <div class="step3-context-card">
+      <span class="context-label">What changes now</span>
+      <p>In this stage, the activation function is needed to separate the classes of points.</p>
+    </div>
+  </div>
+  <div class="step3-task-instructions">
+    <p><strong>Untangle the points:</strong> Adjust the weights and biases sliders to reshape the lower view until a straight decision boundary can separate all red points from all blue points. To position the decision boundary between the classes, use the <strong>Output Layer</strong> sliders.</p>
+    <p>Aim for <strong>8/8 correct</strong> in the lower <strong>After activation</strong> view.</p>
+    <p><strong>Hint:</strong> This is a challenging classification task, so some parameters may need to be set near the extremes of their ranges.</p>
+  </div>
+</section>
 <div class="layout" id="exerciseLayout" hidden>
-<section class="panel">
-<div class="panel-head"><h2 id="stageTitle">Step 1 — Transform the grid</h2><p id="stageSubtitle">Adjust weights and biases to change the coordinate representation. The input data and neural network structure remain fixed; only the mapping from inputs to the two-dimensional representation changes. Key concept: the inputs stay the same, but the network changes how they are represented.</p></div>
-<div class="task-prompt" id="taskPrompt" hidden>Your task: get all <span class="red-word">red</span> points above the decision boundary and all <span class="blue-word">blue</span> points below it!</div>
-<div class="canvas-wrap" id="plotWrap" hidden><canvas id="plot" width="800" height="510" aria-label="Interactive coordinate grid visualization"></canvas></div>
-<div class="snapshot-panel" id="snapshotPanel" hidden><div class="snapshot-heading">Your grid before activation</div><div class="snapshot-copy">Saved when you moved on from Transform the grid. This reference stays fixed while you experiment with the activation stage.</div><div class="snapshot-content"><canvas id="snapshotCanvas" width="480" height="300" aria-label="Saved Step 1 grid and class examples"></canvas><div class="snapshot-params" id="snapshotParams"></div></div></div>
-<div class="celebration" id="celebrationPanel" hidden role="status" aria-live="polite">
-  <div class="ticker-tape" aria-hidden="true"><span class="tape-piece" style="left:0.00%;animation-delay:0.000s"></span><span class="tape-piece" style="left:5.25%;animation-delay:0.045s"></span><span class="tape-piece" style="left:10.50%;animation-delay:0.090s"></span><span class="tape-piece" style="left:15.75%;animation-delay:0.135s"></span><span class="tape-piece" style="left:21.00%;animation-delay:0.180s"></span><span class="tape-piece" style="left:26.25%;animation-delay:0.225s"></span><span class="tape-piece" style="left:31.50%;animation-delay:0.270s"></span><span class="tape-piece" style="left:36.75%;animation-delay:0.315s"></span><span class="tape-piece" style="left:42.00%;animation-delay:0.360s"></span><span class="tape-piece" style="left:47.25%;animation-delay:0.405s"></span><span class="tape-piece" style="left:52.50%;animation-delay:0.450s"></span><span class="tape-piece" style="left:57.75%;animation-delay:0.495s"></span><span class="tape-piece" style="left:63.00%;animation-delay:0.540s"></span><span class="tape-piece" style="left:68.25%;animation-delay:0.585s"></span><span class="tape-piece" style="left:73.50%;animation-delay:0.630s"></span><span class="tape-piece" style="left:78.75%;animation-delay:0.675s"></span><span class="tape-piece" style="left:84.00%;animation-delay:0.720s"></span><span class="tape-piece" style="left:89.25%;animation-delay:0.765s"></span><span class="tape-piece" style="left:94.50%;animation-delay:0.810s"></span></div>
-  <span class="celebration-icon" aria-hidden="true">🎉</span>
-  <h3>Congratulations! You did it!</h3>
-  <p>You reached <strong>8/8</strong> — all eight examples are on the intended side of the decision boundary. Your transformation works!</p>
-</div>
-<div class="legend" id="legend"><span><i class="dot" style="background:#3478c4"></i>Class A examples</span><span><i class="dot" style="background:#d95656"></i>Class B examples</span><span><i class="dot" style="background:#20866d"></i>Decision boundary</span></div>
-<div class="score-panel" id="scorePanel"><div class="score-line"><span id="scoreLabel">Separation score</span><span class="score-number" id="scoreNumber">6 / 8 correct</span></div><div class="score-track"><div class="score-fill" id="scoreFill"></div></div><div id="scoreHelp" class="note">Target: blue examples below the green line; red examples above it.</div></div>
-
-<div class="explain" id="stageExplain">The weight matrix combines and scales the input coordinates. The bias vector shifts the result. This is an affine transformation—not nonlinear bending.</div>
+<section class="panel" aria-labelledby="stageTitle">
+  <div class="panel-head"><h2 id="stageTitle">Step 2 — Find a useful representation</h2><p id="stageSubtitle">Adjust weights and biases to organize the data. Compare the representation before and after activation as you work toward 8/8.</p></div>
+  <div class="exercise-task" id="exerciseTask">Your task: get all <span style="color:#c63f45">red</span> points above the decision boundary and all <span style="color:#2868b2">blue</span> points below it!</div>
+  <div class="celebration" id="celebrationPanel" hidden role="status" aria-live="polite">
+    <div class="ticker-tape" aria-hidden="true"><span class="tape-piece" style="left:0.00%;animation-delay:0.000s"></span><span class="tape-piece" style="left:5.25%;animation-delay:0.045s"></span><span class="tape-piece" style="left:10.50%;animation-delay:0.090s"></span><span class="tape-piece" style="left:15.75%;animation-delay:0.135s"></span><span class="tape-piece" style="left:21.00%;animation-delay:0.180s"></span><span class="tape-piece" style="left:26.25%;animation-delay:0.225s"></span><span class="tape-piece" style="left:31.50%;animation-delay:0.270s"></span><span class="tape-piece" style="left:36.75%;animation-delay:0.315s"></span><span class="tape-piece" style="left:42.00%;animation-delay:0.360s"></span><span class="tape-piece" style="left:47.25%;animation-delay:0.405s"></span><span class="tape-piece" style="left:52.50%;animation-delay:0.450s"></span><span class="tape-piece" style="left:57.75%;animation-delay:0.495s"></span><span class="tape-piece" style="left:63.00%;animation-delay:0.540s"></span><span class="tape-piece" style="left:68.25%;animation-delay:0.585s"></span><span class="tape-piece" style="left:73.50%;animation-delay:0.630s"></span><span class="tape-piece" style="left:78.75%;animation-delay:0.675s"></span><span class="tape-piece" style="left:84.00%;animation-delay:0.720s"></span><span class="tape-piece" style="left:89.25%;animation-delay:0.765s"></span><span class="tape-piece" style="left:94.50%;animation-delay:0.810s"></span></div>
+    <span class="celebration-icon" aria-hidden="true">🎉</span>
+    <h3 id="celebrationTitle">Excellent! You found a useful transformation.</h3>
+    <p id="celebrationText">You have placed all eight examples on the correct side of the boundary. This is your first milestone, not the finish. Complete Step 3 to finish the lab and discover when activation matters.</p>
+  </div>
+  <div class="visual-block" id="beforeActivationBlock">
+    <h3>Before activation</h3>
+    <p id="beforeActivationIntro">The weights and biases transform the grid. The points and decision boundary are shown in this representation.</p>
+    <canvas id="plot" width="800" height="510" aria-label="Two-dimensional coordinate grid after the weights and biases, before activation"></canvas>
+  </div>
+  <div class="visual-block" id="afterActivationBlock">
+    <div class="view-heading-row"><h3>After activation</h3><span id="taskViewBadge" hidden>YOUR TASK VIEW</span></div>
+    <p class="activation-intro">By breaking proportionality, the activation function transforms values nonlinearly, thereby allowing the coordinate grid to bend or distort.</p>
+    <canvas id="activatedPlot" width="800" height="510" aria-label="Two-dimensional grid and data points after applying the selected activation function"></canvas>
+    <div class="score-panel" id="scorePanel"><div class="score-line"><span id="scoreLabel">Separation score</span><span class="score-number" id="scoreNumber">6 / 8 correct</span></div><div class="score-track"><div class="score-fill" id="scoreFill"></div></div><div id="scoreHelp" class="note">Target: blue examples below the green line; red examples above it.</div></div>
+    <div class="boundary-key" id="boundaryKey">Compare corresponding blue and red points in the two views. The grid lines may curve, compress, or collapse depending on the activation.</div>
+  </div>
+  <div class="legend" id="legend"><span><i class="dot" style="background:#3478c4"></i>Class A examples (blue)</span><span><i class="dot" style="background:#d95656"></i>Class B examples (red)</span><span id="boundaryLegendItem"><i class="dot" style="background:#20866d"></i>Decision boundary</span></div>
+  <div class="explain" id="stageExplain">The upper view shows the affine transformation z = W x + b. The lower view maps those same coordinates through the activation function h = f(z), so you can see how the representation changes.</div>
 </section>
-<aside class="panel"><div class="panel-head"><h2 id="controlsTitle">Mapping parameters</h2><p id="controlsSubtitle">These controls directly determine the displayed matrix and offset.</p></div><div class="controls" id="controls"></div></aside>
+<aside class="panel"><div class="panel-head"><h2 id="controlsTitle">Mapping parameters</h2><p id="controlsSubtitle">These controls update both visualizations in real time.</p></div><div class="controls" id="controls"></div></aside>
 </div>
-<section class="reminder" id="reminderPanel" aria-labelledby="reminderTitle" hidden>
-  <h2 id="reminderTitle">Keep in mind</h2>
-  <p class="reminder-lead"><strong>Weights and biases shape the grid; activation functions make the overall mapping nonlinear.</strong></p>
-  <ul>
-    <li><strong>Weights</strong> change the grid’s scale, orientation and shape through linear transformations.</li>
-    <li><strong>Biases</strong> shift the grid.</li>
-    <li><strong>Activation functions</strong> introduce nonlinearity: equal changes in the input do not necessarily produce equal changes in the output.</li>
-  </ul>
-  <p class="reminder-bottom">The key idea is the <strong>interaction</strong>: weights and biases determine the signal entering the activation function; the activation function transforms that signal nonlinearly.</p>
-</section>
 </main>
 <script>
 (() => {
 'use strict';
 const $ = id => document.getElementById(id);
-const canvas = $('plot'), ctx = canvas.getContext('2d');
-const state = {step:1,sx:1.0,sy:1.0,shear:0.0,rot:0,bx:0,by:0,activation:'tanh',strength:1.4};
-let step1Snapshot = null;
-let hasCelebrated = false;
-const labPts=[[-1.3,-.9,0],[-1.05,-.4,0],[-.6,-1.1,0],[.5,.75,1],[.95,1.15,1],[1.3,.6,1],[-.2,.15,0],[.20,-.3,1]];
-const stageCopy = {
-2:{title:'Step 2 — Transform the grid',subtitle:'Adjust weights and biases to change the coordinate representation. The input data and neural network structure remain fixed; only the mapping from inputs to the two-dimensional representation changes. Key concept: the inputs stay the same, but the network changes how they are represented.',explain:'Weights determine how the input coordinates are combined; biases shift the result. This is an affine transformation: straight grid lines remain straight, although their orientation and spacing can change.',key:'The inputs stay the same, but the network changes how they are represented.'},
-3:{title:'Step 3 — Apply an activation',subtitle:'The weighted sum and bias come first; the activation is then applied separately to each coordinate.',explain:'Each pre-activation coordinate is passed through the selected function. Equal changes before activation need not produce equal changes afterwards, so grid lines can curve or compress.',key:'The activation function applies a specific nonlinear rule to the coordinates produced by the weights and biases. The interaction between these operations allows neural networks to build useful representations.'}
+const plot = $('plot'), ctx = plot.getContext('2d');
+const activatedPlot = $('activatedPlot'), actx = activatedPlot.getContext('2d');
+const state = {
+  step:1,
+  // The same affine mapping controls are used in both Step 2 and Step 3.
+  sx:1, sy:1, shear:0, rot:0, bx:0, by:0, activation:'tanh', strength:1.4,
+  // Step 3 adds an activation mode and a separate linear output layer.
+  activation3:'tanh', strength3:5.9,
+  outW1:2, outW2:1.0, outBias:-0.92
 };
+let advancedUnlocked = false;
+let step3Initialized = false;
+let savedStep2Parameters = null;
+let step3Reached8 = false;
+let step3HintTimeout = null;
+let step3PulseCleanupTimeout = null;
+let step3HintTimerStarted = false;
+const labPts=[[-1.3,-.9,0],[-1.05,-.4,0],[-.6,-1.1,0],[.5,.75,1],[.95,1.15,1],[1.3,.6,1],[-.2,.15,0],[.20,-.3,1]];
+// The blue and red classes occupy alternating corners of the input square.
+const advancedPts=[[.08,.08,0],[.18,.14,0],[.82,.84,0],[.94,.92,0],[.08,.90,1],[.18,.94,1],[.84,.10,1],[.92,.18,1]];
+const step2View={xmin:-2.8,xmax:2.8,ymin:-2.5,ymax:2.5};
+
+function inputDomain(){ return state.step===3 ? {min:0,max:1,step:.25} : {min:-2,max:2,step:.5}; }
+function currentPoints(){ return state.step===3 ? advancedPts : labPts; }
+function currentActivation(){ return state.step===3 ? state.activation3 : state.activation; }
+function currentStrength(){ return state.step===3 ? state.strength3 : state.strength; }
 function affine(x,y){
- const r=state.rot*Math.PI/180;
- // W = R * [[sx, shear],[0,sy]], followed by bias b.
- const t1=state.sx*x+state.shear*y, t2=state.sy*y;
- return [Math.cos(r)*t1-Math.sin(r)*t2+state.bx, Math.sin(r)*t1+Math.cos(r)*t2+state.by];
+  const r=state.rot*Math.PI/180;
+  const t1=state.sx*x+state.shear*y, t2=state.sy*y;
+  return [Math.cos(r)*t1-Math.sin(r)*t2+state.bx, Math.sin(r)*t1+Math.cos(r)*t2+state.by];
 }
 function activation(z){
- const k=state.strength;
- if(state.activation==='tanh') return Math.tanh(k*z);
- if(state.activation==='sigmoid') return 1/(1+Math.exp(-k*z));
- return Math.max(0,k*z); // ReLU(kz)
+  const name=currentActivation(), k=currentStrength();
+  if(name==='off') return z;
+  if(name==='tanh') return Math.tanh(k*z);
+  if(name==='sigmoid') return 1/(1+Math.exp(-k*z));
+  return Math.max(0,k*z); // ReLU
 }
-function transform(x,y){let [u,v]=affine(x,y); if(state.step===3)return [activation(u),activation(v)]; return [u,v];}
-function getView(){if(state.step===3){if(state.activation==='sigmoid')return {xmin:-.15,xmax:1.15,ymin:-.15,ymax:1.15};if(state.activation==='relu')return {xmin:-.25,xmax:Math.max(3.4,state.strength*3.5),ymin:-.25,ymax:Math.max(3.4,state.strength*3.5)};return {xmin:-1.25,xmax:1.25,ymin:-1.25,ymax:1.25};}return {xmin:-2.8,xmax:2.8,ymin:-2.5,ymax:2.5};}
-function xyToPx(x,y,v){const m={l:48,r:22,t:22,b:40},w=canvas.width-m.l-m.r,h=canvas.height-m.t-m.b;return [m.l+(x-v.xmin)/(v.xmax-v.xmin)*w,m.t+(v.ymax-y)/(v.ymax-v.ymin)*h];}
-function drawGrid(v, mapper, bounds={min:-2,max:2,step:.5}){
- ctx.save();
- const vals=[];for(let a=bounds.min;a<=bounds.max+.001;a+=bounds.step) vals.push(Number(a.toFixed(5)));
- function drawLine(fixed, vertical){const major=Math.abs(fixed-Math.round(fixed))<.001;ctx.strokeStyle=major?'#9db2c6':'#c6d4e1';ctx.lineWidth=major?1.6:1.15;let started=false;ctx.beginPath();const n=150;for(let i=0;i<=n;i++){const q=bounds.min+(bounds.max-bounds.min)*i/n;const p=vertical?mapper(fixed,q):mapper(q,fixed);if(!p||!isFinite(p[0])||!isFinite(p[1])){started=false;continue;}const [px,py]=xyToPx(p[0],p[1],v);if(px < -1000 || px>canvas.width+1000 || py< -1000 || py>canvas.height+1000){started=false;continue;}if(!started){ctx.moveTo(px,py);started=true;}else ctx.lineTo(px,py);}ctx.stroke();}
- vals.forEach(a=>{drawLine(a,true);drawLine(a,false);});ctx.restore();
-}
-function dot(p,color,r=5){if(!p||!p.every(Number.isFinite))return;const v=getView();const [x,y]=xyToPx(p[0],p[1],v);if(x<0||x>canvas.width||y<0||y>canvas.height)return;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();ctx.lineWidth=1.5;ctx.strokeStyle='#fff';ctx.stroke();}
-function drawAxes(v){ctx.save();ctx.strokeStyle='#8da3b8';ctx.lineWidth=1.4;const p1=xyToPx(0,v.ymin,v),p2=xyToPx(0,v.ymax,v),p3=xyToPx(v.xmin,0,v),p4=xyToPx(v.xmax,0,v);ctx.beginPath();if(0>=v.xmin&&0<=v.xmax){ctx.moveTo(p1[0],p1[1]);ctx.lineTo(p2[0],p2[1]);}if(0>=v.ymin&&0<=v.ymax){ctx.moveTo(p3[0],p3[1]);ctx.lineTo(p4[0],p4[1]);}ctx.stroke();ctx.fillStyle='#566d82';ctx.font='12px system-ui';ctx.fillText("x′",canvas.width-27,Math.max(18,xyToPx(v.xmax,0,v)[1]-8));ctx.fillText("y′",Math.min(canvas.width-24,xyToPx(0, v.ymax,v)[0]+7),17);ctx.restore();}
-function decisionY(){return state.step===3 && state.activation==='sigmoid' ? 0.5 : 0;}
-function snapshotAffine(s,x,y){const r=s.rot*Math.PI/180,t1=s.sx*x+s.shear*y,t2=s.sy*y;return [Math.cos(r)*t1-Math.sin(r)*t2+s.bx,Math.sin(r)*t1+Math.cos(r)*t2+s.by];}
-function scoreCurrent(){
- let correct=0;const boundary=decisionY();
- labPts.forEach(p=>{const q=transform(p[0],p[1]);if(p[2]===0?q[1]<=boundary+1e-8:q[1]>boundary+1e-8)correct++;});
- $('scoreNumber').textContent=correct+' / '+labPts.length+' correct';$('scoreFill').style.width=(100*correct/labPts.length)+'%';
- $('scoreHelp').textContent=correct===labPts.length?'All eight examples are on the intended side of the boundary. Explain which changes made the separation possible.':'Target: blue examples below the green boundary; red examples above it. Adjust weights and biases, then compare the score.';
- if(correct===labPts.length && !hasCelebrated){hasCelebrated=true;$('celebrationPanel').hidden=false;if(state.step===3)$('snapshotPanel').hidden=true;}
-}
-function captureStep1Snapshot(){
- step1Snapshot={sx:state.sx,sy:state.sy,shear:state.shear,rot:state.rot,bx:state.bx,by:state.by};
- const r=step1Snapshot.rot*Math.PI/180,a=Math.cos(r)*step1Snapshot.sx,b=Math.cos(r)*step1Snapshot.shear-Math.sin(r)*step1Snapshot.sy,c=Math.sin(r)*step1Snapshot.sx,d=Math.sin(r)*step1Snapshot.shear+Math.cos(r)*step1Snapshot.sy;
- $('snapshotParams').innerHTML='<strong>Your transformation choices</strong><br>Scale X: '+fmt(step1Snapshot.sx)+' · Scale Y: '+fmt(step1Snapshot.sy)+'<br>Shear: '+fmt(step1Snapshot.shear)+' · Rotation: '+step1Snapshot.rot+'°<br>Bias: ['+fmt(step1Snapshot.bx)+', '+fmt(step1Snapshot.by)+']<br><br><strong>Resulting mapping</strong><br>W = [['+fmt(a)+', '+fmt(b)+'], ['+fmt(c)+', '+fmt(d)+']]';
- drawSnapshot();
-}
-function drawSnapshot(){
- if(!step1Snapshot)return;const cv=$('snapshotCanvas'),c=cv.getContext('2d'),v={xmin:-2.8,xmax:2.8,ymin:-2.5,ymax:2.5};
- const px=(x,y)=>[18+(x-v.xmin)/(v.xmax-v.xmin)*(cv.width-34),16+(v.ymax-y)/(v.ymax-v.ymin)*(cv.height-32)];
- c.clearRect(0,0,cv.width,cv.height);c.fillStyle='#fbfdff';c.fillRect(0,0,cv.width,cv.height);
- for(let k=-2;k<=2.001;k+=.5){for(const vert of [true,false]){c.beginPath();c.strokeStyle=Math.abs(k-Math.round(k))<.001?'#9db2c6':'#d1dce6';c.lineWidth=Math.abs(k-Math.round(k))<.001?1.3:1;for(let i=0;i<=100;i++){const q=-2+i*4/100,inp=vert?[k,q]:[q,k],out=snapshotAffine(step1Snapshot,inp[0],inp[1]),z=px(out[0],out[1]);if(i===0)c.moveTo(z[0],z[1]);else c.lineTo(z[0],z[1]);}c.stroke();}}
- labPts.forEach(p=>{const q=snapshotAffine(step1Snapshot,p[0],p[1]),z=px(q[0],q[1]);if(z[0]<0||z[0]>cv.width||z[1]<0||z[1]>cv.height)return;c.beginPath();c.arc(z[0],z[1],5,0,Math.PI*2);c.fillStyle=p[2]===0?'#3478c4':'#d95656';c.fill();c.strokeStyle='#fff';c.lineWidth=1.5;c.stroke();});
- const y=px(0,0)[1];c.beginPath();c.moveTo(18,y);c.lineTo(cv.width-16,y);c.strokeStyle='#20866d';c.lineWidth=2;c.stroke();
-}
-function draw(){const v=getView();ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#fbfdff';ctx.fillRect(0,0,canvas.width,canvas.height);
- $('scorePanel').style.display='block';
- const mapper=(x,y)=>transform(x,y);drawGrid(v,mapper,{min:-2,max:2,step:.5});drawAxes(v);
- // The green line is the target decision boundary in output space.
- const boundary=decisionY();if(boundary>=v.ymin&&boundary<=v.ymax){const q1=xyToPx(v.xmin,boundary,v),q2=xyToPx(v.xmax,boundary,v);ctx.beginPath();ctx.moveTo(q1[0],q1[1]);ctx.lineTo(q2[0],q2[1]);ctx.strokeStyle='#20866d';ctx.lineWidth=2.6;ctx.stroke();ctx.fillStyle='#20866d';ctx.font='600 12px system-ui';ctx.fillText('Decision boundary',q1[0]+8,q1[1]-7);}
- // Track the same eight examples through the mapping.
- labPts.forEach(p=>dot(mapper(p[0],p[1]),p[2]===0?'#3478c4':'#d95656',6));
- scoreCurrent();
- ctx.fillStyle='#48657f';ctx.font='600 13px system-ui';ctx.fillText(state.step===2?'Output coordinates after W x + b':'Output coordinates after activation',52,canvas.height-12);
-}
+function activatedMap(x,y){ const z=affine(x,y); return [activation(z[0]),activation(z[1])]; }
 function fmt(x){return (Math.abs(x)<.0005?0:x).toFixed(2)}
-function buildControls(){const c=$('controls');c.innerHTML='';
- const g=document.createElement('div');g.className='group';g.innerHTML='<div class="group-title"><span class="param-key">Weights</span> — transformation matrix</div>';c.appendChild(g);
- addSlider(g,'Scale X','sx',.35,1.8,.05);addSlider(g,'Scale Y','sy',.35,1.8,.05);addSlider(g,'Shear','shear',-1,1,.05);addSlider(g,'Rotation (degrees)','rot',-45,45,1);
- const b=document.createElement('div');b.className='group';b.innerHTML='<div class="group-title"><span class="param-key">Biases</span> — offset vector</div>';c.appendChild(b);addSlider(b,'Bias X','bx',-1.5,1.5,.1);addSlider(b,'Bias Y','by',-1.5,1.5,.1);
- const formula=document.createElement('div');formula.className='formula';formula.id='matrixFormula';c.appendChild(formula);
- if(state.step===3){const ag=document.createElement('div');ag.className='group';ag.innerHTML='<div class="group-title">Nonlinear activation</div><label class="select-label" for="actSelect">Activation function</label><select id="actSelect"><option value="tanh">tanh</option><option value="sigmoid">Sigmoid</option><option value="relu">ReLU</option></select>';c.appendChild(ag);$('actSelect').value=state.activation;$('actSelect').addEventListener('change',e=>{state.activation=e.target.value;sync();});addSlider(ag,'Activation strength','strength',.5,2.5,.1);const n=document.createElement('p');n.className='note';n.textContent=state.activation==='sigmoid'?'Sigmoid maps each coordinate to the interval (0, 1).':state.activation==='relu'?'ReLU maps each coordinate to max(0, z), so negative values collapse to zero.':'tanh maps each coordinate to the interval (−1, 1), compressing both extremes.';ag.appendChild(n);}
- const row=document.createElement('div');row.className='button-row';row.innerHTML='<button type="button" class="secondary" id="reset">Reset parameters</button>';c.appendChild(row);$('reset').addEventListener('click',()=>{Object.assign(state,{sx:1,sy:1,shear:0,rot:0,bx:0,by:0,strength:1.4,activation:'tanh'});hasCelebrated=false;$('celebrationPanel').hidden=true;$('snapshotPanel').hidden=(state.step!==3);buildControls();sync();});updateFormula();
+function xyToPx(canvas,x,y,v){const m={l:48,r:22,t:22,b:40},w=canvas.width-m.l-m.r,h=canvas.height-m.t-m.b;return [m.l+(x-v.xmin)/(v.xmax-v.xmin)*w,m.t+(v.ymax-y)/(v.ymax-v.ymin)*h];}
+function beforeView(){
+  if(state.step!==3)return step2View;
+  const corners=[[0,0],[0,1],[1,0],[1,1]].map(p=>affine(p[0],p[1]));
+  let xmin=Math.min(...corners.map(p=>p[0])), xmax=Math.max(...corners.map(p=>p[0]));
+  let ymin=Math.min(...corners.map(p=>p[1])), ymax=Math.max(...corners.map(p=>p[1]));
+  const px=Math.max(.12,(xmax-xmin)*.08), py=Math.max(.12,(ymax-ymin)*.08);
+  return {xmin:xmin-px,xmax:xmax+px,ymin:ymin-py,ymax:ymax+py};
 }
-function addSlider(parent,label,key,min,max,step){const wrap=document.createElement('div');wrap.className='control';const id='s_'+key;wrap.innerHTML=`<div class="control-top"><label for="${id}">${label}</label><span class="value" id="v_${key}">${fmt(state[key])}</span></div><input id="${id}" type="range" min="${min}" max="${max}" step="${step}" value="${state[key]}">`;parent.appendChild(wrap);wrap.querySelector('input').addEventListener('input',e=>{state[key]=Number(e.target.value);$('v_'+key).textContent=key==='rot'?String(state[key])+'°':fmt(state[key]);sync(key);});}
-function updateFormula(changedKey){const el=$('matrixFormula');if(!el)return;const r=state.rot*Math.PI/180, a=Math.cos(r)*state.sx,b=Math.cos(r)*state.shear-Math.sin(r)*state.sy,c=Math.sin(r)*state.sx,d=Math.sin(r)*state.shear+Math.cos(r)*state.sy;const live=(n,keys)=>`<span class="${keys.includes(changedKey)?'parameter-pulse':''}">${fmt(n)}</span>`;el.innerHTML=`<div class="caption">The mapping parameters (live values)</div><span class="pill">z = W x + b</span><br>W = [[${live(a,['sx','rot'])}, ${live(b,['sy','shear','rot'])}],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[${live(c,['sx','rot'])}, ${live(d,['sy','shear','rot'])}]]<br>b = [${live(state.bx,['bx'])}, ${live(state.by,['by'])}]<div class="caption" style="margin-top:8px">Weights W set scale / shear / rotation; bias b shifts the output.</div>`;}
-function sync(changedKey){if(state.step===3){const n=$('controls').querySelector('.note');if(n)n.textContent=state.activation==='sigmoid'?'Sigmoid maps each coordinate to the interval (0, 1).':state.activation==='relu'?'ReLU maps each coordinate to max(0, z), so negative values collapse to zero.':'tanh maps each coordinate to the interval (−1, 1), compressing both extremes.';}updateFormula(changedKey);draw();}
+function activatedView(){
+  if(state.step===3){
+    if(currentActivation()==='off')return beforeView();
+    const d=inputDomain();let xmin=Infinity,xmax=-Infinity,ymin=Infinity,ymax=-Infinity;
+    for(let i=0;i<=60;i++)for(let j=0;j<=60;j++){
+      const x=d.min+(d.max-d.min)*i/60,y=d.min+(d.max-d.min)*j/60,q=activatedMap(x,y);
+      xmin=Math.min(xmin,q[0]);xmax=Math.max(xmax,q[0]);ymin=Math.min(ymin,q[1]);ymax=Math.max(ymax,q[1]);
+    }
+    const px=Math.max(.04,(xmax-xmin)*.08),py=Math.max(.04,(ymax-ymin)*.08);
+    return {xmin:xmin-px,xmax:xmax+px,ymin:ymin-py,ymax:ymax+py};
+  }
+  if(state.activation==='tanh')return {xmin:-1,xmax:1,ymin:-1,ymax:1};
+  if(state.activation==='sigmoid')return {xmin:0,xmax:1,ymin:0,ymax:1};
+  let maxValue=1;
+  for(let i=0;i<=40;i++)for(let j=0;j<=40;j++){
+    const x=-2+4*i/40,y=-2+4*j/40,q=activatedMap(x,y);
+    maxValue=Math.max(maxValue,q[0],q[1]);
+  }
+  const max=Math.max(1,maxValue*1.08);
+  return {xmin:-.08,xmax:max,ymin:-.08,ymax:max};
+}
+function drawGrid(canvas,c,v){
+  const d=inputDomain();
+  for(let k=d.min;k<=d.max+.0001;k+=d.step){
+    for(const vertical of [true,false]){
+      const major=Math.abs(k-Math.round(k))<.001 || (state.step===3 && Math.abs(k-.5)<.001);
+      c.beginPath();c.strokeStyle=major?'#9db2c6':'#c6d4e1';c.lineWidth=major?1.6:1.05;
+      for(let i=0;i<=180;i++){
+        const q=d.min+(d.max-d.min)*i/180, inp=vertical?[k,q]:[q,k], out=activatedMap(inp[0],inp[1]);
+        // The upper view calls affine directly; the lower view applies activation too.
+        const point=canvas===plot?affine(inp[0],inp[1]):out;
+        const p=xyToPx(canvas,point[0],point[1],v);
+        if(i===0)c.moveTo(p[0],p[1]);else c.lineTo(p[0],p[1]);
+      }
+      c.stroke();
+    }
+  }
+}
+function drawAxes(canvas,c,v){
+  c.save();c.strokeStyle='#8da3b8';c.lineWidth=1.2;c.beginPath();
+  if(v.xmin<=0&&v.xmax>=0){const a=xyToPx(canvas,0,v.ymin,v),b=xyToPx(canvas,0,v.ymax,v);c.moveTo(...a);c.lineTo(...b);}
+  if(v.ymin<=0&&v.ymax>=0){const a=xyToPx(canvas,v.xmin,0,v),b=xyToPx(canvas,v.xmax,0,v);c.moveTo(...a);c.lineTo(...b);}
+  c.stroke();c.restore();
+}
+function drawStep2Boundary(){
+  const v=step2View, left=xyToPx(plot,v.xmin,0,v), right=xyToPx(plot,v.xmax,0,v);
+  ctx.beginPath();ctx.moveTo(...left);ctx.lineTo(...right);ctx.strokeStyle='#20866d';ctx.lineWidth=2.6;ctx.stroke();
+  ctx.fillStyle='#20866d';ctx.font='600 12px system-ui';ctx.fillText('Decision boundary',left[0]+8,left[1]-7);
+}
+function drawOutputBoundary(v){
+  const c=actx,canvas=activatedPlot,w1=state.outW1,w2=state.outW2,b=state.outBias;
+  c.save();c.strokeStyle='#20866d';c.lineWidth=2.7;c.setLineDash([7,4]);c.beginPath();
+  if(Math.abs(w2)>1e-5){
+    let started=false;
+    for(let i=0;i<=320;i++){
+      const x=v.xmin+(v.xmax-v.xmin)*i/320,y=(-b-w1*x)/w2;
+      if(y<v.ymin||y>v.ymax||!Number.isFinite(y)){started=false;continue;}
+      const p=xyToPx(canvas,x,y,v);if(!started){c.moveTo(...p);started=true;}else c.lineTo(...p);
+    }
+  }else if(Math.abs(w1)>1e-5){const x=-b/w1;if(x>=v.xmin&&x<=v.xmax){const p=xyToPx(canvas,x,v.ymin,v),q=xyToPx(canvas,x,v.ymax,v);c.moveTo(...p);c.lineTo(...q);}}
+  c.stroke();c.restore();
+  c.fillStyle='#20866d';c.font='600 12px system-ui';c.fillText('Linear output-layer boundary',14,17);
+}
+function dot(canvas,c,p,color,r=6,v,offset=[0,0]){const z=xyToPx(canvas,p[0],p[1],v);z[0]+=offset[0];z[1]+=offset[1];if(z[0]<0||z[0]>canvas.width||z[1]<0||z[1]>canvas.height)return;c.beginPath();c.arc(z[0],z[1],r,0,Math.PI*2);c.fillStyle=color;c.fill();c.lineWidth=1.5;c.strokeStyle='#fff';c.stroke();}
+// If transformed points nearly overlap on screen, nudge their displayed positions
+// by a few pixels so no example appears to disappear. Scores use true coordinates.
+function drawPointsWithOverlapOffsets(canvas,c,points,mapper,v,r=6){
+  const mapped=points.map(p=>mapper(p[0],p[1]));
+  const pixels=mapped.map(p=>xyToPx(canvas,p[0],p[1],v));
+  const offsets=points.map(()=>[0,0]);
+  const targetGap=12.5;
+  for(let i=0;i<points.length;i++){
+    for(let j=i+1;j<points.length;j++){
+      const dx=pixels[j][0]-pixels[i][0],dy=pixels[j][1]-pixels[i][1],dist=Math.hypot(dx,dy);
+      if(dist>=targetGap)continue;
+      let ux,uy;
+      if(dist<0.01){ux=1;uy=0;}else{ux=dx/dist;uy=dy/dist;}
+      const shift=(targetGap-dist)/2;
+      offsets[i][0]-=ux*shift;offsets[i][1]-=uy*shift;
+      offsets[j][0]+=ux*shift;offsets[j][1]+=uy*shift;
+    }
+  }
+  points.forEach((p,i)=>dot(canvas,c,mapped[i],p[2]===0?'#3478c4':'#d95656',r,v,offsets[i]));
+}
+function draw2d(){
+  const v=beforeView();ctx.clearRect(0,0,plot.width,plot.height);ctx.fillStyle='#fbfdff';ctx.fillRect(0,0,plot.width,plot.height);
+  // Input grid is mapped through the hidden layer's affine transform before activation.
+  const d=inputDomain();
+  for(let k=d.min;k<=d.max+.0001;k+=d.step){
+    for(const vertical of [true,false]){
+      const major=Math.abs(k-Math.round(k))<.001 || (state.step===3&&Math.abs(k-.5)<.001);ctx.beginPath();ctx.strokeStyle=major?'#9db2c6':'#c6d4e1';ctx.lineWidth=major?1.6:1.05;
+      for(let i=0;i<=160;i++){
+        const q=d.min+(d.max-d.min)*i/160, inp=vertical?[k,q]:[q,k], out=affine(inp[0],inp[1]), p=xyToPx(plot,out[0],out[1],v);
+        if(i===0)ctx.moveTo(...p);else ctx.lineTo(...p);
+      }ctx.stroke();
+    }
+  }
+  if(state.step===2)drawStep2Boundary();
+  drawAxes(plot,ctx,v);
+  drawPointsWithOverlapOffsets(plot,ctx,currentPoints(),(x,y)=>affine(x,y),v,6);
+  ctx.fillStyle='#48657f';ctx.font='600 13px system-ui';ctx.fillText(state.step===3?'Hidden coordinates z = W x + b (before activation)':'Output coordinates after z = W x + b (before activation)',52,plot.height-12);
+}
+function clearStep3SolutionHint() {
+  if (step3HintTimeout !== null) {
+    clearTimeout(step3HintTimeout);
+    step3HintTimeout = null;
+  }
+  if (step3PulseCleanupTimeout !== null) {
+    clearTimeout(step3PulseCleanupTimeout);
+    step3PulseCleanupTimeout = null;
+  }
+  const button = $('revealSolution');
+  if (button) button.classList.remove('solution-pulse');
+}
+function scheduleStep3SolutionHint() {
+  clearStep3SolutionHint();
+  if (state.step !== 3 || step3Reached8 || !$('revealSolution')) return;
+  step3HintTimeout = setTimeout(() => {
+    step3HintTimeout = null;
+    if (state.step !== 3 || step3Reached8) return;
+    const button = $('revealSolution');
+    if (!button) return;
+    button.classList.remove('solution-pulse');
+    // Restart the CSS animation if this hint is triggered again after Reset.
+    void button.offsetWidth;
+    button.classList.add('solution-pulse');
+    const stopPulse = () => {
+      button.classList.remove('solution-pulse');
+      if (step3PulseCleanupTimeout !== null) {
+        clearTimeout(step3PulseCleanupTimeout);
+        step3PulseCleanupTimeout = null;
+      }
+    };
+    button.addEventListener('animationend', stopPulse, {once:true});
+    // Also clean up when reduced-motion settings suppress CSS animation events.
+    step3PulseCleanupTimeout = setTimeout(stopPulse, 3300);
+  }, 20000);
+}
+
+function updateStep2Score(){
+  if(state.step!==2)return;
+  const mappedBoundary=activation(0);let correct=0;
+  labPts.forEach(p=>{const q=activatedMap(p[0],p[1]);if(p[2]===0?q[1]<=mappedBoundary+1e-8:q[1]>mappedBoundary+1e-8)correct++;});
+  $('scoreLabel').textContent='Separation score';$('scoreNumber').textContent=correct+'/8 correct';$('scoreFill').style.width=(100*correct/8)+'%';
+  if(correct===8)advancedUnlocked=true;
+  $('advancedTab').hidden=!advancedUnlocked;document.querySelector('.steps').classList.toggle('advanced-unlocked',advancedUnlocked);
+  $('celebrationTitle').textContent='Excellent! You found a useful transformation.';
+  $('celebrationText').innerHTML='You have placed all eight examples on the correct side of the mapped decision boundary. This is your first milestone, not the finish. <strong>Complete Step 3 to finish the lab</strong> and discover when activation matters.';
+  $('celebrationPanel').hidden=correct!==8;
+  $('scoreHelp').textContent=correct===8?'Milestone achieved! Step 3 is unlocked. Complete the next challenge to finish the lab and discover when activation matters.':'Target in the lower view: blue examples below the mapped decision boundary; red examples above it. Adjust weights and biases to reach 8/8.';
+}
+function updateStep3Score(){
+  if(state.step!==3)return;
+  let correctPolarity=0, reversedPolarity=0;
+  // Score geometric class separation in the activated representation.
+  // Either class may occupy either side of the green boundary; the score is
+  // the better of the two possible class-to-side assignments. Points on the
+  // boundary count as unseparated. Display-only offsets never affect scoring.
+  const boundaryTolerance = 1e-9;
+  advancedPts.forEach(p=>{
+    const h=activatedMap(p[0],p[1]);
+    const output=state.outW1*h[0]+state.outW2*h[1]+state.outBias;
+    const red=p[2]===1;
+    if((red && output>boundaryTolerance)||(!red && output < -boundaryTolerance)) correctPolarity++;
+    if((red && output < -boundaryTolerance)||(!red && output>boundaryTolerance)) reversedPolarity++;
+  });
+  const separated=Math.max(correctPolarity,reversedPolarity);
+  $('scoreLabel').textContent='Advanced classification score';$('scoreNumber').textContent=separated+'/8 correct';$('scoreFill').style.width=(100*separated/8)+'%';
+  $('celebrationTitle').textContent='Congratulations! You discovered when activation matters.';
+  $('celebrationText').innerHTML='Your nonlinear hidden representation allows a straight output-layer boundary to separate the classes. <strong>You changed the representation, then classified it.</strong> You have completed the lab.';
+  const complete = separated === 8;
+  if (complete) {
+    step3Reached8 = true;
+    clearStep3SolutionHint();
+  }
+  $('celebrationPanel').hidden = !complete;
+  $('celebrationPanel').style.display = complete ? 'block' : '';
+  $('scoreHelp').textContent=complete?'8/8: all blue points lie on one side of the green boundary and all red points lie on the other.':'Your score is based on the activated coordinates in the lower view. Reshape the representation so a straight boundary separates the classes, then position the green boundary between them.';
+}
+function drawActivated2d(){
+  const v=activatedView();actx.clearRect(0,0,activatedPlot.width,activatedPlot.height);actx.fillStyle='#fbfdff';actx.fillRect(0,0,activatedPlot.width,activatedPlot.height);
+  const d=inputDomain();
+  for(let k=d.min;k<=d.max+.0001;k+=d.step){
+    for(const vertical of [true,false]){
+      const major=Math.abs(k-Math.round(k))<.001 || (state.step===3&&Math.abs(k-.5)<.001);actx.beginPath();actx.strokeStyle=major?'#8fa9bf':'#c7d5e1';actx.lineWidth=major?1.65:1.1;
+      for(let i=0;i<=180;i++){
+        const q=d.min+(d.max-d.min)*i/180,inp=vertical?[k,q]:[q,k],out=activatedMap(inp[0],inp[1]),p=xyToPx(activatedPlot,out[0],out[1],v);
+        if(i===0)actx.moveTo(...p);else actx.lineTo(...p);
+      }actx.stroke();
+    }
+  }
+  drawAxes(activatedPlot,actx,v);
+  if(state.step===2){
+    const boundary=activation(0),left=xyToPx(activatedPlot,v.xmin,boundary,v),right=xyToPx(activatedPlot,v.xmax,boundary,v);
+    actx.beginPath();actx.moveTo(...left);actx.lineTo(...right);actx.strokeStyle='#20866d';actx.lineWidth=2.6;actx.stroke();
+    actx.fillStyle='#20866d';actx.font='600 12px system-ui';actx.fillText('Mapped decision boundary: y = f(0)',left[0]+8,Math.max(16,left[1]-7));
+  }else drawOutputBoundary(v);
+  drawPointsWithOverlapOffsets(activatedPlot,actx,currentPoints(),(x,y)=>activatedMap(x,y),v,6);
+  actx.fillStyle='#48657f';actx.font='600 13px system-ui';actx.fillText(state.step===3?'Activated hidden coordinates h = f(z)':'Activated coordinates h = f(z)',52,activatedPlot.height-12);
+  if(state.step===2)updateStep2Score();else updateStep3Score();
+}
+function updateFormula(changedKey){
+  const el=$('matrixFormula');if(!el)return;
+  const r=state.rot*Math.PI/180,a=Math.cos(r)*state.sx,b=Math.cos(r)*state.shear-Math.sin(r)*state.sy,c=Math.sin(r)*state.sx,d=Math.sin(r)*state.shear+Math.cos(r)*state.sy;
+  const live=(n,keys)=>`<span class="${keys.includes(changedKey)?'parameter-pulse':''}">${fmt(n)}</span>`;
+  el.innerHTML=`<div class="caption">${state.step===3?'Hidden-layer mapping (live values)':'Mapping parameters (live values)'}</div><span class="pill">z = W x + b</span><br>W = [[${live(a,['sx','rot'])}, ${live(b,['sy','shear','rot'])}],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[${live(c,['sx','rot'])}, ${live(d,['sy','shear','rot'])}]]<br>b = [${live(state.bx,['bx'])}, ${live(state.by,['by'])}]${state.step===3?`<div class="caption" style="margin-top:8px">Output score = v₁h₁ + v₂h₂ + c = ${fmt(state.outW1)}h₁ + ${fmt(state.outW2)}h₂ + (${fmt(state.outBias)})</div>`:'<div class="caption" style="margin-top:8px">Weights determine the combination of inputs; biases shift each neuron’s weighted sum.</div>'}`;
+}
+function activationDescription(){
+  const name=currentActivation();
+  if(name==='off')return 'Activation is off: the lower view matches the affine mapping above, with no nonlinear bending.';
+  if(name==='sigmoid')return 'Sigmoid compresses each weighted sum into (0, 1), bending and compressing the grid.';
+  if(name==='relu')return 'ReLU maps negative weighted sums to zero and keeps positive values, collapsing parts of the grid.';
+  return 'tanh compresses each weighted sum into (−1, 1), bending the grid toward its limits.';
+}
+function drawAll(changedKey){draw2d();drawActivated2d();updateFormula(changedKey);const n=$('activationNote');if(n)n.textContent=activationDescription();}
+function addSlider(parent,label,key,min,max,step){
+  const wrap=document.createElement('div');wrap.className='control';const id='s_'+key;
+  wrap.innerHTML=`<div class="control-top"><label for="${id}">${label}</label><span class="value" id="v_${key}">${key==='rot'?String(state[key])+'°':fmt(state[key])}</span></div><input id="${id}" type="range" min="${min}" max="${max}" step="${step}" value="${state[key]}">`;
+  parent.appendChild(wrap);wrap.querySelector('input').addEventListener('input',e=>{
+    state[key]=Number(e.target.value);
+    $('v_'+key).textContent=key==='rot'?String(state[key])+'°':fmt(state[key]);
+    drawAll(key);
+    // Start the 20-second hint countdown only after the student first moves
+    // a slider while working in Step 3. Dropdown changes do not start it.
+    if(state.step===3 && !step3HintTimerStarted){
+      step3HintTimerStarted=true;
+      if(!step3Reached8) scheduleStep3SolutionHint();
+    }
+  });
+}
+function buildControls(){
+  const c=$('controls');c.innerHTML='';
+  const g=document.createElement('div');g.className='group';g.innerHTML='<div class="group-title"><span class="param-key">Weights</span> — transformation matrix</div>';c.appendChild(g);
+  addSlider(g,'Scale X','sx',.35,1.8,.05);addSlider(g,'Scale Y','sy',.35,1.8,.05);addSlider(g,'Shear','shear',-1,1,.05);addSlider(g,'Rotation (degrees)','rot',-45,45,1);
+  const b=document.createElement('div');b.className='group';b.innerHTML='<div class="group-title"><span class="param-key">Biases</span> — offset vector</div>';c.appendChild(b);addSlider(b,'Bias X','bx',-1.5,1.5,.1);addSlider(b,'Bias Y','by',-1.5,1.5,.1);
+  const f=document.createElement('div');f.className='formula';f.id='matrixFormula';c.appendChild(f);
+  const ag=document.createElement('div');ag.className='group';ag.innerHTML=`<div class="group-title">Activation — ${state.step===3?'watch the grid bend':'applied in real time'}</div><label class="select-label" for="actSelect">${state.step===3?'Hidden-layer activation':'Activation function'}</label><select id="actSelect"><option value="tanh">tanh</option><option value="sigmoid">Sigmoid</option><option value="relu">ReLU</option>${state.step===3?'<option value="off">Off — affine mapping only</option>':''}</select>`;c.appendChild(ag);
+  $('actSelect').value=state.step===3?state.activation3:state.activation;
+  $('actSelect').addEventListener('change',e=>{if(state.step===3)state.activation3=e.target.value;else state.activation=e.target.value;drawAll();});
+  const note=document.createElement('p');note.className='note';note.id='activationNote';note.textContent=activationDescription();ag.appendChild(note);
+  if(state.step===3){
+    const out=document.createElement('div');out.className='group';out.innerHTML='<div class="group-title"><span class="param-key">Output layer</span> — set the straight decision boundary</div>';c.appendChild(out);
+    addSlider(out,'Output weight for h₁','outW1',-4,4,.1);const fixedW2=document.createElement('div');fixedW2.className='fixed-control';fixedW2.innerHTML=`<span>Output weight for h₂</span><strong>${fmt(state.outW2)} <span class="fixed-tag">fixed</span></strong>`;out.appendChild(fixedW2);addSlider(out,'Output bias','outBias',-5,5,.05);
+    const explain=document.createElement('p');explain.className='note';explain.textContent='The output layer combines the activated coordinates to define the green straight decision boundary. The score checks whether the blue and red classes lie on opposite sides of that boundary.';out.appendChild(explain);
+  }
+  const row=document.createElement('div');row.className='button-row';row.innerHTML='<button type="button" class="secondary" id="reset">Reset parameters</button>'+(state.step===3?'<button type="button" class="primary-action" id="revealSolution">Reveal a solution</button>':'');c.appendChild(row);
+  if(state.step===3){
+    const solutionStatus=document.createElement('p');solutionStatus.className='solution-status';solutionStatus.id='solutionStatus';solutionStatus.hidden=true;solutionStatus.textContent='One working solution is loaded. Tanh reshapes the hidden representation into separable clusters, and the output layer classifies them with a straight boundary.';c.appendChild(solutionStatus);
+    $('revealSolution').addEventListener('click',()=>{
+      Object.assign(state,{sx:.80,sy:.45,shear:-.95,rot:-23,bx:-.40,by:-.40,activation3:'tanh',strength3:5.9,outW1:2.30,outW2:1.00,outBias:1.90});
+      buildControls();drawAll();
+      const status=$('solutionStatus');if(status)status.hidden=false;
+    });
+  }
+  $('reset').addEventListener('click',()=>{
+    if(state.step===3){
+      clearStep3SolutionHint();
+      step3HintTimerStarted=false;
+      Object.assign(state,{sx:1.00,sy:1.00,shear:0,rot:0,bx:0,by:0,activation3:'tanh',strength3:5.9,outW1:1.00,outW2:1.00,outBias:-.50});
+      step3Reached8=false;
+    }
+    else Object.assign(state,{sx:1,sy:1,shear:0,rot:0,bx:0,by:0,strength:1.4,activation:'tanh'});
+    buildControls();drawAll();
+  });
+  updateFormula();
+}
+function positionScorePanelForStep(step){
+  const panel=$('scorePanel');
+  if(!panel)return;
+  if(step===3){
+    const lower=$('afterActivationBlock');
+    const anchor=$('boundaryKey');
+    if(lower && anchor && panel.parentElement!==lower) lower.insertBefore(panel,anchor);
+  }else{
+    const task=$('exerciseTask');
+    if(task && task.nextElementSibling!==panel) task.insertAdjacentElement('afterend',panel);
+  }
+}
 function setStep(n){
- if(n===3 && state.step===2){captureStep1Snapshot();}else if(n===3 && !step1Snapshot){captureStep1Snapshot();}
- state.step=n;
- const inspecting=(n===1);
- $('modelPanel').hidden=!inspecting;
- $('taskPrompt').hidden=(n!==2);
- $('exerciseLayout').hidden=inspecting;
- $('plotWrap').hidden=inspecting;
- $('snapshotPanel').hidden=(n!==3 || hasCelebrated);
- $('celebrationPanel').hidden=!hasCelebrated;
- $('legend').hidden=inspecting;
- $('reminderPanel').hidden=inspecting;
- $('scorePanel').style.display=inspecting?'none':'block';
- document.querySelectorAll('.step').forEach(b=>b.setAttribute('aria-selected',String(Number(b.dataset.step)===n)));
- if(inspecting){
-   $('stageTitle').textContent='Step 2 — Transform the grid';
-   $('stageSubtitle').textContent=stageCopy[2].subtitle;
-   $('stageExplain').textContent=stageCopy[2].explain;
-   $('controlsTitle').textContent='Mapping parameters';
-   $('controlsSubtitle').textContent='These controls determine the weights and biases shown in the mapping.';
-   $('legend').innerHTML='<span><i class="dot" style="background:#3478c4"></i>Class A examples</span><span><i class="dot" style="background:#d95656"></i>Class B examples</span><span><i class="dot" style="background:#20866d"></i>Decision boundary</span>';
-   return;
- }
- const copy=stageCopy[n];$('stageTitle').textContent=copy.title;$('stageSubtitle').textContent=copy.subtitle;$('stageExplain').textContent=copy.explain;
- $('controlsTitle').textContent='Mapping parameters';$('controlsSubtitle').textContent=n===3?'Explore the activation after adjusting the affine transformation.':'These controls determine the weights and biases shown in the mapping.';
- $('legend').innerHTML='<span><i class="dot" style="background:#3478c4"></i>Class A examples</span><span><i class="dot" style="background:#d95656"></i>Class B examples</span><span><i class="dot" style="background:#20866d"></i>Decision boundary</span>';
- buildControls();draw();
+  if(n!==1 && n!==2 && n!==3)return;
+  if(n===3&&!advancedUnlocked)return;
+  // Re-clicking the current step tab should not cancel a running hint timer.
+  if(state.step===n && n!==1)return;
+  clearStep3SolutionHint();
+  const previousStep=state.step;
+  if(previousStep!==n && (previousStep===3 || n===3)) step3HintTimerStarted=false;
+  if(n===3&&previousStep===2){
+    savedStep2Parameters={sx:state.sx,sy:state.sy,shear:state.shear,rot:state.rot,bx:state.bx,by:state.by,activation:state.activation,strength:state.strength};
+    if(!step3Initialized){Object.assign(state,{sx:1.00,sy:1.00,shear:0,rot:0,bx:0,by:0,activation3:'tanh',strength3:5.9,outW1:1.00,outW2:1.00,outBias:-.50});step3Initialized=true;}
+  }
+  if(n===2&&savedStep2Parameters)Object.assign(state,savedStep2Parameters);
+  state.step=n;
+  positionScorePanelForStep(n);
+  const inspecting=n===1,advanced=n===3;
+  $('modelPanel').hidden=!inspecting;$('exerciseLayout').hidden=inspecting;$('step3WideInstructions').hidden=!advanced;
+  $('exerciseLayout').classList.toggle('step3-focus',advanced);
+  document.querySelectorAll('.step').forEach(b=>b.setAttribute('aria-selected',String(Number(b.dataset.step)===n)));
+  if(inspecting)return;
+  $('celebrationPanel').hidden=true;$('celebrationPanel').style.display='';
+  if(advanced){
+    $('stageTitle').textContent='Step 3 — When Does Activation Matter?';
+    $('stageSubtitle').textContent='';
+    $('exerciseTask').innerHTML = `
+      <p><strong>Untangle the points:</strong> Adjust the weights and biases sliders to reshape the lower view until a straight decision boundary can separate all red points from all blue points. To position the decision boundary between the classes, use the <strong>Output Layer</strong> sliders.</p>
+      <p><strong>Aim for 8/8 correct in the lower After activation view.</strong></p>
+      <p><strong>Hint:</strong> This is a challenging classification task, so some parameters may need to be set near the extremes of their ranges.</p>`;
+    $('beforeActivationBlock').querySelector('h3').textContent='Before activation — reference view';
+    $('beforeActivationIntro').hidden=true;
+    $('afterActivationBlock').querySelector('h3').textContent='After activation';
+    $('taskViewBadge').hidden=false;
+    document.querySelector('.activation-intro').textContent='The activation function transforms each hidden coordinate nonlinearly.';
+    $('boundaryKey').textContent='The dashed green line is a separate linear output-layer boundary. Its weights and bias are controlled in the Mapping parameters panel.';
+    $('boundaryLegendItem').innerHTML='<i class="dot" style="background:#20866d"></i>Output-layer boundary';
+    $('stageExplain').textContent='';$('stageExplain').hidden=true;
+    $('controlsTitle').textContent='Mapping parameters & output layer';
+    $('controlsSubtitle').textContent='The scale, shear, rotation and bias controls reshape both views; activation changes the lower grid; output-layer controls move the classifier boundary.';
+  }else{
+    $('stageTitle').textContent='Step 2 — Find a useful representation';
+    $('stageSubtitle').textContent='Adjust weights and biases to organize the data. Compare the representation before and after activation as you work toward 8/8.';
+    $('exerciseTask').innerHTML='Your task: get all <span style="color:#c63f45">red</span> points above the decision boundary and all <span style="color:#2868b2">blue</span> points below it!';
+    $('beforeActivationBlock').querySelector('h3').textContent='Before activation';
+    $('beforeActivationIntro').hidden=false;
+    $('beforeActivationIntro').textContent='The weights and biases transform the grid. The points and decision boundary are shown in this representation.';
+    $('afterActivationBlock').querySelector('h3').textContent='After activation';
+    $('taskViewBadge').hidden=true;
+    document.querySelector('.activation-intro').textContent='By breaking proportionality, the activation function transforms values nonlinearly, thereby allowing the coordinate grid to bend or distort.';
+    $('boundaryKey').textContent='Compare corresponding blue and red points in the two views. The grid lines may curve, compress, or collapse depending on the activation.';
+    $('boundaryLegendItem').innerHTML='<i class="dot" style="background:#20866d"></i>Decision boundary';
+    $('stageExplain').textContent='The upper view shows the affine transformation z = W x + b. The lower view maps those same coordinates through the activation function h = f(z), so you can see how the representation changes.';$('stageExplain').hidden=false;
+    $('controlsTitle').textContent='Mapping parameters';
+    $('controlsSubtitle').textContent='These controls update both visualizations in real time.';
+  }
+  $('legend').hidden=false;
+  buildControls();drawAll();
 }
 $('startTransform').addEventListener('click',()=>setStep(2));
-
 document.querySelectorAll('.step').forEach(b=>b.addEventListener('click',()=>setStep(Number(b.dataset.step))));
 setStep(1);
 })();
