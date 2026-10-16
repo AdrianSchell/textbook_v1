@@ -25,9 +25,13 @@
 <li><strong>Structured Data</strong>: Highly organized information that fits neatly into traditional relational databases with rigid rows and columns. Examples include point-of-sale transaction logs, double-entry accounting ledgers, inventory counts, and customer account records. Structured data is easily queried using standard <strong>Structured Query Language (SQL)</strong>.</li>
 <li><strong>Unstructured Data</strong>: Information that lacks a predefined conceptual schema or tabular layout. Examples include video streams, audio recordings, PDF contracts, social media posts, satellite imagery, customer support emails, and Internet of Things (IoT) sensor telemetry. Unstructured and semi-structured data (such as JSON or XML files) represent more than 80% of all newly created enterprise information.</li>
 </ul>
-<figure><figcaption><strong>Figure </strong><strong>4</strong><strong>.</strong><strong>1</strong><strong>A</strong><strong> </strong><strong>Example of JSON </strong><strong>(JavaScript Object Notation)</strong><strong> </strong><strong>format</strong></figcaption><img src="../figures/figure-4-1a.png" alt="Figure 4.1A Example of JSON (JavaScript Object Notation) format"></figure>
-
-<details class="long-description"><summary>Show long description</summary>
+<figure class="book-figure">
+<p class="figure-title"><strong>Figure 4.1A Example of JSON (JavaScript Object Notation) format</strong></p>
+<img src="../figures/figure-4-1a.png" alt="Figure 4.1A Example of JSON (JavaScript Object Notation) format">
+<details class="long-description">
+<summary><span class="show-label">Show long description</span><span class="hide-label">Hide long description</span></summary>
+<div class="long-description-panel">
+<strong>Long description</strong>
 <p>The image is an educational infographic that explains JSON, a text format used to represent structured data. It has a white background, a title box in the upper-left corner, a large code panel in the center, and several colored annotation boxes around the code. Arrows and a bracket connect the annotations to the relevant parts of the example.</p>
 <p>Title and definition</p>
 <p>In the upper-left corner, a light-blue box contains the large, dark-blue heading “JSON.” Beneath it, the text reads: “A text format for representing structured data.”</p>
@@ -96,7 +100,9 @@
 <p>- Boolean value — purple annotation on the right: The box reads, “true or false (no quotes).” A purple arrow points toward false. Boolean values express a true-or-false condition and are written in lowercase without quotation marks.</p>
 <p>- Array — yellow annotation on the left: The box reads, “Square brackets [ ] define an array.” A yellow arrow points toward the &quot;courses&quot; property. An array holds an ordered collection of values. Here, it contains three course names, each represented as a string.</p>
 <p>- Nested object — magenta annotation on the lower right: A magenta bracket marks the address object within the code. The adjacent box reads, “Objects can be nested inside other objects.” This illustrates that a property can contain an entire object rather than just a single string, number, or Boolean value. The &quot;address&quot; property contains one nested object, and the &quot;contact&quot; property contains another.</p>
+</div>
 </details>
+</figure>
 <h3>Operational versus Analytical Processing</h3>
 <p>When organizations first began digitizing business processes, they attempted to run complex analytical reports directly on operational databases. This setup routinely created severe performance bottlenecks. Running a heavy sales summary query during peak business hours locked database tables, slowing down customer checkout systems. To resolve this conflict, enterprise architectures split into two distinct operational modes:</p>
 <ul>
@@ -124,9 +130,13 @@
 <li><strong>Inflexible Schema Architecture</strong>: Modifying a schema to accommodate new business requirements often required months of database redesign.</li>
 <li><strong>Inability to Process Unstructured Data</strong>: Traditional warehouses were structurally incapable of handling non-relational data formats like video, audio, or raw event streams.<sup><a href="#ref-1">1</a></sup><sup><a href="#ref-1">1</a></sup></li>
 </ul>
-<figure><figcaption><strong>Figure </strong><strong>4</strong><strong>.</strong><strong>1</strong><strong>B</strong><strong> </strong><strong>Data Warehouse Architecture with ETL flows</strong></figcaption><img src="../figures/figure-4-1b.png" alt="Figure 4.1B Data Warehouse Architecture with ETL flows"></figure>
-
-<details class="long-description"><summary>Show long description</summary>
+<figure class="book-figure">
+<p class="figure-title"><strong>Figure 4.1B Data Warehouse Architecture with ETL flows</strong></p>
+<img src="../figures/figure-4-1b.png" alt="Figure 4.1B Data Warehouse Architecture with ETL flows">
+<details class="long-description">
+<summary><span class="show-label">Show long description</span><span class="hide-label">Hide long description</span></summary>
+<div class="long-description-panel">
+<strong>Long description</strong>
 <p>The image is a wide, horizontal infographic on a white background. It illustrates the flow of data in a traditional data warehouse architecture, moving from left to right through four main stages: Source Systems, ETL Process, Data Warehouse, and Analytics and BI. Each stage is enclosed in a colored panel, and large arrows show the direction in which data moves.</p>
 <ol>
 <li>1. Source Systems — blue panel on the left</li>
@@ -179,7 +189,9 @@
 <p>The infographic emphasizes the central role of ETL in a traditional data warehouse architecture. Data originates in multiple, separate source systems. Before it enters the warehouse, it passes through three sequential operations: extraction, transformation, and loading. Transformation is particularly important because it prepares the data by cleaning, standardizing, integrating, and enriching it.</p>
 <p>Once the transformed data has been loaded into the centralized warehouse, it can be used for reporting, dashboards, ad-hoc analysis, and business decision-making.</p>
 <p>The key architectural principle illustrated is that data is transformed before it is loaded into the data warehouse. This distinguishes the traditional ETL approach from ELT, in which data is loaded into the destination platform before being transformed.</p>
+</div>
 </details>
+</figure>
 <h2>The Second Era: The Data Lake and the Threat of the Data Swamp</h2>
 <p>By the late 2000s, mobile apps, e-commerce platforms, and digital media created an explosion of unstructured big data. Traditional data warehouses struggled to scale under the financial and technical costs of this influx.<sup><a href="#ref-1">1</a></sup><sup><a href="#ref-2">2</a></sup>, <sup><a href="#ref-16">16</a></sup> This pressure led to the development of the <strong>data </strong><strong>lake</strong>.<sup><a href="#ref-1">1</a></sup><sup><a href="#ref-2">2</a></sup>, <sup><a href="#ref-16">16</a></sup></p>
 <p>Built on low-cost distributed storage frameworks—initially open-source Apache Hadoop, and later cloud object storage like Amazon S3, Azure Blob Storage, and Google Cloud Storage—data lakes adopted a <strong>schema-on-read</strong> philosophy.<sup><a href="#ref-8">8</a></sup>, <sup><a href="#ref-9">9</a></sup>, <sup><a href="#ref-16">16</a></sup> Organizations extracted raw, unstructured data from across the business and stored it directly in low-cost storage in its native format without prior transformation.<sup><a href="#ref-9">9</a></sup>, <sup><a href="#ref-16">16</a></sup> Structural definitions were applied only when an analyst or data scientist queried the file.<sup><a href="#ref-9">9</a></sup>, <sup><a href="#ref-16">16</a></sup></p>
@@ -300,6 +312,5 @@
 <li id="ref-27">Storment, J. R., &amp; Fuller, M. (2023). <em>Cloud FinOps: Collaborative, Real-Time Cloud Financial Management</em> (2nd ed.). O&#x27;Reilly Media. <a href="#ref-27" aria-label="Back to citation 27">↩</a></li>
 <li id="ref-28">Google Cloud. (2024). <em>BigQuery</em><em> Cost Optimization and Query Governance Best Practices</em>. <a href="#ref-28" aria-label="Back to citation 28">↩</a></li></ol>
 </main>
-<script>document.querySelectorAll("details.long-description").forEach(d=>d.addEventListener("toggle",()=>{d.querySelector("summary").textContent=d.open?"Hide long description":"Show long description"}));</script>
 </body>
 </html>
