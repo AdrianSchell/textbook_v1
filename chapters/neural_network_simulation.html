@@ -73,6 +73,8 @@
 .step3-wide-instructions p{font-size:14px;line-height:1.45;color:#244d42;margin:0}
 .step3-task-instructions{padding:11px 13px;border:1px solid #b8d8ca;border-radius:9px;background:#eaf6f0}
 .step3-task-instructions p+p{margin-top:7px}
+.reveal-hint-highlight{display:inline-block;padding:0 4px;border-radius:4px;background:#fff9e9;border:1px solid #eadfb8;color:#5c5136;font-weight:700;white-space:nowrap;box-shadow:none}
+.reveal-hint-highlight strong{color:#5c5136;text-decoration:none}
 #exerciseLayout.step3-focus > section > .panel-head,#exerciseLayout.step3-focus #exerciseTask{display:none!important}
 @media(max-width:850px){.step3-wide-instructions{gap:9px;padding:12px 14px}.step3-context-row{grid-template-columns:1fr;gap:8px}.step3-task-instructions{padding:10px 11px}}
 
@@ -188,10 +190,9 @@
   <div class="model-notes">
     <div><strong style="color:#176b59">Weights</strong><span>Control how the two input coordinates are combined through scale, shear, and rotation.</span></div>
     <div><strong style="color:#176b59">Biases</strong><span>Shift the values produced by the two hidden-layer neurons.</span></div>
-    <div><strong style="color:#176b59">Activation</strong><span>Applies a nonlinear function to each value; it can be switched off for comparison.</span></div>
+    <div><strong style="color:#176b59">Activation</strong><span>Applies a nonlinear function to each value.</span></div>
   </div>
   
-  <p class="model-footnote">The decision boundary is included to give you a concrete objective for the exercise. It is a teaching aid, not a realistic boundary intended to represent a real-world classification problem.</p>
   <div class="coordinate-explanation plain-explanation">
     <p><strong>Neural networks: Weights and biases transform the coordinate space</strong></p>
     <ul>
@@ -225,7 +226,7 @@
   <div class="step3-task-instructions">
     <p><strong>Untangle the points:</strong> Adjust the weights and biases sliders to reshape the lower view until a straight decision boundary can separate all red points from all blue points. To position the decision boundary between the classes, use the <strong>Output Layer</strong> sliders.</p>
     <p>Aim for <strong>8/8 correct</strong> in the lower <strong>After activation</strong> view.</p>
-    <p><strong>Hint:</strong> This is a challenging classification task, so some parameters may need to be set near the extremes of their ranges.</p>
+    <p><strong>Hint:</strong> This is a challenging classification task, so some parameters may need to be set near the extremes of their ranges. There is also a <span class="reveal-hint-highlight"> <strong>Reveal-a-Solution</strong> </span> button below.</p>
   </div>
 </section>
 <div class="layout" id="exerciseLayout" hidden>
@@ -591,7 +592,7 @@ function buildControls(){
   const note=document.createElement('p');note.className='note';note.id='activationNote';note.textContent=activationDescription();ag.appendChild(note);
   if(state.step===3){
     const out=document.createElement('div');out.className='group';out.innerHTML='<div class="group-title"><span class="param-key">Output layer</span> — set the straight decision boundary</div>';c.appendChild(out);
-    addSlider(out,'Output weight for h₁','outW1',-4,4,.1);const fixedW2=document.createElement('div');fixedW2.className='fixed-control';fixedW2.innerHTML=`<span>Output weight for h₂</span><strong>${fmt(state.outW2)} <span class="fixed-tag">fixed</span></strong>`;out.appendChild(fixedW2);addSlider(out,'Output bias','outBias',-5,5,.05);
+    addSlider(out,'Output weight for h₁ (change angle)','outW1',-4,4,.1);const fixedW2=document.createElement('div');fixedW2.className='fixed-control';fixedW2.innerHTML=`<span>Output weight for h₂</span><strong>${fmt(state.outW2)} <span class="fixed-tag">fixed</span></strong>`;out.appendChild(fixedW2);addSlider(out,'Output bias (move vertical)','outBias',-5,5,.05);
     const explain=document.createElement('p');explain.className='note';explain.textContent='The output layer combines the activated coordinates to define the green straight decision boundary. The score checks whether the blue and red classes lie on opposite sides of that boundary.';out.appendChild(explain);
   }
   const row=document.createElement('div');row.className='button-row';row.innerHTML='<button type="button" class="secondary" id="reset">Reset parameters</button>'+(state.step===3?'<button type="button" class="primary-action" id="revealSolution">Reveal a solution</button>':'');c.appendChild(row);
@@ -652,13 +653,13 @@ function setStep(n){
     $('exerciseTask').innerHTML = `
       <p><strong>Untangle the points:</strong> Adjust the weights and biases sliders to reshape the lower view until a straight decision boundary can separate all red points from all blue points. To position the decision boundary between the classes, use the <strong>Output Layer</strong> sliders.</p>
       <p><strong>Aim for 8/8 correct in the lower After activation view.</strong></p>
-      <p><strong>Hint:</strong> This is a challenging classification task, so some parameters may need to be set near the extremes of their ranges.</p>`;
+      <p><strong>Hint:</strong> This is a challenging classification task, so some parameters may need to be set near the extremes of their ranges. There is also a <span class="reveal-hint-highlight"> <strong>Reveal-a-Solution</strong> </span> button below.</p>`;
     $('beforeActivationBlock').querySelector('h3').textContent='Before activation — reference view';
     $('beforeActivationIntro').hidden=true;
     $('afterActivationBlock').querySelector('h3').textContent='After activation';
     $('taskViewBadge').hidden=false;
     document.querySelector('.activation-intro').textContent='The activation function transforms each hidden coordinate nonlinearly.';
-    $('boundaryKey').textContent='The position and angle of the dashed green boundary are controlled in the sliders in the Output layer panel.';
+    $('boundaryKey').textContent='The position and angle of the dashed green boundary are controlled by the sliders in the Output layer panel.';
     $('boundaryLegendItem').innerHTML='<i class="dot" style="background:#20866d"></i>Output-layer boundary';
     $('stageExplain').textContent='';$('stageExplain').hidden=true;
     $('controlsTitle').textContent='Mapping parameters & output layer';
