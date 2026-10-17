@@ -412,7 +412,7 @@ function draw2d(){
   if(state.step===2)drawStep2Boundary();
   drawAxes(plot,ctx,v);
   drawPointsWithOverlapOffsets(plot,ctx,currentPoints(),(x,y)=>affine(x,y),v,6);
-  ctx.fillStyle='#48657f';ctx.font='600 13px system-ui';ctx.fillText(state.step===3?'Hidden coordinates z = W x + b (before activation)':'Output coordinates after z = W x + b (before activation)',52,plot.height-12);
+  if(state.step!==3){ctx.fillStyle='#48657f';ctx.font='600 13px system-ui';ctx.fillText('Output coordinates after z = W x + b (before activation)',52,plot.height-12);}
 }
 function clearStep3SolutionHint() {
   if (step3HintTimeout !== null) {
@@ -654,7 +654,7 @@ function setStep(n){
       <p><strong>Untangle the points:</strong> Adjust the weights and biases sliders to reshape the lower view until a straight decision boundary can separate all red points from all blue points. To position the decision boundary between the classes, use the <strong>Output Layer</strong> sliders.</p>
       <p><strong>Aim for 8/8 correct in the lower After activation view.</strong></p>
       <p><strong>Hint:</strong> This is a challenging classification task, so some parameters may need to be set near the extremes of their ranges. There is also a <span class="reveal-hint-highlight"> <strong>Reveal-a-Solution</strong> </span> button below.</p>`;
-    $('beforeActivationBlock').querySelector('h3').textContent='Before activation — reference view';
+    $('beforeActivationBlock').querySelector('h3').textContent='Before activation';
     $('beforeActivationIntro').hidden=true;
     $('afterActivationBlock').querySelector('h3').textContent='After activation';
     $('taskViewBadge').hidden=false;
