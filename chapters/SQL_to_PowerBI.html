@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MGT 2210 Business Analytics: turn SQL query results into an interactive Power BI dashboard.">
+  <title>From SQL to Power BI | Dashboard Challenge</title>
+  <style>
+    :root {
+      --navy: #102a43;
+      --blue: #1769aa;
+      --blue-dark: #0b4f83;
+      --blue-pale: #eaf4fb;
+      --teal: #147d75;
+      --teal-pale: #e8f6f3;
+      --ink: #233746;
+      --muted: #5b6b78;
+      --line: #d9e2ea;
+      --surface: #ffffff;
+      --page: #f3f7fa;
+      --gold: #f3c64e;
+      --shadow: 0 14px 35px rgba(16, 42, 67, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.58;
+    }
+    a { color: var(--blue-dark); }
+    .page { width: min(1050px, calc(100% - 32px)); margin: 28px auto 50px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 54px);
+      border-radius: 24px;
+      color: white;
+      background: linear-gradient(125deg, #102a43 0%, #145b8f 62%, #168b91 100%);
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px; height: 320px;
+      right: -100px; top: -140px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 35px rgba(255,255,255,.035), 0 0 0 75px rgba(255,255,255,.025);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin: 0 0 17px; padding: 6px 11px;
+      border: 1px solid rgba(255,255,255,.3); border-radius: 999px;
+      color: #e9f6ff; font-size: .78rem; font-weight: 750;
+      letter-spacing: .11em; text-transform: uppercase;
+    }
+    .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+    h1 { position: relative; z-index: 1; max-width: 720px; margin: 0; font-size: clamp(2.15rem, 5vw, 3.7rem); line-height: 1.06; letter-spacing: -.04em; }
+    .subtitle { position: relative; z-index: 1; max-width: 660px; margin: 18px 0 0; color: #e4f2fb; font-size: clamp(1.05rem, 2vw, 1.28rem); }
+    .hero-bottom { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 13px; margin-top: 28px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      min-height: 45px; padding: 11px 17px; border: 0; border-radius: 10px;
+      background: #fff; color: var(--blue-dark); font-weight: 750; text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,.12); transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .button:hover { transform: translateY(-1px); box-shadow: 0 7px 17px rgba(0,0,0,.16); }
+    .meta { color: #e4f2fb; font-size: .92rem; }
+    .section { margin-top: 23px; padding: clamp(22px, 3.5vw, 34px); background: var(--surface); border: 1px solid #e3eaf0; border-radius: 19px; box-shadow: 0 5px 18px rgba(16,42,67,.035); }
+    .section-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+    .section-number { flex: 0 0 38px; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: var(--blue-pale); color: var(--blue-dark); font-weight: 850; }
+    h2 { margin: 0; color: var(--navy); font-size: clamp(1.35rem, 2.6vw, 1.8rem); line-height: 1.2; letter-spacing: -.02em; }
+    .section-intro { margin: 5px 0 0; color: var(--muted); }
+    p { margin: 0 0 13px; }
+    .learning-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+    .learning-card { padding: 17px; background: #f8fbfd; border: 1px solid var(--line); border-radius: 13px; }
+    .learning-card .icon { display: grid; place-items: center; width: 35px; height: 35px; margin-bottom: 10px; border-radius: 10px; background: var(--teal-pale); color: var(--teal); font-size: 1.1rem; font-weight: 800; }
+    .learning-card strong { display: block; margin-bottom: 4px; color: var(--navy); }
+    .learning-card p { margin: 0; color: var(--muted); font-size: .93rem; }
+    .challenge { padding: 20px 22px; border-left: 4px solid var(--gold); border-radius: 0 12px 12px 0; background: #fff9e8; }
+    .challenge strong { display: block; margin-bottom: 5px; color: #694f0b; font-size: .82rem; letter-spacing: .09em; text-transform: uppercase; }
+    .challenge p { margin: 0; }
+    .report-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 17px; }
+    .report-item { display: flex; align-items: flex-start; gap: 12px; padding: 16px; border: 1px solid var(--line); border-radius: 13px; }
+    .report-item .tick { flex: 0 0 25px; display: grid; place-items: center; width: 25px; height: 25px; border-radius: 7px; background: var(--teal-pale); color: var(--teal); font-weight: 900; }
+    .report-item strong { display: block; margin-bottom: 3px; color: var(--navy); }
+    .report-item p { margin: 0; color: var(--muted); font-size: .93rem; }
+    .connection-panel { margin: 15px 0 18px; padding: 18px; border: 1px solid #c9dce9; border-radius: 14px; background: #f5faff; }
+    .connection-panel h3 { margin-bottom: 6px; }
+    .connection-panel > p { margin-bottom: 13px; color: var(--muted); }
+    .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .field-card { min-width: 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: white; }
+    .field-label { display: block; margin-bottom: 5px; color: var(--muted); font-size: .78rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+    .field-value { display: block; overflow-wrap: anywhere; color: var(--navy); font: 700 .98rem Consolas, "SFMono-Regular", Menlo, monospace; }
+    .connection-panel .small-note { margin: 12px 0 0; color: var(--muted); font-size: .9rem; }
+    .steps { display: grid; gap: 21px; }
+    .step { display: grid; grid-template-columns: 42px 1fr; gap: 14px; }
+    .step-num { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; background: var(--navy); color: white; font-weight: 850; }
+    h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.1rem; }
+    .step p { margin-bottom: 9px; }
+    ol, ul { padding-left: 22px; margin: 8px 0 0; }
+    li { margin: 6px 0; }
+    .sql-wrap { margin-top: 13px; overflow: hidden; border: 1px solid #244660; border-radius: 13px; background: #102a43; }
+    .sql-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: #173b58; color: #d6e7f4; font-size: .82rem; font-weight: 700; }
+    .copy-button { padding: 6px 10px; border: 1px solid #53728a; border-radius: 7px; background: transparent; color: white; font: inherit; cursor: pointer; }
+    .copy-button:hover { background: rgba(255,255,255,.1); }
+    pre { overflow-x: auto; margin: 0; padding: 18px; color: #f2f7fb; font: 500 .91rem/1.65 Consolas, "SFMono-Regular", Menlo, monospace; tab-size: 2; }
+    code { font-family: Consolas, "SFMono-Regular", Menlo, monospace; }
+    .field-name { color: #147d75; font-weight: 800; }
+    .sql-wrap .field-name { color: #7fe0d2; }
+    .semantic-model-name { color: var(--teal); font-weight: 850; }
+    .note { margin-top: 16px; padding: 14px 16px; border: 1px solid #c8e6df; border-radius: 11px; background: var(--teal-pale); color: #24574f; font-size: .94rem; }
+    .sentence { margin-top: 13px; padding: 17px; border: 1px dashed #a8bbc9; border-radius: 12px; background: #f8fbfd; color: var(--navy); font-weight: 650; }
+    .blank { display: inline-block; min-width: 125px; border-bottom: 1.5px solid #6f8798; }
+    .takeaway { display: grid; grid-template-columns: 44px 1fr; gap: 15px; align-items: start; padding: 23px; border-radius: 16px; background: linear-gradient(110deg, #eaf4fb, #e8f6f3); }
+    .takeaway-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 13px; background: white; color: var(--blue-dark); font-size: 1.35rem; }
+    .takeaway h2 { margin-bottom: 7px; }
+    .takeaway p { margin: 0; }
+    .footer { padding: 22px 10px 0; color: var(--muted); font-size: .85rem; text-align: center; }
+    @media (max-width: 700px) {
+      .page { width: min(100% - 20px, 1050px); margin-top: 10px; }
+      .hero { border-radius: 17px; }
+      .learning-grid, .report-grid, .field-grid { grid-template-columns: 1fr; }
+      .section { padding: 20px; }
+    }
+    @media print {
+      body { background: white; }
+      .page { width: 100%; margin: 0; }
+      .hero, .section { box-shadow: none; break-inside: avoid; }
+      .hero { border-radius: 0; }
+      .section { border: 1px solid #ccd5dd; }
+      .button, .copy-button { display: none; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow"><span class="dot"></span> MGT 2210 &nbsp;·&nbsp; Business Analytics</p>
+      <h1>From SQL to Power BI</h1>
+      <p class="subtitle">Build an interactive business dashboard for Business Intelligence</p>
+      <p class="subtitle">Turn data from the Metro Elite Guesthouse database into a compact management dashboard. You already know how to use SQL to retrieve and summarize data. Now use a SQL query as the starting point for an interactive report.</p>
+      <div class="hero-bottom">
+        <a class="button" href="https://app.powerbi.com/home?experience=power-bi" target="_blank" rel="noopener noreferrer">Open Power BI <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="learn-title">
+      <div class="section-head">
+        <div class="section-number">01</div>
+        <div><h2 id="learn-title">What you will learn</h2><p class="section-intro">Connect the query window to a real business reporting workflow.</p></div>
+      </div>
+      <div class="learning-grid">
+        <article class="learning-card"><div class="icon" aria-hidden="true">↔</div><strong>Connect and query</strong><p>Connect a reporting tool to a database and bring in the results of a SQL query.</p></article>
+        <article class="learning-card"><div class="icon" aria-hidden="true">▥</div><strong>Visualize the data</strong><p>Turn rows and columns into visual summaries that help a manager spot patterns.</p></article>
+        <article class="learning-card"><div class="icon" aria-hidden="true">⌁</div><strong>See the bigger picture</strong><p>Understand how SQL shapes the data and Power BI makes it easier to explore.</p></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="powerbi-title">
+      <div class="section-head">
+        <div class="section-number">02</div>
+        <div><h2 id="powerbi-title">What is Power BI?</h2><p class="section-intro">A Microsoft business-intelligence tool for turning data into interactive reports.</p></div>
+      </div>
+      <div class="learning-grid">
+        <article class="learning-card">
+          <div class="icon" aria-hidden="true">▥</div>
+          <strong>Analyze and visualize data</strong>
+          <p>Power BI connects to data, helps you summarize it, and turns the results into charts, KPI cards, and interactive reports that support business decisions.</p>
+        </article>
+        <article class="learning-card">
+          <div class="icon" aria-hidden="true">↔</div>
+          <strong>Works with Microsoft's tools</strong>
+          <p>Power BI is part of Microsoft's broader Power Platform and works alongside the Microsoft 365 environment. In this exercise, you'll use the Power BI service in your browser.</p>
+        </article>
+        <article class="learning-card">
+          <div class="icon" aria-hidden="true">🎓</div>
+          <strong>Access at Georgia Tech</strong>
+          <p>Georgia Tech students are eligible to use Microsoft 365. Sign in with your GT account (username ending in <code>@gatech.edu</code>) and your GT Account Password. See the <a href="https://oit.gatech.edu/email" target="_blank" rel="noopener noreferrer">OIT guide to GT Email and Microsoft 365</a> for account and access information.</p>
+        </article>
+      </div>
+      <div class="note"><strong>Getting started:</strong> Open <a href="https://app.powerbi.com/home?experience=power-bi" target="_blank" rel="noopener noreferrer">Power BI in your browser</a> and sign in with your GT credentials. Access to particular Power BI features can depend on your account and license; if you see an access or licensing message, follow your instructor's guidance or consult OIT.</div>
+    </section>
+
+    <section class="section" aria-labelledby="challenge-title">
+      <div class="section-head">
+        <div class="section-number">03</div>
+        <div><h2 id="challenge-title">The task: build a management dashboard</h2><p class="section-intro">Create a single-page Power BI report to help the guesthouse manager understand bookings and stay patterns.</p></div>
+      </div>
+      <div class="report-grid">
+        <article class="report-item"><span class="tick" aria-hidden="true">✓</span><div><strong>Three KPI cards</strong><p>Total bookings, total nights booked, and average length of stay.</p></div></article>
+        <article class="report-item"><span class="tick" aria-hidden="true">✓</span><div><strong>Bookings by room type</strong><p>A bar or column chart showing the number of bookings for each room type.</p></div></article>
+        <article class="report-item"><span class="tick" aria-hidden="true">✓</span><div><strong>A second chart</strong><p>Average nights by room type, or bookings over time.</p></div></article>
+        <article class="report-item"><span class="tick" aria-hidden="true">✓</span><div><strong>An interactive filter</strong><p>Add a slicer for room type or booking date and test how it changes the report.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="steps-title">
+      <div class="section-head">
+        <div class="section-number">04</div>
+        <div><h2 id="steps-title">Get started</h2><p class="section-intro">Follow these steps to move from SQL results to a report.</p></div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div><h3>Connect to the database</h3>
+            <ol>
+              <li>Open <a href="https://app.powerbi.com/home?experience=power-bi" target="_blank" rel="noopener noreferrer">Power BI in your browser</a>.</li>
+              <li>Click the <strong>+New report</strong> button.</li>
+              <li>Choose <strong>Get data</strong> (or <strong>New</strong> and then the data connection option shown in your workspace).</li>
+              <li>Search for <strong>MySQL</strong> and select <strong>MySQL database</strong>.</li>
+            </ol>
+            <div class="connection-panel">
+              <h3>Connection settings</h3>
+              <p>Enter these values in the <strong>Connect to data source</strong> window.</p>
+              <div class="field-grid">
+                <div class="field-card"><span class="field-label">Server</span><span class="field-value">174.138.55.150:3306</span></div>
+                <div class="field-card"><span class="field-label">Database</span><span class="field-value">guesthouse</span></div>
+              </div>
+              <p class="small-note">Expand <strong>Advanced options</strong>. Paste the SQL query shown in Step 2 into <strong>SQL statement</strong>.</p>
+            </div>
+            <ol start="5">
+              <li>Under <strong>Connection credentials</strong>, select <strong>Create a new connection</strong>, then enter these credentials:
+                <ul>
+                  <li><strong>Username:</strong> <code>student</code></li>
+                  <li><strong>Password:</strong> <code>student</code></li>
+                </ul>
+              </li>
+              <li>Complete the connection and load the query results into Power BI. If prompted, keep the default <strong>Include relationship columns</strong> setting. The SQL query already joins the two tables needed for this dashboard.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div><h3>Run this SQL query</h3>
+            <p>The query joins each booking to its room-type description. The result stays at booking level, so Power BI can count bookings and summarize nights, occupants, room types, and dates.</p>
+            <div class="sql-wrap">
+              <div class="sql-top"><span>SQL · Guesthouse booking data</span><button class="copy-button" id="copySql" type="button">Copy SQL</button></div>
+              <pre><code id="sqlCode">SELECT
+    b.<span class="field-name">booking_id</span>,
+    b.booking_date,
+    b.guest_id,
+    b.occupants,
+    b.room_type_requested AS room_type_id,
+    rt.description AS room_type,
+    b.nights
+FROM booking AS b
+INNER JOIN room_type AS rt
+    ON b.room_type_requested = rt.rt_id;</code></pre>
+            </div>
+            <p>The resultset for the query will be displayed.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div><h3>Build the report</h3>
+            <p>Provide a semantic model name: <code class="semantic-model-name">guesthouse_business_analytics</code> and click <strong>Create</strong>. Creating this workspace may take several minutes as Microsoft provisions your semantic model in the cloud. If it takes more than two minutes, click &quot;My Workspace&quot; in the left-side menu, and see if the new semantic model is listed. If it is listed, then it has been created.</p>
+            <ul>
+              <li><strong>Create a Total Bookings card.</strong>
+                <ol>
+                  <li>Select a blank area of the report canvas.</li>
+                  <li>In the <strong>Visualizations</strong> or <strong>Build a visual</strong> pane, choose the <strong>Card</strong> visual.</li>
+                  <li>Add <code><span class="field-name">booking_id</span></code> to the card’s data field. Open the field’s menu and set its summarization to <strong>Count</strong>.</li>
+                  <li>With the card selected, open its formatting options and set the title to <strong>Total Bookings</strong>.</li>
+                </ol>
+              </li>
+              <li><strong>Create a Total Nights Booked card.</strong>
+                <ol>
+                  <li>Select a blank area of the report canvas.</li>
+                  <li>In the <strong>Visualizations</strong> or <strong>Build a visual</strong> pane, choose the <strong>Card</strong> visual.</li>
+                  <li>Add <code>nights</code> to the card’s data field. Open the field’s menu and set its summarization to <strong>Sum</strong>.</li>
+                  <li>With the card selected, open its formatting options and set the title to <strong>Total Nights Booked</strong>.</li>
+                </ol>
+              </li>
+              <li>Create a card for the <strong>average of <code>nights</code></strong>. Label it <strong>Average Stay (Nights)</strong>.</li>
+              <li>Create a bar or column chart with <code>room_type</code> as the category and count of <code><span class="field-name">booking_id</span></code> as the value.</li>
+              <li>Create a second chart using <code>room_type</code> and average nights, or use <code>booking_date</code> to show booking volume over time.</li>
+              <li>Add a slicer for <code>room_type</code> or <code>booking_date</code>. Select one or more values and observe which visuals change.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div><h3>Interpret and save</h3>
+            <p>Complete the sentence based on your dashboard. Save your report with a clear name, such as <strong>Guesthouse Booking Dashboard</strong>.</p>
+            <div class="sentence">“One thing the guesthouse manager should notice is <span class="blank">&nbsp;</span> because <span class="blank">&nbsp;</span>.”</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div><h3>Capture your report</h3>
+            <p>Take a screenshot of your report for inclusion in the submission PPTX.</p>
+          </div>
+        </div>
+      </div>
+      <div class="note"><strong>Connection trouble?</strong> First check the server, database name, and your MySQL credentials. If you still cannot connect, let your instructor know and use the class fallback dataset or query output so you can continue building the report.</div>
+    </section>
+
+    <section class="section" aria-labelledby="takeaway-title">
+      <div class="takeaway">
+        <div class="takeaway-icon" aria-hidden="true">↗</div>
+        <div><h2 id="takeaway-title">What this demonstrates</h2><p>SQL does more than answer questions in a query window. It can select, combine, and shape the data that feeds a reporting application. Power BI then turns that query result into visual summaries and interactive ways to explore the business. <strong>The SQL query is part of the reporting pipeline.</strong></p></div>
+      </div>
+    </section>
+    <footer class="footer">MGT 2210 · Business Analytics · From SQL to Power BI</footer>
+  </main>
+  <script>
+    const copyButton = document.getElementById('copySql');
+    const sqlCode = document.getElementById('sqlCode');
+    copyButton.addEventListener('click', async () => {
+      const original = copyButton.textContent;
+      try {
+        await navigator.clipboard.writeText(sqlCode.textContent);
+        copyButton.textContent = 'Copied!';
+      } catch (err) {
+        const range = document.createRange();
+        range.selectNodeContents(sqlCode);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        copyButton.textContent = 'Select and copy';
+      }
+      window.setTimeout(() => { copyButton.textContent = original; }, 1800);
+    });
+  </script>
+</body>
+</html>
