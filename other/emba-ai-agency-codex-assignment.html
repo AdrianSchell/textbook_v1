@@ -56,6 +56,17 @@
 .experiment-step strong{font-size:.9rem;color:var(--navy)}
 .experiment-step small{font-size:.76rem;color:var(--muted);line-height:1.35}
 @media(max-width:640px){.experiment-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.experiment-step:last-child{grid-column:1/-1}}
+
+/* Briefly draw attention to the next action after report generation. */
+@keyframes copy-report-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(179,163,105,0); transform: scale(1); }
+  45% { box-shadow: 0 0 0 7px rgba(179,163,105,.48); transform: scale(1.035); background-color: #fff2b8; border-color: #9a7b28; color: #102b46; }
+}
+#copy-maturity-report.copy-attention { animation: copy-report-pulse .65s ease-in-out 3; }
+@media (prefers-reduced-motion: reduce) {
+  #copy-maturity-report.copy-attention { animation: none; outline: 3px solid #9a7b28; outline-offset: 3px; }
+}
+@media print { #copy-maturity-report.copy-attention { animation: none; } }
 </style>
 <style>.challenge-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}.challenge-card{background:#eff4f8;border:1px solid #d8e3eb;border-radius:11px;padding:19px 17px;display:flex;flex-direction:column}.challenge-card h4{color:#155477;margin:0 0 9px;font-size:1.04rem}.challenge-card p{margin:0 0 17px;flex:1}.challenge-card span{color:#526879;font-size:.83rem;font-weight:700}@media(max-width:650px){.challenge-cards{grid-template-columns:1fr}}</style><style>
 /* Download project action */
@@ -355,8 +366,15 @@ document.querySelectorAll('[data-copy]').forEach(button => {
 const maturityDimensions=['Directive','Agency','Context','Reasoning','Experimentation','Learning'];
 const maturityRatings=document.getElementById('maturity-ratings');
 maturityDimensions.forEach(name=>{const line=document.createElement('div');line.className='rating-line';const label=document.createElement('label');label.textContent=name;const select=document.createElement('select');select.setAttribute('aria-label',name+' rating');select.dataset.dimension=name;[['','Choose a rating'],['Not observed','Not observed'],['Limited','Limited'],['Moderate','Moderate'],['Substantial','Substantial']].forEach(([value,text])=>{const option=document.createElement('option');option.value=value;option.textContent=text;select.appendChild(option)});line.append(label,select);maturityRatings.appendChild(line)});
-document.getElementById('generate-maturity-report').addEventListener('click',()=>{const ratings=[...maturityRatings.querySelectorAll('select')].map(el=>el.dataset.dimension+': '+(el.value||'Not rated'));const evidence=document.getElementById('maturity-evidence').value.trim();const limit=document.getElementById('maturity-limit').value.trim();const stage5=document.getElementById('maturity-stage5').value.trim();const report=['AI AGENCY MATURITY REFLECTION','', 'Observed ratings (qualitative; not formal stage classifications):',...ratings.map(x=>'- '+x),'','Evidence supporting my assessment:',evidence||'[Add your observations here.]','','Dimension most limiting overall maturity:',limit||'[Explain your assessment here.]','','Moving toward full Stage 5 — two or three proposed changes:',stage5||'[Identify changes and explain why they matter.]','','Stage 5 reflection: A broad objective alone does not establish Stage 5 maturity. Experimentation, agency, context, reasoning, and learning must be evaluated from observed behavior. Correcting errors within one task is not necessarily persistent learning.'].join('\n');document.getElementById('maturity-report').value=report;document.getElementById('maturity-status').textContent='Report text generated below.'});
+document.getElementById('generate-maturity-report').addEventListener('click',()=>{const ratings=[...maturityRatings.querySelectorAll('select')].map(el=>el.dataset.dimension+': '+(el.value||'Not rated'));const evidence=document.getElementById('maturity-evidence').value.trim();const limit=document.getElementById('maturity-limit').value.trim();const stage5=document.getElementById('maturity-stage5').value.trim();const report=['AI AGENCY MATURITY REFLECTION','', 'Observed ratings (qualitative; not formal stage classifications):',...ratings.map(x=>'- '+x),'','Evidence supporting my assessment:',evidence||'[Add your observations here.]','','Dimension most limiting overall maturity:',limit||'[Explain your assessment here.]','','Moving toward full Stage 5 — two or three proposed changes:',stage5||'[Identify changes and explain why they matter.]','','Stage 5 reflection: A broad objective alone does not establish Stage 5 maturity. Experimentation, agency, context, reasoning, and learning must be evaluated from observed behavior. Correcting errors within one task is not necessarily persistent learning.'].join('\n');document.getElementById('maturity-report').value=report;document.getElementById('maturity-status').textContent='Report generated. Click Copy report text below.';
+const copyButton=document.getElementById('copy-maturity-report');
+copyButton.classList.remove('copy-attention');
+void copyButton.offsetWidth; // Restart the animation if the report is regenerated.
+copyButton.classList.add('copy-attention');
+});
+document.getElementById('copy-maturity-report').addEventListener('animationend', event => { if (event.animationName === 'copy-report-pulse') event.currentTarget.classList.remove('copy-attention'); });
 document.getElementById('copy-maturity-report').addEventListener('click', async () => {
+  document.getElementById('copy-maturity-report').classList.remove('copy-attention');
   const box = document.getElementById('maturity-report');
   const status = document.getElementById('maturity-status');
   if (!box.value) { status.textContent = 'Generate the report text first.'; return; }
