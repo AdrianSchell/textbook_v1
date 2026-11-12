@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>6.1 Digital Infrastructure: The Internet, Cloud, APIs, and Open Source | Information Systems</title>
+  <link rel="stylesheet" href="../css/book.css">
+</head>
+<body>
+  <main class="book-shell">
+    <header>
+      <div class="book-meta">
+        <strong>Information Systems and Digital Transformation in the Age of AI: A Georgia Tech Perspective</strong>
+        Chapter 6: Digital Infrastructure &amp; Cybersecurity
+      </div>
+      <h1>6.1 Digital Infrastructure: The Internet, Cloud, APIs, and Open Source</h1>
+    </header>
+
+    <p>Imagine an entrepreneur who wants to launch an online service. She doesn’t need to build her own data center, write every line of software, or carve fiber cable across continents. Instead, she taps into a <strong>digital infrastructure</strong> that is already in place: the global Internet for connectivity, cloud platforms for computing power, open-source software as reusable building blocks, and APIs that let her stitch services together. This layered stack of capabilities lets businesses roll out powerful digital applications with far less upfront investment. In effect, <strong>digital infrastructure</strong> allows companies to innovate quickly and scale without reinventing the wheel. As one expert puts it, “The internet has become the central operating layer of the modern economy”. Connectivity and shared services have become the plumbing of business, making it possible for a local startup to sell to customers halfway around the world.</p>
+
+    <p>The big idea is this: digital infrastructure is like a series of stacked layers, each building on the ones below it (Figure 6.1). At the base is the <strong>Internet</strong> itself – a vast network that connects people, data, and devices worldwide. Above that sits the <strong>cloud</strong> – on-demand servers, storage, and managed services. Built on top of cloud and network layers are shared software and data tools (including databases, analytics, and container platforms). The next layer up is <strong>APIs</strong>, the glue that lets different software systems talk to each other and tap into services. And at the top are the <strong>digital business applications</strong> and platforms that customers see and use. Security, identity, and standards (not shown) cut across all layers, ensuring trust and interoperability. Together, these layers reduce the cost and complexity of building software: companies can buy or rent many pieces of the stack rather than building them.</p>
+
+    <figure class="book-figure">
+  <figcaption><strong>Figure 6.1 Digital infrastructure as a stack of capabilities</strong></figcaption>
+  <img src="../figures/figure-6-1.png" alt="Digital infrastructure stack showing internet and networking, cloud computing, software and data infrastructure, APIs, and digital business applications.">
+  <details class="long-description">
+    <summary><span class="show-label">Show long description</span><span class="hide-label">Hide long description</span></summary>
+    <div class="long-description-panel">
+      <p>The figure illustrates digital infrastructure as a stack of five interconnected layers of technological capabilities that support modern digital businesses. Each layer provides capabilities that can be used by the layers above it, allowing organizations to build sophisticated digital products and services without developing every underlying technology themselves.</p>
+      <p>The layers are arranged vertically, with foundational infrastructure at the bottom and business applications at the top. The four lower layers appear in progressively lighter shades of blue from bottom to top. The top layer has a white background. The colors distinguish the layers but do not indicate differences in importance.</p>
+      <p>Reading from the bottom upward:</p>
+      <ol>
+<li>Internet and Networking: The foundational layer provides global connectivity through communication networks, protocols, and the World Wide Web. It allows computers, devices, applications, and organizations to exchange information across geographic boundaries. This connectivity supports all the other layers of digital infrastructure.</li>
+<li>Cloud Computing: The second layer provides computing resources, storage, and managed services. Cloud computing allows organizations to access technological capabilities on demand rather than purchasing and maintaining all the underlying physical infrastructure themselves. Businesses can expand or reduce their computing resources as their needs change.</li>
+<li>Software and Data Infrastructure: The middle layer includes open-source software, databases, containers, and AI models. These technologies provide reusable building blocks for developing and operating digital systems. Open-source software enables organizations to build on shared technological foundations, while databases, containers, and AI models support information management, application deployment, and intelligent functionality.</li>
+<li>APIs and Interoperability: The fourth layer enables different software systems to communicate and exchange services. Application programming interfaces, or APIs, provide standardized ways for applications to request information or functionality from other systems. This allows organizations to combine internal systems with external services and connect technologies developed by different providers.</li>
+<li>Digital Business Applications: The top layer represents the applications and services that organizations use to conduct business and create value. Examples include e-commerce, enterprise systems, digital platforms, and AI agents. These applications draw on capabilities provided by the underlying layers to support business operations, customer interactions, automation, and new business models.</li>
+</ol>
+      <p>Beneath the stack, a shield icon accompanies the statement, “Security, identity, and standards operate across the stack.” This indicates that these capabilities are not confined to any single layer. Instead, they support the reliable operation, controlled access, and interoperability of digital infrastructure throughout the entire system.</p>
+      <p>At the bottom of the figure, a note states, “Conceptual organization, not a strict technical architecture.” This qualification is important because the layers do not always operate in a rigid sequence. Software may run outside the cloud, APIs can connect systems at multiple layers, and open-source technologies may be used throughout the stack. The diagram is intended to illustrate how complementary capabilities work together rather than prescribe a specific technical design.</p>
+      <p>The figure's central message is that digital infrastructure enables organizations to assemble and reuse technological capabilities rather than build every component from scratch. The Internet provides connectivity, cloud computing supplies scalable resources, software and data infrastructure offer reusable components, and APIs connect these capabilities into functioning business applications.</p>
+      <p><strong>Key takeaway:</strong> Modern digital businesses are built on interconnected layers of shared infrastructure. Understanding these layers helps managers evaluate technology investments, make build-versus-buy decisions, manage dependencies, and recognize how digital infrastructure lowers barriers to innovation and enables new business models.</p>
+    </div>
+  </details>
+</figure>
+
+    <p><em>The </em><strong><em>Internet</em></strong><em> (bottom layer) provides global connectivity. </em><strong><em>Cloud computing</em></strong><em> (second layer) supplies on-demand servers, storage, and managed services. Higher layers include </em><strong><em>software and data infrastructure</em></strong><em> (databases, containers, analytics), </em><strong><em>APIs</em></strong><em> (the interfaces that connect systems), and </em><strong><em>business applications</em></strong><em> (top layer). Cross-cutting concerns like security, identity, and open standards span every layer.</em></p>
+
+    <p>Digital infrastructure is what enables modern digital businesses, platforms, and services. Whether it’s launching a new app, automating a supply chain, or rolling out an AI agent, managers today expect building blocks to be available off the shelf. They care about these layers because they decide how fast a company can innovate, how agile it is, and how cost-effectively it operates. In the sections that follow, we’ll unpack each layer – the <strong>Internet and Web</strong>, <strong>Cloud Computing</strong>, <strong>APIs</strong>, and <strong>Open Source Software</strong> – to understand what they are, why they matter for business, and how they work in practice (including the role of AI in each). Along the way we’ll use real-world examples to make the ideas concrete.</p>
+
+    <h2>The Internet and the Web</h2>
+
+    <h3>What is the Internet (and the Web)?</h3>
+
+    <p>The <strong>Internet</strong> is the global network of networks – essentially a huge system of computers and devices interconnected by physical cables, satellites, and radio. It uses common communication protocols (like TCP/IP and DNS) so that any connected device can exchange data with any other. The <strong>World Wide Web</strong> is one of the most visible services running on the Internet: it’s a system of linked documents and applications accessed via web browsers (using the HTTP protocol). But the Internet also supports email, video calls, file sharing, streaming media, and many other services beyond the Web.</p>
+
+    <p>To keep it simple: think of the Internet as the digital highway system, and the Web as a collection of websites you can visit on that highway. The Internet provides the connectivity (roads, cables, wireless networks), and the Web and other services are the “destinations” (websites, apps, services) you reach via standard rules (protocols). It’s important to note that you can have applications (like email or IoT devices) that use the Internet without involving the Web at all.</p>
+
+    <h3>Why It Matters for Business</h3>
+
+    <p>Connectivity is nothing short of transformative for businesses. With 6.18 billion people online in 2026, the Internet now reaches most of the world (including an astonishing 93% penetration in high-income countries). That means every company, from the corner store to the global bank, can potentially reach millions of customers, partners, and employees over these networks. In practical terms, the Internet <strong>broke down distance and time barriers</strong>. A boutique in Boston can sell to a customer in Berlin; a manufacturer in Taiwan can coordinate with suppliers in Mexico in real time. The global reach expands markets dramatically.</p>
+
+    <p>The Internet also changed how products and services are delivered. For instance, streaming, e-commerce, cloud services, online education, and telemedicine all rely on Internet infrastructure. When COVID-19 pushed businesses online, companies with solid Internet-based channels could survive or even thrive, while others struggled to adapt. Today, digital customers expect always-on availability, and the Internet makes that possible.</p>
+
+    <p>From a competitive standpoint, a fast, reliable Internet foundation is table stakes. Poor connectivity or outdated network designs can cripple a business (imagine frequent website outages or slow transaction processing). Conversely, companies that leverage modern Internet technologies can run global teams, gather analytics, and pivot to new models (for example, shifting a portion of retail sales to online channels). In short, if the Internet layer falters, everything above it suffers.</p>
+
+    <h3>How the Internet Works (at a High Level)</h3>
+
+    <p>Underneath the hood, the Internet depends on many protocols and hardware: fiber cables under the ocean, routers that forward packets, cellular towers for mobile, and services like DNS (which turns names like “example.com” into IP addresses). Routers and switches handle traffic, ensuring data finds its way across paths that may span continents. Key protocols include <strong>TCP/IP</strong> (for reliable transport of data), <strong>HTTP</strong> (the basis of the Web), and <strong>DNS</strong> (for name resolution).</p>
+
+    <p>For managers, the important point is that the Internet relies on shared resources and standards. No single company owns the Internet – it’s a cooperative of networks. That is why standards (like those from the IETF and W3C) are so important: they make sure that a website hosted in one country can be reached by a smartphone on another network, or that your customer’s data in the cloud is accessible from anywhere with the right credentials.</p>
+
+    <h3>The Web: a Key Service on the Internet</h3>
+
+    <p>The <strong>Web</strong> (WWW) is the layer of Internet meant for hyperlinked documents and applications. It uses HTTP/HTTPS protocols. Businesses care about the Web because virtually any online customer interaction (shopping, banking, booking travel, etc.) happens through web interfaces or mobile apps that connect via web APIs. Think of it as the storefront layer on top of the Internet infrastructure. When a manager hears “website” or “web app,” it’s the Web layer on top of the network.</p>
+
+    <p>Technically, the Web runs on servers (often virtual machines or containers in the cloud) that store files and databases, serving them to clients (browsers). But from a business view, it’s the “face” of digital offerings. Companies invest in websites and web platforms to reach customers, and they worry about web performance, security (HTTPS, certificates), content delivery networks (CDNs to speed up global access), and so on. These are all ways to optimize the Web layer’s use of the underlying Internet.</p>
+
+    <h3>Internet and Artificial Intelligence</h3>
+
+    <p>AI both depends on and augments the Internet layer. On one hand, modern AI systems rely on vast amounts of data from across the network. Data centers train models on data often collected via the Internet, and then AI-powered services are delivered over the same networks. For example, when a smartphone translates speech using a cloud AI service, it’s sending your voice (data) over the Internet to a server, and getting back a translation.</p>
+
+    <p>On the other hand, AI is making networks “smarter.” For instance, content delivery networks (CDNs) use AI to predict traffic and cache content closer to users. AI is also embedded in network management (for auto-scaling, detecting cyber threats, or optimizing traffic flows). A recent analysis notes that “artificial intelligence is turning the network from an information system into an action system”, meaning networks are now actively optimizing themselves and supporting automated decision-making.</p>
+
+    <aside class="box case-study" aria-labelledby="e-commerce-case-title">
+  <h3 class="box-title" id="e-commerce-case-title">Case Study: E-Commerce Going Global</h3>
+  <div class="box-body">
+    <p>Consider a small e-commerce retailer that sells artisanal goods. Before the Internet, reaching customers beyond the local region meant expensive physical expansion and marketing. Today, the retailer sets up an online store (a Web application) and starts receiving orders worldwide. The Internet allows payment processing with providers anywhere and integrates shipping services that track packages globally. Behind the scenes, the retailer may not even host its own servers – those are in the cloud (next section) – but the Internet ensures the products, prices, and pages are accessible from India to Iceland. Without this network layer, the concept of instant global commerce would be impossible.</p>
+  </div>
+</aside>
+
+    <h2>Cloud Computing</h2>
+
+    <h3>What is Cloud Computing?</h3>
+
+    <p><strong>Cloud computing</strong> refers to on-demand access to computing resources (servers, storage, databases, software platforms) over the Internet. Instead of buying and managing physical hardware, companies rent these resources from providers like Amazon Web Services (AWS), Microsoft Azure, or Google Cloud. These providers operate vast data centers (“hyperscale” facilities with thousands of machines). The key cloud models are:</p>
+
+    <ul>
+  <li><strong>Infrastructure as a Service (IaaS):</strong> Renting virtual machines (servers), storage disks, and networking. Think of it as getting raw compute and storage over the web.</li>
+  <li><strong>Platform as a Service (PaaS):</strong> Building applications on managed platforms (databases, AI services, container orchestration) without worrying about the underlying servers.</li>
+  <li><strong>Software as a Service (SaaS):</strong> Using fully managed applications (like Office 365, Salesforce, or Dropbox) through a browser or app.</li>
+</ul>
+
+    <p>From a business perspective, cloud computing means treating IT as an on-demand service rather than a fixed asset. You pay-as-you-go (operational expense rather than big capital expense), and you can spin up or tear down resources quickly as needs change.</p>
+
+    <figure class="book-figure">
+  <figcaption><strong>Figure 6.2 Key Cloud Models</strong></figcaption>
+  <img src="../figures/figure-6-2.png" alt="Comparison of the SaaS, PaaS, and IaaS cloud service models.">
+  <details class="long-description">
+    <summary><span class="show-label">Show long description</span><span class="hide-label">Hide long description</span></summary>
+    <div class="long-description-panel">
+      <p>The figure compares three cloud computing service models: Software as a Service (SaaS), Platform as a Service (PaaS), and Infrastructure as a Service (IaaS). It illustrates how these models differ in the resources provided by the cloud provider, the responsibilities of the customer, and the degree of control customers have over the computing environment.</p>
+      <p>The figure is organized into three horizontal sections, with SaaS at the top, PaaS in the middle, and IaaS at the bottom.</p>
+      <p>Software as a Service (SaaS) is shown in purple at the top. SaaS provides fully managed applications that customers access through a web browser or app. Customers use the software without managing the underlying infrastructure, operating systems, or application platform. A laptop displaying application icons represents this model. Examples include Microsoft Office 365, Salesforce, and Dropbox.</p>
+      <p>Platform as a Service (PaaS) is shown in blue in the middle. PaaS provides managed environments for building, deploying, and running applications. The cloud provider manages much of the underlying infrastructure and platform, allowing developers to concentrate on application development. Icons representing a database, artificial intelligence services, and container orchestration illustrate capabilities commonly available through managed cloud platforms. The figure identifies Google Cloud, Microsoft Azure, and Amazon Web Services as providers of these capabilities.</p>
+      <p>Infrastructure as a Service (IaaS) is shown in green at the bottom. IaaS provides fundamental computing resources, including virtual machines, storage, and networking, delivered over the internet. Customers have greater responsibility for configuring and managing operating systems, software, and applications running on these resources. Icons representing servers, storage disks, and network connections illustrate the infrastructure components. Examples include Amazon EC2 and S3, Microsoft Azure Virtual Machines, and Google Compute Engine.</p>
+      <p>On the right side of the figure, a vertical double-headed arrow illustrates the relationship between provider management and customer control. The top is labeled "More managed (use the app)," while the bottom is labeled "More control (build from raw resources)." This emphasizes that SaaS generally requires the least infrastructure management by the customer, PaaS offers an intermediate level of management and flexibility, and IaaS provides greater control over the computing environment while requiring more customer management.</p>
+      <p>The central takeaway is that cloud computing is not a single type of service. Organizations can choose among ready-to-use applications, managed application-development platforms, and fundamental computing infrastructure. The appropriate model depends on how much control, customization, and operational responsibility the organization needs or wishes to retain.</p>
+    </div>
+  </details>
+</figure>
+
+    <h3>Why It Matters for Business</h3>
+
+    <p>Cloud computing changes the economics of IT by giving businesses access to computing resources that can expand or contract with demand. Its defining advantage is <strong>elasticity</strong>: the ability to automatically increase computing capacity when demand rises and reduce it when demand falls. Instead of purchasing enough servers to handle the busiest day of the year, companies can adjust resources to match their actual needs.</p>
+
+    <p>Consider an online retailer preparing for Black Friday. Under a traditional IT model, the company might purchase enough servers to handle its anticipated peak traffic. Those servers would then sit largely idle for much of the year. With cloud computing, the retailer can add computing capacity as shoppers arrive and release that capacity when traffic returns to normal. <strong>Elasticity allows companies to respond to demand without permanently paying for peak capacity.</strong></p>
+
+    <p>Elasticity is related to, but distinct from, <strong>scalability</strong>. Scalability is a system's ability to handle increasing workloads by adding resources. Elasticity goes further by adjusting those resources dynamically as demand changes in either direction. A system can be scalable without being elastic. For example, a company might be able to add servers manually, but still struggle to reduce capacity quickly when demand declines.</p>
+
+    <p>For managers, cloud computing offers several important business advantages:</p>
+
+    <ul>
+  <li><strong>Elasticity and Cost Efficiency:</strong> Computing resources can expand during demand spikes and contract during quieter periods. Companies can avoid investing in excess capacity that sits idle, although savings depend on how effectively cloud usage is managed.</li>
+  <li><strong>Speed and Agility: </strong>New applications and services can be deployed in minutes rather than waiting weeks to purchase and install hardware. Teams can experiment with new ideas, test products, and respond more quickly to market opportunities.</li>
+  <li><strong>Lower Upfront Investment:</strong> Companies can access enterprise-scale infrastructure without building their own data centers. This reduces the capital required to launch a digital business and allows startups to use many of the same underlying technologies as large enterprises.</li>
+  <li><strong>Global Reach:</strong> Major cloud providers operate data centers in multiple geographic regions. Businesses can deploy applications closer to customers to reduce delays, known as <strong>latency</strong>, while selecting locations that support applicable data residency requirements.</li>
+  <li><strong>Focus on Core Business: </strong>Rather than spending time maintaining physical servers, power systems, and cooling equipment, organizations can devote more resources to developing products, serving customers, and improving business processes.</li>
+</ul>
+
+    <p>These advantages can change competitive dynamics. A small startup no longer needs to make a massive infrastructure investment before testing whether customers want its product. A growing company can accommodate sudden popularity without rebuilding its entire technology environment. And an established enterprise can launch digital services in new markets without first constructing local data centers.</p>
+
+    <p>Cloud computing also changes financial decision-making. Traditional IT infrastructure often requires substantial <strong>capital expenditures (CapEx)</strong>—investments in equipment purchased upfront. Cloud services frequently shift these costs toward <strong>operating expenditures (OpEx)</strong>, with spending tied more closely to consumption. However, pay-as-you-go pricing does not automatically mean lower costs. Poorly managed resources, unnecessary capacity, and unpredictable usage can generate substantial bills.</p>
+
+    <p>The strategic benefit is therefore not simply that cloud computing is cheaper. It is that <strong>cloud computing makes computing capacity more flexible, allowing firms to align technology resources with business demand.</strong></p>
+
+    <p>For managers, this flexibility can translate into faster innovation, reduced barriers to entry, and greater responsiveness to customers. In a competitive environment where demand can change overnight, the ability to expand or contract digital operations quickly can be as valuable as the technology itself.</p>
+
+    <h3><strong>Trade-offs and Considerations</strong></h3>
+
+    <p>Cloud isn’t a free lunch. Managers must weigh trade-offs:</p>
+
+    <ul>
+  <li><strong>Vendor Lock-in:</strong> Moving data and apps to a cloud can make it harder to switch providers later. Once you use a proprietary service (say, AWS Lambda functions or Google BigQuery), porting to another cloud or on-premises environment may be hard.</li>
+  <li><strong>Cost Management:</strong> Pay-as-you-go is cheaper for occasional or unpredictable loads, but costs can creep up if not managed. Interestingly, one study found that while 67% of companies saw significant cost reductions from cloud in 2024, only 61% did in 2025. This signals that without good financial oversight (FinOps), cloud bills can grow (perhaps because new services or higher usage offset earlier savings).</li>
+  <li><strong>Security and Compliance:</strong> Companies must ensure their data is safe in the cloud. While providers invest heavily in security, the customer is usually responsible for configuring it correctly. Many organizations now see “cloud security” as a basic requirement. In fact, cloud and data sovereignty have become strategic concerns in Europe, where 58% of companies see a “sovereign cloud” (locally controlled cloud) as a must-have.</li>
+  <li><strong>Complexity of Multi-Cloud:</strong> Managing multiple cloud vendors (to avoid lock-in or use best-of-breed services) adds complexity. As one report notes, 87% of IT leaders now orchestrate multiple providers in a multi-cloud approach, which can complicate operations and require new skills.</li>
+</ul>
+
+    <h3>How Cloud Works (in Practice)</h3>
+
+    <p>Technically, cloud providers run immense data centers with virtualization or container systems that allow dozens or hundreds of “instances” to run on each physical server. When you start a virtual machine (VM) on AWS or Azure, it is essentially a slice of someone’s physical server. Storage systems span many disks so that your files stay available if a disk fails. Networks connect your virtual machines to each other and to the Internet.</p>
+
+    <p>Cloud providers also offer managed services. For example, instead of installing your own database software on a VM, you might use a managed database service (like Amazon RDS) which handles backups and replication for you. Or you might use a serverless compute service (like AWS Lambda) where you just upload code and the cloud automatically runs it in response to events.</p>
+
+    <p>The key business idea is that the infrastructure is abstracted away. You configure resources through web consoles or APIs, and you pay for usage (like CPU hours, storage GBs, or number of requests). This elasticity means you can easily prototype new ideas: try a new digital service one month, and if it flops, turn it off immediately. Or if it takes off, spin it up massively.</p>
+
+    <h3>Cloud and Artificial Intelligence</h3>
+
+    <p>Cloud computing and AI have become intertwined. Cloud providers have added specialized hardware (like GPUs and TPUs) and managed AI platforms, because AI workloads need massive computation. For instance, companies often “rent” large models or train their own models in the cloud. In practice, 92% of organizations that use cloud now obtain modern AI solutions from the same cloud providers. This means big cloud vendors are effectively the main hosts of advanced AI services (vision APIs, language models, data lakes, etc.).</p>
+
+    <p>Managers should note that AI ambitions often push more workloads to the cloud. Large-scale AI training or inference is hard to run on in-house servers. Cloud-based AI means pay-per-use GPUs and pre-built AI services, which many companies now leverage rather than building private AI infrastructure. For example, a retail company might use a cloud-based image-recognition API to analyze customer photos, without needing its own machine-learning team or servers.</p>
+
+    <p>Conversely, AI is helping cloud operations. Cloud providers use AI tools to optimize data center efficiency, predict equipment failures, and improve security. Even customer support in cloud often includes AI chatbots or recommendation systems. In sum, cloud makes AI accessible to more firms, and AI makes cloud services smarter and more efficient.</p>
+
+    <aside class="box case-study" aria-labelledby="netflix-streaming-case-title">
+  <h3 class="box-title" id="netflix-streaming-case-title">Case Study: Netflix and Streaming</h3>
+  <div class="box-body">
+    <p>A classic example is Netflix. From the start, Netflix built its streaming service on cloud infrastructure. Instead of owning its own servers, Netflix uses AWS to store and deliver video to millions of subscribers worldwide. This lets Netflix scale out capacity during peak hours (say, prime time) and scale down during off-hours, paying only for what it uses. According to Netflix’s engineering team, moving to the cloud “completely changed our infrastructure and allowed our engineering teams to be able to focus on innovating the service rather than managing data centers.” The cloud’s global presence also lets Netflix position servers close to users, improving streaming quality. Managers note that Netflix effectively avoided a huge capital spend by leveraging cloud elasticity – it’s a textbook cloud success story.</p>
+  </div>
+</aside>
+
+    <h2>APIs (Application Programming Interfaces)</h2>
+
+    <h3>What is an API?</h3>
+
+    <p>An <strong>API (Application Programming Interface)</strong> is a set of rules and tools that lets different software systems communicate. In simple terms, an API is like a contract: one program (the client) calls on another program (the server) by sending a request in a defined format, and then the server returns a response. The request might ask for data (“get the current stock price”) or ask an action (“send a text message”). APIs can be simple (an HTTP request to a web service) or complex (Java APIs between modules), but the core idea is the same: they expose functionality or data of a system in a controlled way.</p>
+
+    <p>For example, a weather service might offer a <strong>Weather API</strong>: a developer can write code that says <em>“getWeather(city=Seattle)”</em>, and the API returns today’s forecast. The actual weather data lives on the provider’s servers; the API is the interface that lets your app request it. APIs can be exposed over the Internet (public or partner APIs), or used internally within a company’s systems.</p>
+
+    <figure class="book-figure">
+  <figcaption><strong>Figure 6.3 APIs</strong></figcaption>
+  <img src="../figures/figure-6-3.png" alt="Client, API, and server diagram showing request and response flows.">
+  <details class="long-description">
+    <summary><span class="show-label">Show long description</span><span class="hide-label">Hide long description</span></summary>
+    <div class="long-description-panel">
+      <p>The figure illustrates how an Application Programming Interface (API) enables communication between a client application and a server through a request-and-response process. The diagram is arranged horizontally, with three main components: a client on the left, an API in the center, and an API server on the right.</p>
+      <p>The client, represented by a computer icon and a cartoon robot working at a laptop, is the application or system initiating communication. The client sends a request to the API when it needs information or wants to perform an action. A right-pointing arrow labeled "Request" connects the client to the API, indicating the direction of the outgoing communication.</p>
+      <p>The API, represented by a hexagonal symbol and a cartoon robot holding a serving tray, provides a defined interface through which the client can interact with the server. The API specifies how requests must be structured, what operations are available, and how responses are returned. The serving robot visually reinforces the idea that an API acts as an intermediary, receiving requests and facilitating access to services or information.</p>
+      <p>The API server, represented by a stack of server icons and a cartoon robot wearing a chef's hat, processes incoming requests. Depending on the request, the server might retrieve information from a database, perform a calculation, execute a business operation, or interact with other systems. The chef's hat reinforces the analogy of a restaurant kitchen, where requested services are prepared before being delivered.</p>
+      <p>Two sets of arrows illustrate the flow of communication. The upper arrows point from left to right, showing a request traveling from the client through the API to the server. The lower arrows point from right to left, indicating that the server's response travels back through the API to the client. The response might contain requested data, confirmation that an operation was completed, or an error message if the request could not be fulfilled.</p>
+      <p>The illustration uses a simple black-and-white design with orange accents on the computer, API symbol, and server icons. The three cartoon robots make the technical process more approachable by presenting the client as a customer, the API as a server or waiter, and the API server as a chef preparing the requested service.</p>
+      <p>The central takeaway is that APIs allow software applications to communicate through defined interfaces without requiring the requesting application to understand the internal workings of the server. The client needs to know how to make a valid request and interpret the response, while the server handles the underlying processing. This separation enables organizations to connect applications, exchange data, automate business processes, and integrate services developed by different providers.</p>
+    </div>
+  </details>
+</figure>
+
+    <h3>Why It Matters for Business</h3>
+
+    <p>APIs are like the glue of the digital economy. They let businesses <em>compose</em> functionality from different sources rather than building every piece themselves. This has several business implications:</p>
+
+    <ul>
+  <li><strong>Rapid Integration:</strong> Instead of coding from scratch, companies can call existing services. For instance, a startup can integrate Google Maps (location data), Stripe (payments), or social login (Facebook/Google auth) via APIs. This dramatically speeds development. As one AWS guide notes, APIs “increase development speed because each functionality doesn’t have to be written from scratch”.</li>
+  <li><strong>New Business Models:</strong> APIs enable platform thinking. A retailer, for example, can open a product catalog API to its partners (suppliers or affiliates) so they can directly access inventory data. Or a bank can expose payment APIs, earning fees when other businesses use them. Amazon, eBay, and other marketplaces owe much of their power to rich APIs that allow developers to build on their platforms.</li>
+  <li><strong>Scalability and Collaboration:</strong> With APIs, internal teams can work in parallel. One team can improve the inventory system’s API while another builds the website; as long as they agree on the interface, they stay in sync. Teams can also consume APIs from each other’s systems, promoting reuse and consistency.</li>
+  <li><strong>Ecosystems and Partnerships:</strong> APIs let firms connect with external partners seamlessly. A logistics company might offer an API to track shipments, allowing its clients to embed tracking on their own sites. Or consider Fintech: many startups offer Banking-as-a-Service APIs to integrate account services into other apps. An API partner can be both a customer and a collaborator.</li>
+</ul>
+
+    <p>In short, executives see APIs as strategic. Studies find that a large majority of IT leaders view APIs as essential to their business strategy (one stat from industry reports claims 98% agree, though the number can vary by survey). The “API economy” is already worth trillions of dollars, encompassing everything from social media interactions to financial transactions (some estimates value it at over $2 trillion globally). The main point: if a firm wants to move fast and leverage external innovation, APIs are indispensable tools.</p>
+
+    <h3>How APIs Work (at a Glance)</h3>
+
+    <p>Most modern APIs on the web are RESTful APIs over HTTP (though others like SOAP exist). To use an API, a developer typically: </p>
+
+    <ol>
+  <li>Registers for a key or credentials (especially for public APIs).</li>
+  <li>Sends a request to a specific URL (the API endpoint) with the required parameters.</li>
+  <li>Receives a response, often in JSON format, which their application parses and uses.</li>
+</ol>
+
+    <p>For example, a travel app might make an HTTP GET request like <em>https://api.example.com/flights?origin=SFO&amp;dest=JFK&amp;date=2026-12-01</em>, and get back flight data in JSON. Behind the scenes, the airline’s API servers handle this query and return results. The app’s code then displays the options to the user.</p>
+
+    <p>Key technical points:</p>
+
+    <ul>
+  <li><strong>Endpoints:</strong> The specific URLs (and methods like GET/POST) define what action the API performs.</li>
+  <li><strong>Data Format:</strong> Most modern APIs use JSON or XML to structure data, making it language-agnostic.</li>
+  <li><strong>Authentication:</strong> APIs often require tokens or keys to ensure only authorized clients use them, especially for paid services.</li>
+  <li><strong>Versioning:</strong> APIs may have versioned endpoints (e.g., <em>/v1/resource</em>) so developers can upgrade over time without breaking old clients.</li>
+</ul>
+
+    <p>The upshot for business: APIs make software components modular. You can treat a service (like “payments” or “maps”) as a black box as long as it has a reliable API. This modular approach lowers risk – you buy or build one piece at a time.</p>
+
+    <h3>APIs and Artificial Intelligence</h3>
+
+    <p>APIs play a crucial role in the AI era. Many AI platforms are accessed via APIs. For example, if a company wants to use a large language model (LLM) for customer service, it might call an AI-as-a-service API (like OpenAI’s or Google’s) rather than hosting its own model. This allows even small businesses to leverage cutting-edge AI: they send the user’s query to the model API and get a response back, all over the network.</p>
+
+    <p>Conversely, AI is enriching APIs themselves. Many services now offer intelligent features through APIs: image recognition, speech-to-text, translation, sentiment analysis, and more. A marketing app might call a cloud AI API to analyze customer feedback, or a financial tool might use machine-learning models via API. Thus, AI capabilities are amplifying what APIs can provide. In effect, APIs have become delivery vehicles for AI features, democratizing access to sophisticated intelligence.</p>
+
+    <aside class="box case-study" aria-labelledby="twilio-messaging-case-title">
+  <h3 class="box-title" id="twilio-messaging-case-title">Case Study: Twilio and Messaging</h3>
+  <div class="box-body">
+    <p>A practical example is Twilio, a company that provides communication APIs. Instead of building telephony infrastructure, businesses can use Twilio’s APIs to send SMS or voice calls. For instance, a ride-share app doesn’t need its own telecom connections – it just calls Twilio’s API to send a text when a driver arrives. This saved companies countless development hours and allowed them to focus on their core offerings (rides). Even social media giants expose APIs (the Twitter API, Facebook Graph API) enabling third parties to build entire businesses (analytics, scheduling tools, marketing bots) on top of them. APIs have literally become sales channels.</p>
+  </div>
+</aside>
+
+    <h2>Open-Source Software</h2>
+
+    <h3>What is Open Source Software?</h3>
+
+    <p><strong>Open-source software</strong> refers to programs whose source code is publicly available to use, modify, and distribute. “Source code” is the human-readable instructions that developers write. An open source license legally grants anyone the right to inspect and change that code. Popular examples include the Linux operating system, the Apache web server, the Python programming language, and countless libraries and tools.</p>
+
+    <p>Open-source projects range from small scripts to massive platforms. They are typically developed by communities: sometimes hundreds or thousands of contributors around the world. Companies, universities, and individuals all participate. Notably, open source has become dominant in areas like cloud infrastructure and AI frameworks (for example, the TensorFlow and PyTorch libraries for machine learning are open source).</p>
+
+    <h3>Why It Matters for Business</h3>
+
+    <p>Open-source software has a huge influence on how businesses build technology today. Key benefits include:</p>
+
+    <ul>
+  <li><strong>Cost Savings:</strong> Many open source tools are free to use. A company doesn’t pay licensing fees for Linux, or PostgreSQL (open source database), or TensorFlow. This can save millions versus proprietary equivalents. Of course, there may still be costs for support or customization, but the software itself is without licensing cost.</li>
+  <li><strong>Innovation and Collaboration:</strong> Open source code is often at the cutting edge. Since anyone can contribute, innovations spread quickly. For example, big companies often release their research as open source (Google’s Kubernetes or Facebook’s Presto query engine) and the whole industry benefits. By using open source, companies tap into a global R&amp;D effort. Developers don’t need to start from zero; they can build on established, battle-tested components.</li>
+  <li><strong>Avoiding Vendor Lock-In:</strong> With open source, the customer has more control. If a company uses an open source database, it is not tied to a single vendor’s pricing and roadmap – the company (or anyone in community) can modify the code if needed. There’s a choice of commercial support providers. This flexibility is strategic.</li>
+  <li><strong>Talent and Recruitment:</strong> Developers often prefer working with modern open source tools. If your engineering team can adopt popular open source stacks (like Linux, Docker, or React), it may be easier to hire talent.</li>
+  <li><strong>Security and Transparency:</strong> The ability to inspect source code means bugs and vulnerabilities are often found by community review quickly. Many organizations feel safer knowing they can audit the code running in their infrastructure.</li>
+</ul>
+
+    <p>Of course, there are trade-offs. Managers should be aware of licensing obligations (some open source licenses require you to release your own code if you distribute a product), and that open source may not come with “official” support unless you pay for it. Still, the trend is clear: virtually no major digital platform is 100% proprietary anymore.</p>
+
+    <p>By one account, <strong>GitHub</strong> – the largest code hosting platform – had 100 million registered developers in 2023. That figure includes many contributors to open source projects. The sheer scale of participation means there’s a high chance that any needed functionality already exists in some form.</p>
+
+    <p>Importantly, open source is not just for small utilities. Entire fields rely on it. For example, AI frameworks like TensorFlow, PyTorch, and scikit-learn are open source. Cloud infrastructure platforms like OpenStack or container orchestration (Kubernetes) are open source. Even many cybersecurity tools and big data processing engines are open source.</p>
+
+    <p>Managers care about open source because it underpins agility: you can experiment with new capabilities quickly. Adopting an open source project is often as simple as installing a package or pulling from GitHub, whereas buying and licensing might be slower and more expensive.</p>
+
+    <h3>How Open Source Development Works</h3>
+
+    <p>Open source projects can vary in structure, but common patterns include:</p>
+
+    <ul>
+  <li><strong>Community Projects:</strong> Many projects live on platforms like GitHub or GitLab where anyone can contribute code via “pull requests.” A core team reviews contributions and decides what to merge.</li>
+  <li><strong>Consortia and Foundations:</strong> Some big projects have formal organizations (e.g., the Linux Foundation for Linux and Kubernetes, the Apache Foundation for many projects like Hadoop and Kafka). These groups coordinate funding, trademark, and roadmaps.</li>
+  <li><strong>Corporate Open Source:</strong> Many companies open source the tools they build internally. For example, LinkedIn created Kafka (an event-streaming platform) and donated it to Apache. Google created Kubernetes for its own needs and then released it as open source under the Cloud Native Computing Foundation (CNCF). After that, hundreds of companies started using and improving Kubernetes together.</li>
+</ul>
+
+    <p>In practice, a developer at one company might work on open source code during the day, while also using thousands of other open source projects in the company's products. Companies often sponsor developers to contribute (for example, IBM, Microsoft, and Google have large teams working on open source). This blurs the line between academic-style projects and corporate development.</p>
+
+    <h3>Open Source and Artificial Intelligence</h3>
+
+    <p>The AI world is heavily open source. Popular machine-learning libraries like TensorFlow (from Google) and PyTorch (from Facebook) are open source, so AI developers everywhere share improvements. Even large language models have open variants (such as Meta’s LLaMA or open initiatives like EleutherAI’s GPT-style models). The ecosystem of data sets, model evaluation tools, and even hardware interfaces often comes from open source.</p>
+
+    <p>This means companies building AI can leverage a broad community. If a startup wants to experiment with computer vision, it might use open source libraries and pre-trained models readily available. Then it might deploy these models on a cloud service. This combination of open-source research and cloud deployment exemplifies how these layers stack.</p>
+
+    <aside class="box case-study" aria-labelledby="netflix-kubernetes-case-title">
+  <h3 class="box-title" id="netflix-kubernetes-case-title">Case Study: Netflix, Kubernetes, and Chaos Monkey</h3>
+  <div class="box-body">
+    <p>Netflix offers a real example of using open source. It was an early adopter of many open source tools, and it also gave back by open-sourcing its own innovations. One famous example is “Chaos Monkey,” a tool Netflix open-sourced that deliberately disables servers to test system resilience. The idea spreads: every engineer can look at that code, learn from it, and improve it.</p>
+    <p>Another is Kubernetes. Netflix (and others) adopted Kubernetes for container orchestration. Kubernetes itself is a Google-originated open source project now managed by the CNCF. By using Kubernetes, Netflix and many other companies don’t have to build container orchestration from scratch—they benefit from the many contributors improving it.</p>
+    <p>These real-world examples show that open source can become industry standards. A manager who sees their competitors succeed with open source may feel pressure to adopt similar tools to stay competitive.</p>
+  </div>
+</aside>
+
+    <h2>Key Takeaways</h2>
+
+    <ul>
+  <li><strong>Digital infrastructure layers enable fast innovation.</strong> The Internet provides global connectivity. Cloud platforms supply on-demand compute power. Shared software and data tools (often open source) make robust systems affordable. APIs tie everything together. Together, these layers let companies assemble applications quickly without building each part from scratch.</li>
+  <li><strong>Internet connectivity is foundational.</strong> Companies must ensure reliable, global network access, because modern business depends on the network. The Internet has become the “operating layer” of the economy. Managers should plan for sufficient bandwidth, redundancy, and global reach.</li>
+  <li><strong>Cloud computing transforms costs and agility.</strong> By renting servers and services, firms can scale elastically and shift to an operational expense model. This accelerates time-to-market and supports variable demand. However, leaders must manage cloud spend carefully (for example through FinOps) and plan multi-cloud or hybrid strategies to avoid lock-in.</li>
+  <li><strong>APIs enable ecosystem strategies.</strong> Exposing functionality via APIs allows businesses to integrate with partners and build new services on existing ones. APIs speed up development (reusing others’ work and unlock new revenue models (third parties can build on your platform). Managers should consider APIs in digital strategy – internally for system integration and externally for partnerships.</li>
+  <li><strong>Open source powers widespread collaboration.</strong> Open source software offers low-cost, flexible, and battle-tested tools. It accelerates development and innovation. Companies often build competitive advantage on open source foundations. Managers should embrace open source as a strategic asset but also ensure compliance with licensing and invest in internal expertise to leverage it effectively.</li>
+  <li><strong>AI intersects with every layer.</strong> Artificial intelligence is typically delivered via cloud services and accessed through APIs, often built on open source frameworks. Managers should recognize AI not as a separate stack, but as a set of capabilities plugged into the existing infrastructure – for example, using cloud-based AI APIs in their apps. Conversely, AI (machine learning, predictive analytics) can optimize infrastructure itself (like auto-scaling or predictive maintenance).</li>
+</ul>
+
+    <p>In summary, <strong>digital infrastructure lowers barriers</strong>: it makes powerful digital capabilities (global reach, big data processing, intelligent features) accessible to any organization. For managers, understanding these layers is key to making strategic decisions about technology investments, partnerships, and processes. When a new digital initiative is proposed, leaders should ask: <em>Which part of the stack can we rent or reuse (internet, cloud, API, open source) versus what we must build ourselves?</em> The answer will shape costs, timelines, and competitive advantage.</p>
+
+    <h2>Key Terms and Definitions</h2>
+<dl class="definition-list">
+  <dt>Digital Infrastructure</dt>
+<dd>The underlying tech and services that enable digital business operations, including networking, servers, platforms, and shared software tools. It forms the foundation on which applications and services run.</dd>
+  <dt>Internet</dt>
+<dd>The global network of interconnected computers and devices that communicate via standard protocols (TCP/IP, DNS). It provides the connectivity layer for digital services and the World Wide Web.</dd>
+  <dt>World Wide Web (Web)</dt>
+<dd>A system of interlinked hypertext documents and applications accessed via web browsers on top of the Internet, using HTTP/HTTPS protocols. (Often simply called “the web”).</dd>
+  <dt>Cloud Computing</dt>
+<dd>On-demand delivery of computing resources (servers, storage, databases, software) over the Internet, usually in a pay-as-you-go model. It includes IaaS (virtual machines), PaaS (platform services), and SaaS (online applications).</dd>
+  <dt>API (Application Programming Interface)</dt>
+<dd>A defined set of rules and protocols by which software applications communicate. APIs enable one system to access the functions or data of another (e.g., using a web service).</dd>
+  <dt>Open-Source Software</dt>
+<dd>Software whose source code is made publicly available, allowing anyone to use, modify, and distribute it under an open license. It fosters collaborative development and reuse.</dd>
+  <dt>SaaS (Software as a Service)</dt>
+<dd>A cloud model where software applications are delivered over the Internet and accessed via a web interface, without needing local installation.</dd>
+  <dt>IaaS (Infrastructure as a Service)</dt>
+<dd>A cloud model providing virtualized computing resources (virtual machines, storage) over the Internet.</dd>
+  <dt>PaaS (Platform as a Service)</dt>
+<dd>A cloud model offering a managed environment for developing, running, and managing applications (e.g., databases, development tools) without handling underlying servers.</dd>
+  <dt>Hyper-scale/ Hyperscaler</dt>
+<dd>Very large cloud providers (like AWS, Azure, Google Cloud) that operate massive data centers at global scale.</dd>
+  <dt>Latency</dt>
+<dd>The delay before a transfer of data begins following an instruction. In networking, lower latency (faster connections) improves user experience.</dd>
+  <dt>Bandwidth</dt>
+<dd>The capacity of a network connection, often measured in Mbps/Gbps. Higher bandwidth allows more data to be transferred at once.</dd>
+  <dt>Virtualization</dt>
+<dd>Technology that allows multiple virtual machines or containers to run on one physical server, dividing its resources.</dd>
+  <dt>Container</dt>
+<dd>A lightweight form of virtualization that packages an application with all its dependencies (e.g., Docker).</dd>
+  <dt>Hybrid Cloud</dt>
+<dd>An environment that uses a mix of on-premises, private cloud, and public cloud services with orchestration between them.</dd>
+  <dt>Multi-Cloud</dt>
+<dd>Using multiple public cloud providers for different services, to avoid dependency on a single vendor or to leverage best-of-breed offerings.</dd>
+  <dt>FinOps</dt>
+<dd>Financial management in the cloud. Practices and tools to monitor and optimize cloud spending.</dd>
+</dl>
+
+    <nav class="chapter-nav" aria-label="Chapter navigation">
+      <a href="#">&lt; Previous</a>
+      <a href="#">Next &gt;</a>
+    </nav>
+  </main>
+</body>
+</html>
