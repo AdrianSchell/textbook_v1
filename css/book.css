@@ -286,8 +286,8 @@ li {
 
 
 .book-figure.chapter-figure img {
-  width: 70%;
-  max-width: 540px;
+  width: 60%;
+  max-width: 456px;
 }
 
 .book-figure img {
@@ -409,12 +409,6 @@ li {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   padding: 1rem 1.25rem;
-}
-
-.long-description-panel strong {
-  display: block;
-  margin-bottom: 0.45rem;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .table-wrap {
@@ -558,7 +552,7 @@ pre code {
    ========================================== */
 @media screen and (max-width: 680px) {
   .book-figure.chapter-figure img {
-    width: 100%;
+    width: 60%;
   }
   html {
     font-size: 17px;
@@ -728,6 +722,11 @@ pre code {
     width: 65% !important;
     height: auto !important;
     margin: 12pt auto !important;
+  }
+
+  .book-figure.chapter-figure img {
+    width: 60% !important;
+    max-width: 456px !important;
   }
 
   /* Prevent any residual header/footer or nav from affecting measure */
