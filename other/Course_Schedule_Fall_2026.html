@@ -9,7 +9,7 @@
 :root{--navy:#162b42;--navy-2:#213d5a;--gold:#b28326;--ink:#1c2d41;--muted:#65748a;--border:#dce3eb;--paper:#fff;--page:#f5f7fa;--even:#f4f7fa;--odd:#fff9eb;--break:#fff0e8;--test:#e0efdb}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:14px;line-height:1.4;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:13px;line-height:1.4;-webkit-font-smoothing:antialiased}
 button,input{font:inherit}
 .page{max-width:1060px;margin:0 auto;padding:36px 28px 72px}
 .hero{position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(118deg,#13283f,#23496b);color:white;padding:33px 38px 34px;box-shadow:0 12px 26px rgba(15,42,65,.12)}
@@ -33,20 +33,21 @@ main{margin-top:20px}
 .print-btn:hover{background:#294d6f}
 .table-scroll{overflow-x:auto;scrollbar-color:#bdc9d8 transparent}
 table{width:max-content;table-layout:auto;border-collapse:separate;border-spacing:0;font-variant-numeric:tabular-nums}
-col.week{width:42px}col.seq{width:42px}col.date{width:75px}col.day{width:53px}col.topic{width:auto}col.work{width:auto}
-thead th{padding:10px 10px;text-align:left;color:#f8fbff;background:var(--navy);font-size:.77rem;text-transform:uppercase;font-weight:740;letter-spacing:.065em;position:sticky;top:0;z-index:2;white-space:nowrap}
+col.week{width:42px}col.seq{width:42px}col.date{width:75px}col.day{width:39px}col.topic{width:auto}col.work{width:auto}
+thead th{padding:7px 10px;text-align:left;color:#f8fbff;background:var(--navy);font-size:.72rem;text-transform:uppercase;font-weight:740;letter-spacing:.065em;position:sticky;top:0;z-index:2;white-space:nowrap}
 thead th:nth-child(1),thead th:nth-child(2){text-align:center}
 thead th:nth-child(-n+4),tbody td:nth-child(-n+4){padding-left:5px;padding-right:5px}
+thead th:nth-child(4),tbody td:nth-child(4){padding-left:2px;padding-right:2px}
 tbody tr{background:var(--odd)}tbody tr[data-tone="even"]{background:var(--even)}
-tbody td{padding:7px 10px;border-bottom:1px solid #e1e6ed;vertical-align:middle;font-size:.87rem;line-height:1.32}
+tbody td{padding:3px 10px;border-bottom:1px solid #e1e6ed;vertical-align:middle;font-size:.81rem;line-height:1.18}
 tbody tr:last-child td{border-bottom:0}
 td.week-cell,td.seq-cell{text-align:center}
-.week-pill{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:6px;background:rgba(20,47,75,.09);font-weight:800;font-size:.81rem;color:var(--navy)}
+.week-pill{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:5px;background:rgba(20,47,75,.09);font-weight:800;font-size:.76rem;color:var(--navy)}
 .seq-num{color:#53637a;font-weight:650}
 .date-cell{white-space:nowrap;font-weight:720;color:#2c4159}
 .day-cell{white-space:nowrap;color:#53647a}
 .topic-cell{color:#1d2d40;font-weight:530;white-space:nowrap}
-.module{display:inline-block;color:#93650c;font-weight:790;font-size:.81rem;margin-right:5px;white-space:nowrap}
+.module{display:inline-block;color:#93650c;font-weight:790;font-size:.76rem;margin-right:5px;white-space:nowrap}
 .deadline-cell{font-weight:680;color:#2d4058;white-space:nowrap}
 .deadline-dot{display:inline-block;background:#d6a641;width:6px;height:6px;border-radius:50%;vertical-align:middle;margin-right:8px;transform:translateY(-1px)}
 .break .topic-cell{background:var(--break);color:#844727;font-weight:720}
@@ -75,10 +76,10 @@ html,body{background:#fff!important;font-size:10pt;print-color-adjust:exact;-web
 .section-top{padding:0 0 6px;border:none}.section-top h2{font-size:12pt}.section-top .sub{display:none}
 .table-scroll{overflow:visible}
 table{min-width:0;width:100%;table-layout:auto}
-col.week{width:5%}col.seq{width:5%}col.date{width:9%}col.day{width:7%}col.topic{width:auto}col.work{width:auto}
+col.week{width:5%}col.seq{width:5%}col.date{width:9%}col.day{width:4%}col.topic{width:auto}col.work{width:auto}
 thead{display:table-header-group}thead th{position:static;padding:6px 5px;font-size:8pt;background:#213d5a!important}
 tbody tr{break-inside:avoid;page-break-inside:avoid}
-tbody td{padding:4px 5px;font-size:8pt;line-height:1.18;border-bottom:1px solid #bcc6d1}
+tbody td{padding:2px 5px;font-size:7.5pt;line-height:1.18;border-bottom:1px solid #bcc6d1}
 .week-pill{width:19px;height:19px;font-size:7.7pt;border-radius:4px}.module{font-size:8pt;margin-right:2px}
 .mini-label{font-size:6pt;padding:1px 3px;margin-right:4px}
 .deadline-dot{width:4px;height:4px;margin-right:4px}.note-text{font-size:7.5pt}
@@ -271,7 +272,7 @@ tbody td{padding:4px 5px;font-size:8pt;line-height:1.18;border-bottom:1px solid 
               <td class="date-cell"><time datetime="2026-10-28">28-Oct</time></td>
               <td class="day-cell">Wed</td>
               <td class="topic-cell"><span class="module">[4-3]</span> Deep Learning &amp; Generative AI</td>
-              <td class="deadline-cell"><span class="note-text">Moved to NOV 1</span></td>
+              <td class="deadline-cell">&nbsp;</td>
             </tr>
             <tr data-week="11" data-tone="odd" data-deadline="false">
               <td class="week-cell"><span class="week-pill">11</span></td>
@@ -363,7 +364,7 @@ tbody td{padding:4px 5px;font-size:8pt;line-height:1.18;border-bottom:1px solid 
             </tr>
             <tr data-week="16" data-tone="even" data-deadline="false" class="break">
               <td class="week-cell"><span class="week-pill">16</span></td>
-              <td class="seq-cell"><span class="seq-num">29</span></td>
+              <td class="seq-cell"><span class="seq-num">-</span></td>
               <td class="date-cell"><time datetime="2026-12-09">9-Dec</time></td>
               <td class="day-cell">Wed</td>
               <td class="topic-cell"><span class="mini-label">Break</span>Reading Period (Dec. 9)</td>
