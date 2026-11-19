@@ -33,16 +33,16 @@ main{margin-top:20px}
 .print-btn:hover{background:#294d6f}
 .table-scroll{overflow-x:auto;scrollbar-color:#bdc9d8 transparent}
 table{width:max-content;table-layout:auto;border-collapse:separate;border-spacing:0;font-variant-numeric:tabular-nums}
-col.week{width:42px}col.seq{width:42px}col.date{width:75px}col.day{width:39px}col.topic{width:auto}col.work{width:auto}
+col.week{width:28px}col.seq{width:30px}col.date{width:59px}col.day{width:29px}col.topic{width:auto}col.work{width:auto}
 thead th{padding:7px 10px;text-align:left;color:#f8fbff;background:var(--navy);font-size:.72rem;text-transform:uppercase;font-weight:740;letter-spacing:.065em;position:sticky;top:0;z-index:2;white-space:nowrap}
 thead th:nth-child(1),thead th:nth-child(2){text-align:center}
-thead th:nth-child(-n+4),tbody td:nth-child(-n+4){padding-left:5px;padding-right:5px}
+thead th:nth-child(-n+4),tbody td:nth-child(-n+4){padding-left:2px;padding-right:2px}
 thead th:nth-child(4),tbody td:nth-child(4){padding-left:2px;padding-right:2px}
 tbody tr{background:var(--odd)}tbody tr[data-tone="even"]{background:var(--even)}
 tbody td{padding:3px 10px;border-bottom:1px solid #e1e6ed;vertical-align:middle;font-size:.81rem;line-height:1.18}
 tbody tr:last-child td{border-bottom:0}
 td.week-cell,td.seq-cell{text-align:center}
-.week-pill{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:5px;background:rgba(20,47,75,.09);font-weight:800;font-size:.76rem;color:var(--navy)}
+.week-pill{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:4px;background:rgba(20,47,75,.09);font-weight:800;font-size:.76rem;color:var(--navy)}
 .seq-num{color:#53637a;font-weight:650}
 .date-cell{white-space:nowrap;font-weight:720;color:#2c4159}
 .day-cell{white-space:nowrap;color:#53647a}
@@ -76,7 +76,7 @@ html,body{background:#fff!important;font-size:10pt;print-color-adjust:exact;-web
 .section-top{padding:0 0 6px;border:none}.section-top h2{font-size:12pt}.section-top .sub{display:none}
 .table-scroll{overflow:visible}
 table{min-width:0;width:100%;table-layout:auto}
-col.week{width:5%}col.seq{width:5%}col.date{width:9%}col.day{width:4%}col.topic{width:auto}col.work{width:auto}
+col.week{width:28px}col.seq{width:30px}col.date{width:59px}col.day{width:29px}col.topic{width:auto}col.work{width:auto}
 thead{display:table-header-group}thead th{position:static;padding:6px 5px;font-size:8pt;background:#213d5a!important}
 tbody tr{break-inside:avoid;page-break-inside:avoid}
 tbody td{padding:2px 5px;font-size:7.5pt;line-height:1.18;border-bottom:1px solid #bcc6d1}
@@ -99,13 +99,14 @@ tbody td{padding:2px 5px;font-size:7.5pt;line-height:1.18;border-bottom:1px soli
   <main>
     <section class="schedule-section" aria-labelledby="schedule-heading">
       <div class="section-top">
-        <div><h2 id="schedule-heading">Weekly schedule</h2><p class="sub">Search a topic or show only rows with deadlines.</p></div>
+        <div><h2 id="schedule-heading">Weekly schedule</h2><p class="sub">Search topics, deadlines, or hide past dates.</p></div>
         <div class="actions">
+          <label class="filter" for="hidePast"><input type="checkbox" id="hidePast" checked>Hide past</label>
+          <label class="filter" for="deadlines"><input type="checkbox" id="deadlines">Deadlines only</label>
           <label class="search-wrap" for="search">
             <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
             <input id="search" type="search" placeholder="Search schedule" aria-label="Search schedule">
           </label>
-          <label class="filter" for="deadlines"><input type="checkbox" id="deadlines">Deadlines only</label>
           <button class="print-btn" id="print" type="button">Print schedule</button>
         </div>
       </div>
@@ -387,6 +388,10 @@ tbody td{padding:2px 5px;font-size:7.5pt;line-height:1.18;border-bottom:1px soli
 (() => {
   const input = document.getElementById('search');
   const checkbox = document.getElementById('deadlines');
+  const hidePast = document.getElementById('hidePast');
+  const today = new Date();
+  const cutoff = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+  const cutoffString = [cutoff.getFullYear(), String(cutoff.getMonth()+1).padStart(2, '0'), String(cutoff.getDate()).padStart(2, '0')].join('-');
   const rows = Array.from(document.querySelectorAll('#scheduleRows tr'));
   const output = document.getElementById('resultCount');
   const empty = document.getElementById('noResults');
@@ -396,17 +401,22 @@ tbody td{padding:2px 5px;font-size:7.5pt;line-height:1.18;border-bottom:1px soli
     for (const row of rows) {
       const matchesText = !q || row.textContent.toLocaleLowerCase().includes(q);
       const matchesDeadline = !checkbox.checked || row.dataset.deadline === 'true';
-      row.hidden = !(matchesText && matchesDeadline);
+      const rowDate = row.querySelector('time[datetime]')?.getAttribute('datetime');
+      const matchesDate = !hidePast.checked || !rowDate || rowDate >= cutoffString;
+      row.hidden = !(matchesText && matchesDeadline && matchesDate);
       if (!row.hidden) shown++;
     }
     output.textContent = `Showing ${shown} of ${rows.length} schedule entries.`;
     empty.hidden = shown !== 0;
   }
+  update();
   input.addEventListener('input', update);
   checkbox.addEventListener('change', update);
+  hidePast.addEventListener('change', update);
   document.getElementById('print').addEventListener('click', () => {
     input.value = '';
     checkbox.checked = false;
+    hidePast.checked = false;
     update();
     window.print();
   });
