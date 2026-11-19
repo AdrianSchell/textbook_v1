@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Fall 2026 | Course Schedule</title>
+<style>
+:root{--navy:#162b42;--navy-2:#213d5a;--gold:#b28326;--ink:#1c2d41;--muted:#65748a;--border:#dce3eb;--paper:#fff;--page:#f5f7fa;--even:#f4f7fa;--odd:#fff9eb;--break:#fff0e8;--test:#e0efdb}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input{font:inherit}
+.page{max-width:1170px;margin:0 auto;padding:36px 28px 72px}
+.hero{position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(118deg,#13283f,#23496b);color:white;padding:33px 38px 34px;box-shadow:0 12px 26px rgba(15,42,65,.12)}
+.hero::after{content:"";position:absolute;width:280px;height:280px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-100px;top:-140px;box-shadow:0 0 0 45px rgba(255,255,255,.025),0 0 0 100px rgba(255,255,255,.02);pointer-events:none}
+.eyebrow{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:750;color:#ebca7d;margin:0 0 7px}
+h1{font-size:clamp(1.8rem,3.4vw,2.65rem);line-height:1.12;letter-spacing:-.035em;margin:0 0 11px;font-weight:760}
+.hero p:last-child{font-size:.97rem;margin:0;color:#dce6f2}
+main{margin-top:20px}
+.schedule-section{background:var(--paper);border:1px solid var(--border);border-radius:16px;box-shadow:0 5px 22px rgba(28,45,65,.055);overflow:hidden}
+.section-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:22px 24px;border-bottom:1px solid var(--border)}
+.section-top h2{font-size:1.16rem;line-height:1.2;margin:0;font-weight:790;letter-spacing:-.015em}
+.section-top .sub{margin:4px 0 0;font-size:.84rem;color:var(--muted)}
+.actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:wrap}
+.search-wrap{position:relative}
+.search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#6f7e90;pointer-events:none}
+#search{width:min(235px,55vw);height:39px;padding:0 12px 0 34px;border:1px solid #cad4e0;border-radius:8px;background:#fff;color:var(--ink);outline-offset:2px}
+#search:focus{border-color:#4a6e9b;outline:2px solid #bcd0ed}
+.filter{display:flex;gap:7px;align-items:center;cursor:pointer;font-size:.84rem;color:#30445f;white-space:nowrap;background:#f7f9fc;border:1px solid #d8e0e9;border-radius:8px;padding:8px 10px;min-height:39px}
+.filter input{accent-color:#1b537c;width:15px;height:15px;margin:0}
+.print-btn{border:1px solid var(--navy);background:var(--navy);color:#fff;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:680;font-size:.84rem;min-height:39px}
+.print-btn:hover{background:#294d6f}
+.table-scroll{overflow-x:auto;scrollbar-color:#bdc9d8 transparent}
+table{width:100%;border-collapse:separate;border-spacing:0;min-width:810px;font-variant-numeric:tabular-nums}
+col.week{width:7%}col.seq{width:7%}col.date{width:10%}col.day{width:8%}col.topic{width:43%}col.work{width:25%}
+thead th{padding:14px 13px;text-align:left;color:#f8fbff;background:var(--navy);font-size:.77rem;text-transform:uppercase;font-weight:740;letter-spacing:.065em;position:sticky;top:0;z-index:2;white-space:nowrap}
+thead th:nth-child(1),thead th:nth-child(2){text-align:center}
+tbody tr{background:var(--odd)}tbody tr[data-tone="even"]{background:var(--even)}
+tbody td{padding:12px 13px;border-bottom:1px solid #e1e6ed;vertical-align:middle;font-size:.905rem}
+tbody tr:last-child td{border-bottom:0}
+td.week-cell,td.seq-cell{text-align:center}
+.week-pill{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:rgba(20,47,75,.09);font-weight:800;font-size:.84rem;color:var(--navy)}
+.seq-num{color:#53637a;font-weight:650}
+.date-cell{white-space:nowrap;font-weight:720;color:#2c4159}
+.day-cell{white-space:nowrap;color:#53647a}
+.topic-cell{color:#1d2d40;font-weight:530}
+.module{display:inline-block;color:#93650c;font-weight:790;font-size:.84rem;margin-right:5px;white-space:nowrap}
+.deadline-cell{font-weight:680;color:#2d4058}
+.deadline-dot{display:inline-block;background:#d6a641;width:6px;height:6px;border-radius:50%;vertical-align:middle;margin-right:8px;transform:translateY(-1px)}
+.break .topic-cell{background:var(--break);color:#844727;font-weight:720}
+.test .topic-cell{background:var(--test);color:#315a2b;font-weight:780}
+.mini-label{display:inline-block;vertical-align:middle;font-size:.65rem;font-weight:790;text-transform:uppercase;letter-spacing:.06em;margin-right:10px;padding:3px 7px;border:1px solid currentColor;border-radius:5px;opacity:.88}
+.note-text{font-size:.81rem;font-weight:660;color:#614c2b}
+.empty-state{padding:22px;text-align:center;color:var(--muted);font-size:.92rem}
+#resultCount{padding:11px 23px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border)}
+.exam{margin-top:17px;display:flex;align-items:center;gap:15px;padding:19px 23px;background:#e4efd9;border:1px solid #bfd6b1;border-left:5px solid #55854c;border-radius:11px}
+.exam-icon{flex:0 0 41px;width:41px;height:41px;display:grid;place-items:center;border-radius:10px;background:#d0e6c3;color:#2e5930}
+.exam-icon svg{width:22px;height:22px}
+.exam .label{font-size:.72rem;color:#426a3d;letter-spacing:.07em;text-transform:uppercase;font-weight:770;margin-bottom:1px}
+.exam .time{font-weight:790;font-size:1rem;color:#284723}
+.footnote{padding:17px 4px 0;color:#707e90;font-size:.78rem}
+:focus-visible{outline:3px solid #6aa9e0;outline-offset:2px}
+[hidden]{display:none!important}
+@media (max-width:700px){.page{padding:15px 12px 45px}.hero{padding:26px 22px;border-radius:12px}main{margin-top:14px}.section-top{padding:16px;align-items:flex-start}.actions{justify-content:flex-start}.exam{padding:15px;gap:12px}.exam .time{font-size:.91rem}.table-scroll{border-radius:0}.schedule-section{border-radius:12px}}
+@media print{
+@page{size:letter portrait;margin:.43in}
+html,body{background:#fff!important;font-size:10pt;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.page{max-width:none;margin:0;padding:0}
+.hero{color:#142c44;background:#fff!important;box-shadow:none;border-radius:0;border-bottom:2px solid #b28326;padding:0 0 9px;margin-bottom:10px}
+.hero::after{display:none}.hero .eyebrow{color:#885f13}.hero p:last-child{color:#44546a}h1{font-size:20pt;margin-bottom:4px}
+.actions,.footnote{display:none!important}main{margin-top:0}
+.schedule-section{border:0;box-shadow:none;overflow:visible;border-radius:0}
+.section-top{padding:0 0 6px;border:none}.section-top h2{font-size:12pt}.section-top .sub{display:none}
+.table-scroll{overflow:visible}
+table{min-width:0;width:100%;table-layout:fixed}
+col.week{width:6%}col.seq{width:6%}col.date{width:11%}col.day{width:8%}col.topic{width:43%}col.work{width:26%}
+thead{display:table-header-group}thead th{position:static;padding:6px 5px;font-size:8pt;background:#213d5a!important}
+tbody tr{break-inside:avoid;page-break-inside:avoid}
+tbody td{padding:6px 5px;font-size:8.4pt;line-height:1.23;border-bottom:1px solid #bcc6d1}
+.week-pill{width:22px;height:22px;font-size:8pt;border-radius:5px}.module{font-size:8pt;margin-right:2px}
+.mini-label{font-size:6pt;padding:1px 3px;margin-right:4px}
+.deadline-dot{width:4px;height:4px;margin-right:4px}.note-text{font-size:7.5pt}
+#resultCount{display:none}
+.exam{break-inside:avoid;page-break-inside:avoid;margin-top:9px;padding:10px 13px;border-radius:4px}
+.exam-icon{display:none}.exam .time{font-size:10pt}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <p class="eyebrow">Fall 2026 · Course Calendar</p>
+    <h1>Course Schedule</h1>
+    <p>Class meetings, topics, assignments, and important dates.</p>
+  </header>
+  <main>
+    <section class="schedule-section" aria-labelledby="schedule-heading">
+      <div class="section-top">
+        <div><h2 id="schedule-heading">Weekly schedule</h2><p class="sub">Search a topic or show only rows with deadlines.</p></div>
+        <div class="actions">
+          <label class="search-wrap" for="search">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+            <input id="search" type="search" placeholder="Search schedule" aria-label="Search schedule">
+          </label>
+          <label class="filter" for="deadlines"><input type="checkbox" id="deadlines">Deadlines only</label>
+          <button class="print-btn" id="print" type="button">Print schedule</button>
+        </div>
+      </div>
+      <div class="table-scroll" role="region" aria-label="Course schedule table. Scroll horizontally on small screens." tabindex="0">
+        <table aria-describedby="resultCount">
+          <colgroup><col class="week"><col class="seq"><col class="date"><col class="day"><col class="topic"><col class="work"></colgroup>
+          <thead><tr><th scope="col">Wk</th><th scope="col">Seq</th><th scope="col">Date</th><th scope="col">Day</th><th scope="col">Topics</th><th scope="col">Work (Deadline)</th></tr></thead>
+          <tbody id="scheduleRows">
+            <tr data-week="1" data-tone="odd" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">1</span></td>
+              <td class="seq-cell"><span class="seq-num">1</span></td>
+              <td class="date-cell"><time datetime="2026-08-24">24-Aug</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[1-1]</span> Course Introduction</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="1" data-tone="odd" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">1</span></td>
+              <td class="seq-cell"><span class="seq-num">2</span></td>
+              <td class="date-cell"><time datetime="2026-08-26">26-Aug</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="module">[1-2]</span> Information Systems</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="2" data-tone="even" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">2</span></td>
+              <td class="seq-cell"><span class="seq-num">3</span></td>
+              <td class="date-cell"><time datetime="2026-08-31">31-Aug</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell">SQL-1</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="2" data-tone="even" data-deadline="true">
+              <td class="week-cell"><span class="week-pill">2</span></td>
+              <td class="seq-cell"><span class="seq-num">4</span></td>
+              <td class="date-cell"><time datetime="2026-09-02">2-Sep</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell">SQL-2</td>
+              <td class="deadline-cell"><span class="deadline-dot" aria-hidden="true"></span>AI Future 1 (2-Sep)</td>
+            </tr>
+            <tr data-week="3" data-tone="odd" data-deadline="false" class="break">
+              <td class="week-cell"><span class="week-pill">3</span></td>
+              <td class="seq-cell"><span class="seq-num">&mdash;</span></td>
+              <td class="date-cell"><time datetime="2026-09-07">7-Sep</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="mini-label">Break</span>Labor Day (Sep. 7)</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="3" data-tone="odd" data-deadline="true">
+              <td class="week-cell"><span class="week-pill">3</span></td>
+              <td class="seq-cell"><span class="seq-num">5</span></td>
+              <td class="date-cell"><time datetime="2026-09-09">9-Sep</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="module">[2-1]</span> Digital Transformation</td>
+              <td class="deadline-cell"><span class="deadline-dot" aria-hidden="true"></span>AI Future 2 (9 Sep)</td>
+            </tr>
+            <tr data-week="4" data-tone="even" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">4</span></td>
+              <td class="seq-cell"><span class="seq-num">6</span></td>
+              <td class="date-cell"><time datetime="2026-09-14">14-Sep</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[2-1]</span> Digital Transformation</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="4" data-tone="even" data-deadline="true">
+              <td class="week-cell"><span class="week-pill">4</span></td>
+              <td class="seq-cell"><span class="seq-num">7</span></td>
+              <td class="date-cell"><time datetime="2026-09-16">16-Sep</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="module">[2-1]</span> Digital Transformation</td>
+              <td class="deadline-cell"><span class="deadline-dot" aria-hidden="true"></span>SQL1 (16-Sep)</td>
+            </tr>
+            <tr data-week="5" data-tone="odd" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">5</span></td>
+              <td class="seq-cell"><span class="seq-num">8</span></td>
+              <td class="date-cell"><time datetime="2026-09-21">21-Sep</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell">SQL-3</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="5" data-tone="odd" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">5</span></td>
+              <td class="seq-cell"><span class="seq-num">9</span></td>
+              <td class="date-cell"><time datetime="2026-09-23">23-Sep</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell">SQL-4</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="6" data-tone="even" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">6</span></td>
+              <td class="seq-cell"><span class="seq-num">10</span></td>
+              <td class="date-cell"><time datetime="2026-09-28">28-Sep</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[2-1]</span> Digital Transformation</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="6" data-tone="even" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">6</span></td>
+              <td class="seq-cell"><span class="seq-num">11</span></td>
+              <td class="date-cell"><time datetime="2026-09-30">30-Sep</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="module">[2-1]</span> Digital Transformation</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="7" data-tone="odd" data-deadline="false" class="break">
+              <td class="week-cell"><span class="week-pill">7</span></td>
+              <td class="seq-cell"><span class="seq-num">&mdash;</span></td>
+              <td class="date-cell"><time datetime="2026-10-05">5-Oct</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="mini-label">Break</span>Fall Break (Oct. 5-Oct. 6)</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="7" data-tone="odd" data-deadline="true">
+              <td class="week-cell"><span class="week-pill">7</span></td>
+              <td class="seq-cell"><span class="seq-num">12</span></td>
+              <td class="date-cell"><time datetime="2026-10-07">7-Oct</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="module">[3-1]</span> Platforms &amp; Digital Ecosystems</td>
+              <td class="deadline-cell"><span class="deadline-dot" aria-hidden="true"></span>SQL2 (7-Oct)</td>
+            </tr>
+            <tr data-week="8" data-tone="even" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">8</span></td>
+              <td class="seq-cell"><span class="seq-num">13</span></td>
+              <td class="date-cell"><time datetime="2026-10-12">12-Oct</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[3-1]</span> Platforms &amp; Digital Ecosystems</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="8" data-tone="even" data-deadline="true" class="test">
+              <td class="week-cell"><span class="week-pill">8</span></td>
+              <td class="seq-cell"><span class="seq-num">14</span></td>
+              <td class="date-cell"><time datetime="2026-10-14">14-Oct</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="mini-label">Test</span>Test 1</td>
+              <td class="deadline-cell"><span class="deadline-dot" aria-hidden="true"></span>Test 1 (14-Oct)</td>
+            </tr>
+            <tr data-week="9" data-tone="odd" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">9</span></td>
+              <td class="seq-cell"><span class="seq-num">15</span></td>
+              <td class="date-cell"><time datetime="2026-10-19">19-Oct</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[4-1]</span> Business Analytics</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="9" data-tone="odd" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">9</span></td>
+              <td class="seq-cell"><span class="seq-num">16</span></td>
+              <td class="date-cell"><time datetime="2026-10-21">21-Oct</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="module">[4-2]</span> Machine Learning &amp; Decision Trees</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="10" data-tone="even" data-deadline="true">
+              <td class="week-cell"><span class="week-pill">10</span></td>
+              <td class="seq-cell"><span class="seq-num">17</span></td>
+              <td class="date-cell"><time datetime="2026-10-26">26-Oct</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[4-2]</span> Machine Learning &amp; Decision Trees</td>
+              <td class="deadline-cell"><span class="deadline-dot" aria-hidden="true"></span>ML1 (26-Oct)</td>
+            </tr>
+            <tr data-week="10" data-tone="even" data-deadline="false" class="note">
+              <td class="week-cell"><span class="week-pill">10</span></td>
+              <td class="seq-cell"><span class="seq-num">18</span></td>
+              <td class="date-cell"><time datetime="2026-10-28">28-Oct</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="module">[4-3]</span> Deep Learning &amp; Generative AI</td>
+              <td class="deadline-cell"><span class="note-text">Moved to NOV 1</span></td>
+            </tr>
+            <tr data-week="11" data-tone="odd" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">11</span></td>
+              <td class="seq-cell"><span class="seq-num">19</span></td>
+              <td class="date-cell"><time datetime="2026-11-02">2-Nov</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[4-3]</span> Deep Learning &amp; Generative AI</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="11" data-tone="odd" data-deadline="true" class="test">
+              <td class="week-cell"><span class="week-pill">11</span></td>
+              <td class="seq-cell"><span class="seq-num">20</span></td>
+              <td class="date-cell"><time datetime="2026-11-04">4-Nov</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="mini-label">Test</span>Test 2</td>
+              <td class="deadline-cell"><span class="deadline-dot" aria-hidden="true"></span>Test 2 (4-Nov)</td>
+            </tr>
+            <tr data-week="12" data-tone="even" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">12</span></td>
+              <td class="seq-cell"><span class="seq-num">21</span></td>
+              <td class="date-cell"><time datetime="2026-11-09">9-Nov</time></td>
+              <td class="day-cell">Mon.</td>
+              <td class="topic-cell"><span class="module">[4-3]</span> Deep Learning &amp; Generative AI</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="12" data-tone="even" data-deadline="true">
+              <td class="week-cell"><span class="week-pill">12</span></td>
+              <td class="seq-cell"><span class="seq-num">22</span></td>
+              <td class="date-cell"><time datetime="2026-11-11">11-Nov</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="module">[4-3]</span> Deep Learning &amp; Generative AI</td>
+              <td class="deadline-cell"><span class="deadline-dot" aria-hidden="true"></span>ML2 (11-Nov)</td>
+            </tr>
+            <tr data-week="13" data-tone="odd" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">13</span></td>
+              <td class="seq-cell"><span class="seq-num">23</span></td>
+              <td class="date-cell"><time datetime="2026-11-16">16-Nov</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[4-3]</span> Deep Learning &amp; Generative AI</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="13" data-tone="odd" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">13</span></td>
+              <td class="seq-cell"><span class="seq-num">24</span></td>
+              <td class="date-cell"><time datetime="2026-11-18">18-Nov</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="module">[4-3]</span> Deep Learning &amp; Generative AI</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="14" data-tone="even" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">14</span></td>
+              <td class="seq-cell"><span class="seq-num">25</span></td>
+              <td class="date-cell"><time datetime="2026-11-23">23-Nov</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[5-1]</span> Digital Infrastructure</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="14" data-tone="even" data-deadline="false" class="break">
+              <td class="week-cell"><span class="week-pill">14</span></td>
+              <td class="seq-cell"><span class="seq-num">&mdash;</span></td>
+              <td class="date-cell"><time datetime="2026-11-25">25-Nov</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="mini-label">Break</span>Holiday Break (Nov. 25-Nov. 27)</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="15" data-tone="odd" data-deadline="true">
+              <td class="week-cell"><span class="week-pill">15</span></td>
+              <td class="seq-cell"><span class="seq-num">26</span></td>
+              <td class="date-cell"><time datetime="2026-11-30">30-Nov</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[5-2]</span> Cybersecurity and Resilience</td>
+              <td class="deadline-cell"><span class="deadline-dot" aria-hidden="true"></span>LLM (30-Nov)</td>
+            </tr>
+            <tr data-week="15" data-tone="odd" data-deadline="false">
+              <td class="week-cell"><span class="week-pill">15</span></td>
+              <td class="seq-cell"><span class="seq-num">27</span></td>
+              <td class="date-cell"><time datetime="2026-12-02">2-Dec</time></td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="module">[5-2]</span> Cybersecurity and Resilience</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+            <tr data-week="16" data-tone="even" data-deadline="true">
+              <td class="week-cell"><span class="week-pill">16</span></td>
+              <td class="seq-cell"><span class="seq-num">28</span></td>
+              <td class="date-cell"><time datetime="2026-12-07">7-Dec</time></td>
+              <td class="day-cell">Mon</td>
+              <td class="topic-cell"><span class="module">[5-2]</span> Cybersecurity and Resilience</td>
+              <td class="deadline-cell"><span class="deadline-dot" aria-hidden="true"></span>ML3 (7-Dec)</td>
+            </tr>
+            <tr data-week="16" data-tone="even" data-deadline="false" class="break">
+              <td class="week-cell"><span class="week-pill">16</span></td>
+              <td class="seq-cell"><span class="seq-num">&mdash;</span></td>
+              <td class="date-cell">&mdash;</td>
+              <td class="day-cell">Wed</td>
+              <td class="topic-cell"><span class="mini-label">Break</span>Reading Period (Dec. 9)</td>
+              <td class="deadline-cell">&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="empty-state" id="noResults" hidden>No matching schedule entries.</p>
+      </div>
+      <div id="resultCount" aria-live="polite">Showing all 32 schedule entries.</div>
+    </section>
+    <section class="exam" aria-label="Final exam">
+      <div class="exam-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-13 5h3m3 0h2"/></svg></div>
+      <div><div class="label">Final Exam</div><div class="time">Wedn., Dec. 16 · 11:20 PM - 12:55 PM</div></div>
+    </section>
+    <p class="footnote">Dates and text transcribed from the supplied course schedule.</p>
+  </main>
+</div>
+<script>
+(() => {
+  const input = document.getElementById('search');
+  const checkbox = document.getElementById('deadlines');
+  const rows = Array.from(document.querySelectorAll('#scheduleRows tr'));
+  const output = document.getElementById('resultCount');
+  const empty = document.getElementById('noResults');
+  function update() {
+    const q = input.value.trim().toLocaleLowerCase();
+    let shown = 0;
+    for (const row of rows) {
+      const matchesText = !q || row.textContent.toLocaleLowerCase().includes(q);
+      const matchesDeadline = !checkbox.checked || row.dataset.deadline === 'true';
+      row.hidden = !(matchesText && matchesDeadline);
+      if (!row.hidden) shown++;
+    }
+    output.textContent = `Showing ${shown} of ${rows.length} schedule entries.`;
+    empty.hidden = shown !== 0;
+  }
+  input.addEventListener('input', update);
+  checkbox.addEventListener('change', update);
+  document.getElementById('print').addEventListener('click', () => {
+    input.value = '';
+    checkbox.checked = false;
+    update();
+    window.print();
+  });
+})();
+</script>
+</body>
+</html>
