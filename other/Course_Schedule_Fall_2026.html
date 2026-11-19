@@ -29,8 +29,6 @@ main{margin-top:20px}
 #search:focus{border-color:#4a6e9b;outline:2px solid #bcd0ed}
 .filter{display:flex;gap:7px;align-items:center;cursor:pointer;font-size:.84rem;color:#30445f;white-space:nowrap;background:#f7f9fc;border:1px solid #d8e0e9;border-radius:8px;padding:8px 10px;min-height:39px}
 .filter input{accent-color:#1b537c;width:15px;height:15px;margin:0}
-.print-btn{border:1px solid var(--navy);background:var(--navy);color:#fff;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:680;font-size:.84rem;min-height:39px}
-.print-btn:hover{background:#294d6f}
 .table-scroll{overflow-x:auto;scrollbar-color:#bdc9d8 transparent}
 table{width:max-content;table-layout:auto;border-collapse:separate;border-spacing:0;font-variant-numeric:tabular-nums}
 col.week{width:28px}col.seq{width:30px}col.date{width:59px}col.day{width:29px}col.topic{width:auto}col.work{width:auto}
@@ -107,7 +105,6 @@ tbody td{padding:2px 5px;font-size:7.5pt;line-height:1.18;border-bottom:1px soli
             <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
             <input id="search" type="search" placeholder="Search schedule" aria-label="Search schedule">
           </label>
-          <button class="print-btn" id="print" type="button">Print schedule</button>
         </div>
       </div>
       <div class="table-scroll" role="region" aria-label="Course schedule table. Scroll horizontally on small screens." tabindex="0">
@@ -336,7 +333,7 @@ tbody td{padding:2px 5px;font-size:7.5pt;line-height:1.18;border-bottom:1px soli
               <td class="seq-cell"><span class="seq-num">&mdash;</span></td>
               <td class="date-cell"><time datetime="2026-11-25">25-Nov</time></td>
               <td class="day-cell">Wed</td>
-              <td class="topic-cell"><span class="mini-label">Break</span>Holiday Break (Nov. 25-Nov. 27)</td>
+              <td class="topic-cell"><span class="mini-label">Break</span>Holiday Break (Nov. 25&ndash;Nov. 27)</td>
               <td class="deadline-cell">&nbsp;</td>
             </tr>
             <tr data-week="15" data-tone="odd" data-deadline="true">
@@ -365,7 +362,7 @@ tbody td{padding:2px 5px;font-size:7.5pt;line-height:1.18;border-bottom:1px soli
             </tr>
             <tr data-week="16" data-tone="even" data-deadline="false" class="break">
               <td class="week-cell"><span class="week-pill">16</span></td>
-              <td class="seq-cell"><span class="seq-num">-</span></td>
+              <td class="seq-cell"><span class="seq-num">&mdash;</span></td>
               <td class="date-cell"><time datetime="2026-12-09">9-Dec</time></td>
               <td class="day-cell">Wed</td>
               <td class="topic-cell"><span class="mini-label">Break</span>Reading Period (Dec. 9)</td>
@@ -379,7 +376,7 @@ tbody td{padding:2px 5px;font-size:7.5pt;line-height:1.18;border-bottom:1px soli
     </section>
     <section class="exam" aria-label="Final exam">
       <div class="exam-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-13 5h3m3 0h2"/></svg></div>
-      <div><div class="label">Final Exam</div><div class="time">Wedn., Dec. 16 · 11:20 PM - 12:55 PM</div></div>
+      <div><div class="label">Final Exam</div><div class="time">Wedn., Dec. 16 · 11:20 PM &ndash; 12:55 PM</div></div>
     </section>
     <p class="footnote">Dates and text transcribed from the supplied course schedule.</p>
   </main>
@@ -413,13 +410,6 @@ tbody td{padding:2px 5px;font-size:7.5pt;line-height:1.18;border-bottom:1px soli
   input.addEventListener('input', update);
   checkbox.addEventListener('change', update);
   hidePast.addEventListener('change', update);
-  document.getElementById('print').addEventListener('click', () => {
-    input.value = '';
-    checkbox.checked = false;
-    hidePast.checked = false;
-    update();
-    window.print();
-  });
 })();
 </script>
 </body>
